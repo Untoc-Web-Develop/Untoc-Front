@@ -2,6 +2,7 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { persistReducer } from 'redux-persist';
 import storageSession from 'redux-persist/lib/storage/session';
 import thunk from 'redux-thunk';
+
 import { userReducer } from './reducers/userReducer';
 
 const reducers = combineReducers({
