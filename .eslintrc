@@ -32,12 +32,12 @@
         "groups": ["builtin", "external", "internal"],
         "pathGroups": [
           {
-            "pattern": "{react,react-dom/**}",
+            "pattern": "{react,react-dom**,react-router-dom**}",
             "group": "external",
             "position": "before"
           }
         ],
-        "pathGroupsExcludedImportTypes": ["react"],
+        "pathGroupsExcludedImportTypes": ["react", "react-dom", "react-router-dom"],
         "newlines-between": "always",
         "alphabetize": {
           "order": "asc",
