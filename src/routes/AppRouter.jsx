@@ -1,6 +1,7 @@
 import Board from 'page/Board/Board';
 import Login from 'page/Login/Login';
 import Main from 'page/Main/Main';
+import NotFound from 'page/NotFound/NotFound';
 import Profile from 'page/Profile/Profile';
 import Recruit from 'page/Recruit/Recruit';
 import Register from 'page/Register/Register';
@@ -17,7 +18,7 @@ const AppRouter = () => {
         <Route path="profile" element={<Profile />} />
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
-        <Route path="*" element={<div>Not Found</div>} />
+        <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
   );
