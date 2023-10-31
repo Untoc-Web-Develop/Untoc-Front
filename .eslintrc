@@ -16,7 +16,7 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["react"],
+  "plugins": ["react", "import", "prettier"],
   "rules": {
     "prettier/prettier": [
       "error",
@@ -25,6 +25,25 @@
       }
     ],
     "import/no-unresolved": "off",
-    "react/function-component-definition": [2, { "namedComponents": ["arrow-function"] }]
+    "react/function-component-definition": [2, { "namedComponents": ["arrow-function"] }],
+    "import/order": [
+      "error",
+      {
+        "groups": ["builtin", "external", "internal"],
+        "pathGroups": [
+          {
+            "pattern": "{react,react-dom/**}",
+            "group": "external",
+            "position": "before"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["react"],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ]
   }
 }
