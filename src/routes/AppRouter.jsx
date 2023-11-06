@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 
+import MainLayout from 'components/Layouts/MainLayout';
 import Board from 'page/Board/Board';
 import Login from 'page/Login/Login';
 import Main from 'page/Main/Main';
@@ -12,7 +13,7 @@ import Register from 'page/Register/Register';
 const AppRouter = () => {
   return (
     <Routes>
-      <Route path="/">
+      <Route path="/" element={<MainLayout />}>
         <Route index element={<Main />} />
         <Route path="recruit" element={<Recruit />} />
         <Route path="board" element={<Board />} />
