@@ -2,14 +2,14 @@ import React from 'react';
 
 const RecruitForm = () => {
   return (
-    <form className="h-full w-full bg-[#FFFFFF] shadow-[4px_4px_20px_0_rgba(0,0,0,0.1)] rounded-[30px] p-[50px] relative font-normal text-sm">
-      <div className="h-[68px] w-[200px] bg-[#FFFFFF] absolute top-[-45px] left-[0] flex justify-center items-center rounded-t-[10px] text-lg text-[#FFBD00]">
+    <form className="h-full w-full bg-white shadow-md rounded-3xl p-12 relative font-normal text-sm">
+      <div className="h-16 w-52 bg-white absolute -top-11 left-0 flex justify-center items-center rounded-t-xl text-lg text-[#FFBD00]">
         Fill out this form
       </div>
       <div className="h-full w-full flex flex-col justify-between items-center">
         <div className="h-5/6 w-full">
           <div className="h-1/5 w-full flex justify-between items-center mb-3">
-            <label htmlFor="studentId" className="w-[240px]">
+            <label htmlFor="studentId" className="w-60">
               <p className="mb-3">학번</p>
               <input
                 type="text"
@@ -19,7 +19,7 @@ const RecruitForm = () => {
                 className="w-full border border-[#EBEBEB] p-1"
               />
             </label>
-            <label htmlFor="name" className="w-[240px]">
+            <label htmlFor="name" className="w-60">
               <p className="mb-3">이름</p>
               <input
                 type="text"
@@ -71,11 +71,11 @@ const RecruitForm = () => {
           </div>
         </div>
         <div className="h-1/6 w-full flex justify-end items-center">
-          <input type="button" value="취소" className="h-7 w-1/4 border border-[#DDE1E6] rounded-[5px]" />
+          <input type="button" value="취소" className="h-7 w-1/4 border border-[#DDE1E6] rounded" />
           <input
             type="button"
             value="제출"
-            className="h-7 w-1/4 ml-3 border border-[#FFBD00] bg-[#FFBD00] text-white rounded-[5px]"
+            className="h-7 w-1/4 ml-3 border border-[#FFBD00] bg-[#FFBD00] text-white rounded"
           />
         </div>
       </div>

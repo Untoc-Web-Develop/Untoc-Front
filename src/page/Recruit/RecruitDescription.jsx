@@ -1,10 +1,10 @@
 import React from 'react';
 
-import RecruitImg from '../../asset/recruitImg.png';
+import RecruitImg from 'asset/recruit/recruitImg.png';
 
 const RecruitDescription = () => {
   return (
-    <div className="h-full w-full px-[50px] flex flex-col justify-start items-center font-normal text-sm">
+    <div className="h-full w-full px-12 flex flex-col justify-start items-center font-normal text-sm">
       <div className="h-2/5 mb-10">
         <h1 className="text-4xl mb-16">UntoC 16기 신입회원 모집</h1>
         <h2 className="text-base text-[#FFBD00] mb-10">모집기간 : 2023.08.15 ~ 2023.08.31</h2>
