@@ -8,7 +8,9 @@
       "@api/*": ["src/api/*"],
       "@asset/*": ["src/asset/*"],
       "@css/*": ["src/css/*"],
-      "@store": ["src/store/*"]
+      "@store": ["src/store/*"],
+      "@constant/*": ["src/constant/*"],
+      "@hook/*": ["src/hooks/*"]
     }
   }
 }
