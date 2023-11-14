@@ -4,14 +4,14 @@ export const userReducer = createSlice({
   /* eslint-disable no-param-reassign */
   name: 'user',
   initialState: {
-    user: null,
+    type: 'guest',
   },
   reducers: {
     setUser: (state, action) => {
-      state.user = action.payload;
+      state.type = action.payload.type;
     },
     clearUser: (state) => {
-      state.user = null;
+      state.type = 'guest';
     },
   },
 });

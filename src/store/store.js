@@ -6,7 +6,7 @@ import thunk from 'redux-thunk';
 import { userReducer } from './reducers/userReducer';
 
 const reducers = combineReducers({
-  userReducer,
+  user: userReducer.reducer,
 });
 
 const persistConfig = {
