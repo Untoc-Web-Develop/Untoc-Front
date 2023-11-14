@@ -17,6 +17,9 @@ module.exports = {
         GrayLight50: '#FAFAFA',
         AlertBg: '#FFE8E7',
       },
+      height: {
+        content: 'calc(100vh - 2.5rem)',
+      },
     },
   },
   plugins: [],

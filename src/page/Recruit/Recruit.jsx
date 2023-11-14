@@ -5,7 +5,7 @@ import RecruitForm from './RecruitForm';
 
 const Recruit = () => {
   return (
-    <div className="h-full w-screen flex justify-center align-center bg-grayLight">
+    <div className="h-content w-screen flex justify-center align-center bg-grayLight">
       <div className="h-full w-4/5 flex justify-center align-center">
         <div className="h-full w-full grid grid-cols-2 gap-4 grid-rows-1">
           <div className="h-full w-full flex">
