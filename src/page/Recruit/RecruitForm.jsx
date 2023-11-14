@@ -2,8 +2,8 @@ import React from 'react';
 
 const RecruitForm = () => {
   return (
-    <form className="h-full w-full bg-white shadow-md rounded-3xl p-12 relative font-normal text-sm">
-      <div className="h-16 w-52 bg-white absolute -top-11 left-0 flex justify-center items-center rounded-t-xl text-lg text-[#FFBD00]">
+    <form className="h-full w-full bg-white shadow-lg rounded-3xl p-12 relative font-normal text-sm">
+      <div className="h-16 w-52 bg-white absolute -top-11 left-0 flex justify-center items-center rounded-t-xl text-lg text-yellowPoint">
         Fill out this form
       </div>
       <div className="h-full w-full flex flex-col justify-between items-center">
@@ -16,7 +16,7 @@ const RecruitForm = () => {
                 name="studentId"
                 id="studentId"
                 placeholder="20230001"
-                className="w-full border border-[#EBEBEB] p-1"
+                className="w-full border border-grayPoint p-1"
               />
             </label>
             <label htmlFor="name" className="w-60">
@@ -26,7 +26,7 @@ const RecruitForm = () => {
                 name="name"
                 id="name"
                 placeholder="홍길동"
-                className="w-full border border-[#EBEBEB] p-1"
+                className="w-full border border-grayPoint p-1"
               />
             </label>
           </div>
@@ -38,7 +38,7 @@ const RecruitForm = () => {
                 name="phone-number"
                 id="phone"
                 placeholder="010-1234-5678"
-                className="w-full border border-[#EBEBEB] p-1"
+                className="w-full border border-grayPoint p-1"
               />
             </label>
           </div>
@@ -51,7 +51,7 @@ const RecruitForm = () => {
                 id="reason"
                 placeholder="UntoC 동아리를 지원하게 된 이유에 대해 설명해주세요.
                 최소 30자 이상의 내용이 필요합니다."
-                className="h-2/3 w-full border border-[#EBEBEB] p-1 resize-none"
+                className="h-2/3 w-full border border-grayPoint p-1 resize-none"
               />
             </label>
           </div>
@@ -65,17 +65,17 @@ const RecruitForm = () => {
                 placeholder="UntoC 동아리에 들어오게 된다면 하고싶은 활동에 대해 적어주세요.
                 위 내용을 바탕으로 동아리에 기여할 수 있는 아이디어를 제공하고,
                 스터디 및 팀을 구성할 때 참고자료가 될 수 있습니다."
-                className="h-2/3 w-full border border-[#EBEBEB] p-1 resize-none"
+                className="h-2/3 w-full border border-grayPoint p-1 resize-none"
               />
             </label>
           </div>
         </div>
         <div className="h-1/6 w-full flex justify-end items-center">
-          <input type="button" value="취소" className="h-7 w-1/4 border border-[#DDE1E6] rounded" />
+          <input type="button" value="취소" className="h-7 w-1/4 border border-borderColor rounded" />
           <input
             type="button"
             value="제출"
-            className="h-7 w-1/4 ml-3 border border-[#FFBD00] bg-[#FFBD00] text-white rounded"
+            className="h-7 w-1/4 ml-3 border border-yellowPoint bg-yellowPoint text-white rounded"
           />
         </div>
       </div>
