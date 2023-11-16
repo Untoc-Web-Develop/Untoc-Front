@@ -1,8 +1,55 @@
-.welcomeCircle {
+.mainCircle_leftBtm {
   position: absolute;
-  bottom: -300px;
-  left: -130px;
-  width: 70em;
-  height: 70em;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(163, 163, 163, 0.1));
+  bottom: -200px;
+  left: -200px;
+  width: 65em;
+  height: 65em;
+  background: linear-gradient(to bottom, rgba(225, 225, 225, 0.15), rgba(255, 255, 255, 0.1));
+  border-radius: 50%;
+}
+
+.mainCircle_leftTop {
+  position: absolute;
+  bottom: 30em;
+  left: 30em;
+  width: 25em;
+  height: 25em;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  background-blend-mode: color;
+}
+
+.mainCircle_rightTop {
+  position: absolute;
+  top: 170px;
+  right: -100px;
+  width: 30em;
+  height: 30em;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+}
+
+.mainCircle_rightBtm {
+  position: absolute;
+  bottom: 500px;
+  right: -250px;
+  width: 30em;
+  height: 30em;
+  border: 30px solid rgba(208, 208, 208, 0.4); /* 외부 원의 색상 */
+  border-radius: 50%;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
