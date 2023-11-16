@@ -40,7 +40,7 @@ const MainInfo = () => {
         <div className="animate-fadeIn ">UntoC은 untouchable, Ceaseless, Carbon 세 단어의 약어로, </div>
         <div className="animate-fadeIn">
           남들이 범접할 수 어렵고 끊임없이 노력하여 <br />
-          탄소처럼 꼭 필요한 존재가 되자는 슬로건을 가지고 있습니다..
+          탄소처럼 꼭 필요한 존재가 되자는 슬로건을 가지고 있습니다.
         </div>
         <div />
         <div className="!mt-10 text-right">
