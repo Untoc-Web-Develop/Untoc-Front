@@ -7,7 +7,7 @@ const RecruitDescription = () => {
     <div className="h-full w-full px-12 flex flex-col justify-start items-center font-normal text-sm">
       <div className="h-2/5 mb-10">
         <h1 className="text-4xl mb-16">UntoC 16기 신입회원 모집</h1>
-        <h2 className="text-base text-[#FFBD00] mb-10">모집기간 : 2023.08.15 ~ 2023.08.31</h2>
+        <h2 className="text-base text-yellowPoint mb-10">모집기간 : 2023.08.15 ~ 2023.08.31</h2>
         <p>
           지원을 하실 때, 학번 이름, 전화번호를 정확하게 기재해주세요. <br />
           지원 기한 종료 이후에는 해당 데이터를 안전하게 폐기할 예정이오니 <br />
