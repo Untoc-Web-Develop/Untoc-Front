@@ -9,36 +9,27 @@ const Register = () => {
   const [phonenumber, setPhonenumber] = useState('');
   const [password, setPassword] = useState('');
   const [confirmpassword, setConfirmpassword] = useState('');
-  const personalData = {
-    username,
-    studentnumber,
-    phonenumber,
-    password,
-  };
 
   // 오류메세지 상태 저장
   const [phonenumberMessage, setPhonenumberMessage] = useState("숫자 및 '-' 만 사용 가능합니다");
   const [passwordMessage, setPasswordMessage] = useState('8~16자의 영문자 및 숫자를 포함하여 만들어주세요');
 
-  const checkUsername = (username) => {
+  const checkUsername = (name) => {
     const usernameRegExp = /^[가-힣]{2,4}$/;
 
-    if (!usernameRegExp.test(username)) {
+    if (!usernameRegExp.test(name)) {
       return '이름 형식이 올바르지 않습니다';
-    } else {
-      return '본명으로 기입해주세요';
     }
+    return '본명으로 기입해주세요';
   };
 
   const onStudentnumberHandler = (e) => {
     setStudentnumber(e.target.value);
-    console.log(studentnumber);
   };
 
   const onPhonenumberHandler = (e) => {
     setPhonenumber(e.target.value);
     const phonenumberRegExp = /^[0-9]{3}-[0-9]{4}-[0-9]{4}$/;
-    console.log(phonenumber);
 
     if (!phonenumberRegExp.test(e.target.value)) {
       setPhonenumberMessage("형식을 확인해주세요. 숫자 및 '-'만 사용 가능합니다");
@@ -50,7 +41,6 @@ const Register = () => {
   const onPasswordHandler = (e) => {
     setPassword(e.target.value);
     const passwordRegExp = /^[A-Za-z0-9]{8, 16}$/;
-    console.log(password);
 
     if (!passwordRegExp.test(e.target.value)) {
       setPasswordMessage('8~16자의 영문자 및 숫자를 포함하여 만들어주세요(빨간색)');
@@ -61,19 +51,16 @@ const Register = () => {
 
   const onConfirmpasswordHandler = (e) => {
     setConfirmpassword(e.target.value);
-    console.log(confirmpassword);
   };
 
   function checkPassword(e) {
     if (password !== confirmpassword) {
-      console.log('error!');
       e.preventDefault();
     }
   }
 
   const onSubmit = (e) => {
     checkPassword(e);
-    console.log(personalData);
   };
 
   return (
