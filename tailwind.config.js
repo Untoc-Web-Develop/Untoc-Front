@@ -34,6 +34,7 @@ module.exports = {
       },
       animation: {
         fadeIn: 'fadeIn 1s ease-out',
+      },
       height: {
         content: 'calc(100vh - 2.5rem)',
       },
