@@ -17,6 +17,24 @@ module.exports = {
         GrayLight50: '#FAFAFA',
         AlertBg: '#FFE8E7',
       },
+      backgroundImage: {
+        backgroundImage: "url('asset/main/mainBackGround.jpg')",
+      },
+      keyframes: {
+        fadeIn: {
+          from: {
+            opacity: 0,
+            transform: 'translateY(20px)',
+          },
+          to: {
+            opacity: 1,
+            transform: 'translateY(0)',
+          },
+        },
+      },
+      animation: {
+        fadeIn: 'fadeIn 1s ease-out',
+      },
     },
   },
   plugins: [],
