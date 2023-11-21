@@ -5,16 +5,16 @@ import RecruitForm from './RecruitForm';
 
 const Recruit = () => {
   return (
-    <div className="h-content w-screen flex justify-center align-center bg-grayLight">
-      <div className="h-full w-4/5 flex justify-center align-center">
-        <div className="h-full w-full grid grid-cols-2 gap-4 grid-rows-1">
-          <div className="h-full w-full flex">
-            <div className="h-5/6 w-full self-center">
+    <div className="flex justify-center w-screen overflow-x-hidden h-content align-center bg-grayLight">
+      <div className="flex flex-col justify-center w-4/5 h-fit align-center">
+        <div className="grid w-full h-full grid-cols-2 grid-rows-1 gap-4">
+          <div className="flex items-start w-full h-full mt-16">
+            <div className="sticky w-full top-16 h-fit">
               <RecruitDescription />
             </div>
           </div>
-          <div className="h-full w-full flex">
-            <div className="h-5/6 w-full self-center">
+          <div className="flex items-start w-full h-full mt-16">
+            <div className="w-full h-5/6">
               <RecruitForm />
             </div>
           </div>
