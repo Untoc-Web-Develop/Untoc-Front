@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 
+import axios from 'axios';
 import ReactDOM from 'react-dom/client';
 import 'css/index.css';
 import { Provider } from 'react-redux';
@@ -10,6 +11,9 @@ import AppRouter from 'routes/AppRouter';
 import store from 'store/store';
 
 const persistor = persistStore(store);
+
+axios.defaults.baseURL = process.env.REACT_APP_API_URL;
+axios.defaults.withCredentials = true;
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
