@@ -10,43 +10,16 @@ const Register = () => {
   const [password, setPassword] = useState('');
   const [confirmpassword, setConfirmpassword] = useState('');
 
-  // 오류메세지 상태 저장
-  const [phonenumberMessage, setPhonenumberMessage] = useState("숫자 및 '-' 만 사용 가능합니다");
-  const [passwordMessage, setPasswordMessage] = useState('8~16자의 영문자 및 숫자를 포함하여 만들어주세요');
-
-  const checkUsername = (name) => {
-    const usernameRegExp = /^[가-힣]{2,4}$/;
-
-    if (!usernameRegExp.test(name)) {
-      return '이름 형식이 올바르지 않습니다';
-    }
-    return '본명으로 기입해주세요';
-  };
-
   const onStudentnumberHandler = (e) => {
     setStudentnumber(e.target.value);
   };
 
   const onPhonenumberHandler = (e) => {
     setPhonenumber(e.target.value);
-    const phonenumberRegExp = /^[0-9]{3}-[0-9]{4}-[0-9]{4}$/;
-
-    if (!phonenumberRegExp.test(e.target.value)) {
-      setPhonenumberMessage("형식을 확인해주세요. 숫자 및 '-'만 사용 가능합니다");
-    } else {
-      setPhonenumberMessage("숫자 및 '-' 만 사용 가능합니다");
-    }
   };
 
   const onPasswordHandler = (e) => {
     setPassword(e.target.value);
-    const passwordRegExp = /^[A-Za-z0-9]{8, 16}$/;
-
-    if (!passwordRegExp.test(e.target.value)) {
-      setPasswordMessage('8~16자의 영문자 및 숫자를 포함하여 만들어주세요(빨간색)');
-    } else {
-      setPasswordMessage('8~16자의 영문자 및 숫자를 포함하여 만들어주세요');
-    }
   };
 
   const onConfirmpasswordHandler = (e) => {
@@ -75,14 +48,14 @@ const Register = () => {
               <input
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                className="w-80 h-10 rounded-full border border-gray-300 text-sm p-3"
+                className="w-80 h-12 rounded-full border border-borderColor text-placeHolder text-sm p-3"
                 type="text"
                 id="username"
                 placeholder="Username"
                 required
               />
               <br />
-              <span className="text-gray-400 text-xs">{checkUsername(username)}</span>
+              <span className="text-placeHolder text-xs">본명으로 기입해주세요</span>
               <br />
             </label>
           </div>
@@ -93,7 +66,7 @@ const Register = () => {
               <input
                 value={studentnumber}
                 onChange={onStudentnumberHandler}
-                className="w-80 h-10 rounded-full border border-gray-300 text-sm p-3"
+                className="w-80 h-12 rounded-full border border-borderColor text-placeHolder text-sm p-3"
                 type="text"
                 id="studentnumber"
                 placeholder="StudentNumber"
@@ -109,14 +82,14 @@ const Register = () => {
               <input
                 value={phonenumber}
                 onChange={onPhonenumberHandler}
-                className="w-80 h-10 rounded-full border border-gray-300 text-sm p-3"
+                className="w-80 h-12 rounded-full border border-borderColor text-placeHolder text-sm p-3"
                 type="text"
                 id="phonenumber"
                 placeholder="010-0000-0000"
                 required
               />
               <br />
-              <span className="text-gray-400 text-xs">{phonenumberMessage}</span>
+              <span className="text-placeHolder text-xs">숫자 및 &apos;-&apos;만 사용 가능합니다</span>
               <br />
             </label>
           </div>
@@ -125,20 +98,20 @@ const Register = () => {
               <span>Email</span>
               <br />
               <input
-                className="w-80 h-10 rounded-full border border-gray-300 text-sm p-3"
+                className="w-80 h-12 rounded-full border border-borderColor text-placeHolder text-sm p-3"
                 type="email"
                 id="email"
                 placeholder="UntoC@pusan.ac.kr"
                 required
               />
               <button
-                className="w-20 h-8 rounded-full border border-gray-300 text-gray-400 text-xs absolute -right-[129.5px] bottom-[26.5px]"
+                className="w-20 h-10 rounded-full border border-borderColor text-placeHolder text-xs absolute -right-[129.5px] bottom-[25.8px]"
                 type="submit"
               >
                 전송
               </button>
               <br />
-              <span className="text-gray-400 text-xs">부산대학교 이메일을 사용해주세요</span>
+              <span className="text-placeHolder text-xs">부산대학교 이메일을 사용해주세요</span>
               <br />
             </label>
           </div>
@@ -147,13 +120,13 @@ const Register = () => {
               <span>Email vertification code</span>
               <br />
               <input
-                className="w-80 h-10 rounded-full border border-gray-300 text-sm p-3"
+                className="w-80 h-12 rounded-full border-borderColor text-sm p-3"
                 type="text"
                 id="emailVertificationCode"
                 disabled="true"
               />
               <button
-                className="w-20 h-8 rounded-full border border-gray-300 text-gray-400 text-xs absolute -right-[162px] bottom-[26.5px] bg-white"
+                className="w-20 h-10 rounded-full border border-borderColor text-placeHolder text-xs absolute -right-[162px] bottom-[26.5px] bg-white"
                 type="submit"
               >
                 확인
@@ -170,14 +143,14 @@ const Register = () => {
               <input
                 value={password}
                 onChange={onPasswordHandler}
-                className="w-80 h-10 rounded-full border border-gray-300 text-sm p-3"
+                className="w-80 h-12 rounded-full border border-borderColor text-placeHolder text-sm p-3"
                 type="text"
                 id="password"
                 placeholder="password"
                 required
               />
               <br />
-              <span className="text-gray-400 text-xs">{passwordMessage}</span>
+              <span className="text-placeHolder text-xs">8~16자리의 영문자 및 숫자를 포함하여 만들어주세요</span>
               <br />
             </label>
           </div>
@@ -188,7 +161,7 @@ const Register = () => {
               <input
                 value={confirmpassword}
                 onChange={onConfirmpasswordHandler}
-                className="w-80 h-10 rounded-full border border-gray-300 text-sm p-3"
+                className="w-80 h-12 rounded-full border border-borderColor text-placeHolder text-sm p-3"
                 type="text"
                 id="confirmpassword"
                 required
@@ -199,7 +172,19 @@ const Register = () => {
         </div>
         <div className="mt-20">
           <button
-            className="w-80 h-10 rounded-full border border-gray-300 text-gray-400 text-xs absolute"
+            className={`w-80 h-12 rounded-full text-white font-bold border-borderColor text-placeHolder text-xs
+              ${
+                username === '' ||
+                studentnumber === '' ||
+                phonenumber === '' ||
+                password === '' ||
+                confirmpassword === ''
+                  ? 'bg-borderColor'
+                  : 'bg-yellowPoint'
+              }`}
+            disabled={
+              username === '' || studentnumber === '' || phonenumber === '' || password === '' || confirmpassword === ''
+            }
             type="submit"
           >
             회원가입
@@ -207,7 +192,7 @@ const Register = () => {
           <br />
           <div className="m-8 text-xs font-semibold text-center">
             <span>계정을 가지고 계신가요?</span>
-            <Link to="/login" className="text-yellow-300 ml-3">
+            <Link to="/login" className="text-yellowPoint ml-3">
               로그인
             </Link>
           </div>
