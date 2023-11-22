@@ -3,6 +3,19 @@ module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
+      keyframes: {
+        slider: {
+          '0%': {
+            transform: 'translateX(0px)',
+          },
+          '100%': {
+            transform: 'translateX(-1500px)',
+          },
+        },
+      },
+      animation: {
+        slider: 'slider 15s linear infinite',
+      },
       colors: {
         error: '#FF574D',
         yellowPoint: '#FFBD00',
@@ -19,6 +32,9 @@ module.exports = {
       },
       height: {
         content: 'calc(100vh - 2.5rem)',
+      },
+      backgroundImage: {
+        bgPattern1: "url('asset/Main/bgPattern1.png')",
       },
     },
   },
