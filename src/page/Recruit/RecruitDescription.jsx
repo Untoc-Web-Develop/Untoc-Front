@@ -4,7 +4,7 @@ import RecruitImg from 'asset/recruit/recruitImg.png';
 
 const RecruitDescription = () => {
   return (
-    <div className="sticky top-0 flex flex-col items-center justify-start w-full h-full px-12 text-sm font-normal">
+    <div className="top-0 flex flex-col items-center justify-start w-full h-full px-12 text-sm font-normal">
       <div className="mb-10 h-2/5">
         <h1 className="mb-16 text-4xl">UntoC 16기 신입회원 모집</h1>
         <h2 className="mb-10 text-base text-yellowPoint">모집기간 : 2023.08.15 ~ 2023.08.31</h2>
