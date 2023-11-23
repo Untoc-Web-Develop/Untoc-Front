@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 
-import { useSelector } from 'react-redux';
+import useRoleCheck from 'hooks/useRoleCheck';
 
 import RecruitFormAdmin from './RecruitFormAdmin';
 import RecruitFormUser from './RecruitFormUser';
 
 const RecruitForm = () => {
-  const { type: role } = useSelector((state) => state.user);
+  const { isLogin } = useRoleCheck('admin');
   const [applyQuestions, setApplyQuestions] = useState([]);
   const [originalApplyQuestions, setOriginalApplyQuestions] = useState([]);
   const [isChanged, setIsChanged] = useState(false);
@@ -56,7 +56,7 @@ const RecruitForm = () => {
                 id="studentId"
                 placeholder="20230001"
                 className="w-full p-1 border-2 border-borderColor focus:outline-none focus:border-grayDark"
-                disabled={role === 'admin'}
+                disabled={isLogin}
               />
             </label>
             <label htmlFor="name" className="w-60">
@@ -67,7 +67,7 @@ const RecruitForm = () => {
                 id="name"
                 placeholder="홍길동"
                 className="w-full p-1 border-2 border-borderColor focus:outline-none focus:border-grayDark"
-                disabled={role === 'admin'}
+                disabled={isLogin}
               />
             </label>
           </div>
@@ -80,11 +80,11 @@ const RecruitForm = () => {
                 id="phone"
                 placeholder="010-1234-5678"
                 className="w-full p-1 border-2 border-borderColor focus:outline-none focus:border-grayDark"
-                disabled={role === 'admin'}
+                disabled={isLogin}
               />
             </label>
           </div>
-          {role === 'admin' ? (
+          {isLogin ? (
             <RecruitFormAdmin
               applyQuestions={applyQuestions}
               setApplyQuestions={setApplyQuestions}
@@ -105,7 +105,7 @@ const RecruitForm = () => {
           />
           <input
             onClick={
-              role === 'admin'
+              isLogin
                 ? () => {
                     setOriginalApplyQuestions([...applyQuestions]);
                   }
@@ -114,9 +114,9 @@ const RecruitForm = () => {
                   }
             }
             type="button"
-            value={role === 'admin' ? '저장' : '제출'}
+            value={isLogin ? '저장' : '제출'}
             className="w-1/4 ml-3 text-white border rounded h-7 border-yellowPoint bg-yellowPoint hover:cursor-pointer disabled:bg-grayPoint disabled:border-grayPoint disabled:text-grayDark"
-            disabled={!isChanged && role === 'admin'}
+            disabled={!isChanged && isLogin}
           />
         </div>
       </div>
