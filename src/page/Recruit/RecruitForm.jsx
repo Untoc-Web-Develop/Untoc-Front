@@ -95,15 +95,16 @@ const RecruitForm = () => {
           )}
         </div>
         <div className="flex items-center justify-end w-full h-1/6">
-          <input
+          <button
             type="button"
-            value="취소"
             className="w-1/4 border rounded h-7 border-borderColor hover:cursor-pointer text-grayDark"
             onClick={() => {
               setApplyQuestions([...originalApplyQuestions]);
             }}
-          />
-          <input
+          >
+            취소
+          </button>
+          <button
             onClick={
               isLogin
                 ? () => {
@@ -114,10 +115,11 @@ const RecruitForm = () => {
                   }
             }
             type="button"
-            value={isLogin ? '저장' : '제출'}
             className="w-1/4 ml-3 text-white border rounded h-7 border-yellowPoint bg-yellowPoint hover:cursor-pointer disabled:bg-grayPoint disabled:border-grayPoint disabled:text-grayDark"
             disabled={!isChanged && isLogin}
-          />
+          >
+            {isLogin ? '저장' : '제출'}
+          </button>
         </div>
       </div>
     </form>
