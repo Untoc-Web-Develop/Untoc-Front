@@ -5,10 +5,9 @@ import PropTypes from 'prop-types';
 const RecruitFormUser = ({ applyQuestions }) => {
   return (
     <>
-      {applyQuestions.map((applyQuestion) => {
-        const { id, question, content } = applyQuestion;
+      {applyQuestions.map(({ id, question, content }) => {
         return (
-          <div className="w-full h-32 mb-8">
+          <div className="w-full h-32 mb-8" key={id}>
             <label htmlFor={id}>
               <p className="relative mb-3 text-grayDark">{question}</p>
               <textarea

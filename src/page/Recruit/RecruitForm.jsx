@@ -8,23 +8,10 @@ import RecruitFormUser from './RecruitFormUser';
 const RecruitForm = () => {
   const { isLogin } = useRoleCheck('admin');
   const [applyQuestions, setApplyQuestions] = useState([]);
-  const [originalApplyQuestions, setOriginalApplyQuestions] = useState([]);
   const [isChanged, setIsChanged] = useState(false);
 
-  useEffect(() => {
-    setOriginalApplyQuestions(() => [
-      {
-        id: '1',
-        question: '동아리 지원 동기 (300자 이내)',
-        content: 'UntoC 동아리를 지원하게 된 이유에 대해 설명해주세요.최소 30자 이상의 내용이 필요합니다.',
-      },
-      {
-        id: '2',
-        question: '동아리에서 하고 싶은 활동 (300자 이내)',
-        content:
-          'UntoC 동아리에 들어오게 된다면 하고싶은 활동에 대해 적어주세요.위 내용을 바탕으로 동아리에 기여할 수 있는 아이디어를 제공하고,스터디 및 팀을 구성할 때 참고자료가 될 수 있습니다.',
-      },
-    ]);
+  const getApplyQuestions = () => {
+    // Todo: get applyQuestions from server
     setApplyQuestions(() => [
       {
         id: '1',
@@ -38,6 +25,10 @@ const RecruitForm = () => {
           'UntoC 동아리에 들어오게 된다면 하고싶은 활동에 대해 적어주세요.위 내용을 바탕으로 동아리에 기여할 수 있는 아이디어를 제공하고,스터디 및 팀을 구성할 때 참고자료가 될 수 있습니다.',
       },
     ]);
+  };
+
+  useEffect(() => {
+    getApplyQuestions();
   }, []);
 
   return (
@@ -98,9 +89,7 @@ const RecruitForm = () => {
           <button
             type="button"
             className="w-1/4 border rounded h-7 border-borderColor hover:cursor-pointer text-grayDark"
-            onClick={() => {
-              setApplyQuestions([...originalApplyQuestions]);
-            }}
+            onClick={getApplyQuestions}
           >
             취소
           </button>
@@ -108,10 +97,10 @@ const RecruitForm = () => {
             onClick={
               isLogin
                 ? () => {
-                    setOriginalApplyQuestions([...applyQuestions]);
+                    // @Todo: save applyQuestions for admin
                   }
                 : () => {
-                    setApplyQuestions([...originalApplyQuestions]);
+                    // @Todo: summit applyQuestions for guest
                   }
             }
             type="button"

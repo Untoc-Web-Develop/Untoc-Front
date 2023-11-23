@@ -6,8 +6,8 @@ import { CiSquarePlus } from 'react-icons/ci';
 const RecruitFormAdmin = ({ applyQuestions, setApplyQuestions, setIsChanged }) => {
   const addQuestion = () => {
     setIsChanged(true);
-    setApplyQuestions([
-      ...applyQuestions,
+    setApplyQuestions((prev) => [
+      ...prev,
       {
         id: `${Math.random() * 100000}`,
         question: '',
@@ -18,15 +18,16 @@ const RecruitFormAdmin = ({ applyQuestions, setApplyQuestions, setIsChanged }) =
 
   const removeQuestion = (index) => {
     setIsChanged(true);
-    setApplyQuestions(applyQuestions.filter((applyQuestion, idx) => idx !== index));
+    setApplyQuestions((prev) => {
+      prev.filter((applyQuestion, idx) => idx !== index);
+    });
   };
 
   return (
     <>
-      {applyQuestions.map((applyQuestion, idx) => {
-        const { id, question, content } = applyQuestion;
+      {applyQuestions.map(({ id, question, content }, idx) => {
         return (
-          <div className="w-full h-32 mb-8">
+          <div className="w-full h-32 mb-8" key={id}>
             <label htmlFor={id}>
               <div className="flex justify-between">
                 <input
@@ -34,10 +35,10 @@ const RecruitFormAdmin = ({ applyQuestions, setApplyQuestions, setIsChanged }) =
                   value={question}
                   onChange={(e) => {
                     setIsChanged(true);
-                    setApplyQuestions([
-                      ...applyQuestions.slice(0, idx),
+                    setApplyQuestions((prev) => [
+                      ...prev.slice(0, idx),
                       { id, question: e.target.value, content },
-                      ...applyQuestions.slice(idx + 1),
+                      ...prev.slice(idx + 1),
                     ]);
                   }}
                   placeholder="목록 제목을 입력해주세요"
@@ -60,10 +61,10 @@ const RecruitFormAdmin = ({ applyQuestions, setApplyQuestions, setIsChanged }) =
                 className="w-full p-1 border-2 resize-none h-2/3 border-borderColor focus:outline-none focus:border-grayDark text-grayDark"
                 onChange={(e) => {
                   setIsChanged(true);
-                  setApplyQuestions([
-                    ...applyQuestions.slice(0, idx),
+                  setApplyQuestions((prev) => [
+                    ...prev.slice(0, idx),
                     { id, content: e.target.value, question },
-                    ...applyQuestions.slice(idx + 1),
+                    ...prev.slice(idx + 1),
                   ]);
                 }}
                 placeholder="목록에 대한 설명을 입력해주세요"
