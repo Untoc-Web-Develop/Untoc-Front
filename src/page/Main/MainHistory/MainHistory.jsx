@@ -6,7 +6,7 @@ import React from 'react';
 
 const MainHistory = () => {
   return (
-    <div className="h-screen bg-bgPattern1 bg-contain w-32">
+    <div className="h-screen bg-bgPattern1 bg-cover w-32">
       <div>h3</div>
       <div>h3</div>
     </div>
