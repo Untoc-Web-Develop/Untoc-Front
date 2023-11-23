@@ -3,19 +3,6 @@ module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
-      keyframes: {
-        slider: {
-          '0%': {
-            transform: 'translateX(0px)',
-          },
-          '100%': {
-            transform: 'translateX(-1500px)',
-          },
-        },
-      },
-      animation: {
-        slider: 'slider 15s linear infinite',
-      },
       colors: {
         error: '#FF574D',
         yellowPoint: '#FFBD00',
@@ -30,11 +17,26 @@ module.exports = {
         GrayLight50: '#FAFAFA',
         AlertBg: '#FFE8E7',
       },
+      backgroundImage: {
+        backgroundImage: "url('asset/main/mainBackGround.jpg')",
+      },
+      keyframes: {
+        fadeIn: {
+          from: {
+            opacity: 0,
+            transform: 'translateY(20px)',
+          },
+          to: {
+            opacity: 1,
+            transform: 'translateY(0)',
+          },
+        },
+      },
+      animation: {
+        fadeIn: 'fadeIn 1s ease-out',
+      },
       height: {
         content: 'calc(100vh - 2.5rem)',
-      },
-      backgroundImage: {
-        bgPattern1: "url('asset/Main/bgPattern1.png')",
       },
     },
   },
