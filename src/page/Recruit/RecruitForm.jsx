@@ -9,6 +9,7 @@ const RecruitForm = () => {
   const { type: role } = useSelector((state) => state.user);
   const [applyQuestions, setApplyQuestions] = useState([]);
   const [originalApplyQuestions, setOriginalApplyQuestions] = useState([]);
+  const [isChanged, setIsChanged] = useState(false);
 
   useEffect(() => {
     setOriginalApplyQuestions(() => [
@@ -46,9 +47,9 @@ const RecruitForm = () => {
       </div>
       <div className="relative flex flex-col items-center justify-between w-full h-full">
         <div className="w-full h-5/6">
-          <div className="flex items-center justify-between w-full h-24 mb-3">
+          <div className="grid w-full h-24 grid-cols-2 mb-3">
             <label htmlFor="studentId" className="w-60">
-              <p className="mb-3">학번</p>
+              <p className="mb-3 text-grayDark">학번</p>
               <input
                 type="text"
                 name="studentId"
@@ -59,7 +60,7 @@ const RecruitForm = () => {
               />
             </label>
             <label htmlFor="name" className="w-60">
-              <p className="mb-3">이름</p>
+              <p className="mb-3 text-grayDark">이름</p>
               <input
                 type="text"
                 name="name"
@@ -72,7 +73,7 @@ const RecruitForm = () => {
           </div>
           <div className="w-full h-24 mb-3">
             <label htmlFor="phone">
-              <p className="mb-3">전화번호</p>
+              <p className="mb-3 text-grayDark">전화번호</p>
               <input
                 type="text"
                 name="phone-number"
@@ -84,7 +85,11 @@ const RecruitForm = () => {
             </label>
           </div>
           {role === 'admin' ? (
-            <RecruitFormAdmin applyQuestions={applyQuestions} setApplyQuestions={setApplyQuestions} />
+            <RecruitFormAdmin
+              applyQuestions={applyQuestions}
+              setApplyQuestions={setApplyQuestions}
+              setIsChanged={setIsChanged}
+            />
           ) : (
             <RecruitFormUser applyQuestions={applyQuestions} />
           )}
@@ -93,7 +98,7 @@ const RecruitForm = () => {
           <input
             type="button"
             value="취소"
-            className="w-1/4 border rounded h-7 border-borderColor hover:cursor-pointer"
+            className="w-1/4 border rounded h-7 border-borderColor hover:cursor-pointer text-grayDark"
             onClick={() => {
               setApplyQuestions([...originalApplyQuestions]);
             }}
@@ -110,7 +115,8 @@ const RecruitForm = () => {
             }
             type="button"
             value={role === 'admin' ? '저장' : '제출'}
-            className="w-1/4 ml-3 text-white border rounded h-7 border-yellowPoint bg-yellowPoint hover:cursor-pointer"
+            className="w-1/4 ml-3 text-white border rounded h-7 border-yellowPoint bg-yellowPoint hover:cursor-pointer disabled:bg-grayPoint disabled:border-grayPoint disabled:text-grayDark"
+            disabled={!isChanged && role === 'admin'}
           />
         </div>
       </div>

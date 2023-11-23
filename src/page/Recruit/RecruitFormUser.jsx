@@ -10,13 +10,13 @@ const RecruitFormUser = ({ applyQuestions }) => {
         return (
           <div className="w-full h-32 mb-8">
             <label htmlFor={id}>
-              <p className="relative mb-3">{question}</p>
+              <p className="relative mb-3 text-grayDark">{question}</p>
               <textarea
                 type="text"
                 name={id}
                 id={id}
                 placeholder={content}
-                className="w-full p-1 border-2 resize-none h-2/3 border-borderColor focus:outline-none focus:border-grayDark"
+                className="w-full p-1 border-2 resize-none h-2/3 border-borderColor focus:outline-none focus:border-grayDark text-grayDark"
               />
             </label>
           </div>

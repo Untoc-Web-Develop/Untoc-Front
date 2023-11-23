@@ -3,8 +3,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { CiSquarePlus } from 'react-icons/ci';
 
-const RecruitFormAdmin = ({ applyQuestions, setApplyQuestions }) => {
+const RecruitFormAdmin = ({ applyQuestions, setApplyQuestions, setIsChanged }) => {
   const addQuestion = () => {
+    setIsChanged(true);
     setApplyQuestions([
       ...applyQuestions,
       {
@@ -16,6 +17,7 @@ const RecruitFormAdmin = ({ applyQuestions, setApplyQuestions }) => {
   };
 
   const removeQuestion = (index) => {
+    setIsChanged(true);
     setApplyQuestions(applyQuestions.filter((applyQuestion, idx) => idx !== index));
   };
 
@@ -28,9 +30,10 @@ const RecruitFormAdmin = ({ applyQuestions, setApplyQuestions }) => {
             <label htmlFor={id}>
               <div className="flex justify-between">
                 <input
-                  className="relative w-9/12 mb-3 border-b-2 border-borderColor focus:outline-none focus:border-b-grayDark"
+                  className="relative w-9/12 mb-3 border-b-2 border-borderColor focus:outline-none focus:border-b-grayDark text-grayDark"
                   value={question}
                   onChange={(e) => {
+                    setIsChanged(true);
                     setApplyQuestions([
                       ...applyQuestions.slice(0, idx),
                       { id, question: e.target.value, content },
@@ -54,8 +57,9 @@ const RecruitFormAdmin = ({ applyQuestions, setApplyQuestions }) => {
                 name={id}
                 id={id}
                 value={content}
-                className="w-full p-1 border-2 resize-none h-2/3 border-borderColor focus:outline-none focus:border-grayDark"
+                className="w-full p-1 border-2 resize-none h-2/3 border-borderColor focus:outline-none focus:border-grayDark text-grayDark"
                 onChange={(e) => {
+                  setIsChanged(true);
                   setApplyQuestions([
                     ...applyQuestions.slice(0, idx),
                     { id, content: e.target.value, question },
@@ -89,6 +93,7 @@ RecruitFormAdmin.propTypes = {
     }),
   ).isRequired,
   setApplyQuestions: PropTypes.func.isRequired,
+  setIsChanged: PropTypes.func.isRequired,
 };
 
 export default RecruitFormAdmin;
