@@ -37,9 +37,9 @@ const Register = () => {
   };
 
   return (
-    <div className="grid place-items-center mx-auto my-auto h-content">
+    <div className="flex flex-col place-items-center mx-auto my-auto h-content">
       <form onSubmit={onSubmit}>
-        <h1 className="text-5xl text-yellow-300 font-semibold text-center m-8">UntoC</h1>
+        <h1 className="text-5xl text-yellowPoint font-semibold text-center m-8">UntoC</h1>
         <div>
           <div className="mb-5">
             <label htmlFor="username">
@@ -174,17 +174,11 @@ const Register = () => {
           <button
             className={`w-80 h-12 rounded-full text-white font-bold border-borderColor text-placeHolder text-xs
               ${
-                username === '' ||
-                studentnumber === '' ||
-                phonenumber === '' ||
-                password === '' ||
-                confirmpassword === ''
+                !username || !studentnumber || !phonenumber || !password || !confirmpassword
                   ? 'bg-borderColor'
                   : 'bg-yellowPoint'
               }`}
-            disabled={
-              username === '' || studentnumber === '' || phonenumber === '' || password === '' || confirmpassword === ''
-            }
+            disabled={!username || !studentnumber || !phonenumber || !password || !confirmpassword}
             type="submit"
           >
             회원가입
