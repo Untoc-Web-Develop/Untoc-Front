@@ -5,7 +5,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import teamInfo from 'asset/Main/bgPattern1.png';
+import teamInfo from 'asset/logo/logo.svg';
 import PropTypes from 'prop-types'; // prop-types 추가
 
 const TeamInfoCard = ({ title }) => {
