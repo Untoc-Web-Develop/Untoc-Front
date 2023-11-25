@@ -21,6 +21,14 @@ module.exports = {
         backgroundImage: "url('asset/main/mainBackGround.jpg')",
       },
       keyframes: {
+        slider: {
+          '0%': {
+            transform: 'translateX(0px)',
+          },
+          '100%': {
+            transform: 'translateX(-1400px)',
+          },
+        },
         fadeIn: {
           from: {
             opacity: 0,
@@ -34,6 +42,7 @@ module.exports = {
       },
       animation: {
         fadeIn: 'fadeIn 1s ease-out',
+        slider: 'slider 5s linear infinite',
       },
       height: {
         content: 'calc(100vh - 2.5rem)',

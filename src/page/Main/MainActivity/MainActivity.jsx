@@ -23,7 +23,7 @@ const MainActivity = () => {
         <Button variant="contained" className="!mt-10 !font-semibold !shadow-none !w-52 !bg-yellowPoint ">
           전체보기
         </Button>
-        <div className=" !mt-40 flex items-center space-x-3">
+        <div className=" !mt-20 flex items-center space-x-3">
           <RxDoubleArrowDown className="!w-7 !h-7 !font-light" />
           <div>Scroll down</div>
         </div>
