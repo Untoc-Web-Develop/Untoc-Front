@@ -11,7 +11,7 @@ const BoardWrite = () => {
   };
 
   const handleCheckboxChange = () => {
-    setIsMustRead(!isMustRead); // Toggle checkbox state
+    setIsMustRead((prev) => !prev); // Toggle checkbox state
   };
 
   return (
@@ -29,10 +29,10 @@ const BoardWrite = () => {
             </div>
             <div className="text-xs text-grayPoint400">
               <h2>
-                공지 게시글은 <span className="text-yellowPoint">관리자 이상의 등급</span>만 작성 가능합니다.
+                &bull;공지 게시글은 <span className="text-yellowPoint">관리자 이상의 등급</span>만 작성 가능합니다.
               </h2>
               <h2>
-                공지 게시글을 <span className="text-yellowPoint">필독으로 지정하여 상단에 고정</span>
+                &bull;공지 게시글을 <span className="text-yellowPoint">필독으로 지정하여 상단에 고정</span>
                 해둘 수 있으나, 지난 게시글은 관리를 통해 고정해제가 필요합니다.
               </h2>
             </div>
