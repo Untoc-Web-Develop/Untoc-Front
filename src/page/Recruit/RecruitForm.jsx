@@ -39,25 +39,25 @@ const RecruitForm = () => {
       <div className="relative flex flex-col items-center justify-between w-full h-full">
         <div className="w-full h-5/6">
           <div className="grid w-full h-24 grid-cols-2 mb-3">
-            <label htmlFor="studentId" className="w-60">
+            <label htmlFor="studentId" className="w-11/12">
               <p className="mb-3 text-grayDark">학번</p>
               <input
                 type="text"
                 name="studentId"
                 id="studentId"
                 placeholder="20230001"
-                className="w-full p-1 border-2 border-borderColor focus:outline-none focus:border-grayDark"
+                className="w-full p-1 px-3 border border-borderColor focus:outline-none focus:border-grayDark"
                 disabled={isLogin}
               />
             </label>
-            <label htmlFor="name" className="w-60">
+            <label htmlFor="name" className="w-11/12 justify-self-end">
               <p className="mb-3 text-grayDark">이름</p>
               <input
                 type="text"
                 name="name"
                 id="name"
                 placeholder="홍길동"
-                className="w-full p-1 border-2 border-borderColor focus:outline-none focus:border-grayDark"
+                className="w-full p-1 px-3 border border-borderColor focus:outline-none focus:border-grayDark"
                 disabled={isLogin}
               />
             </label>
@@ -70,20 +70,25 @@ const RecruitForm = () => {
                 name="phone-number"
                 id="phone"
                 placeholder="010-1234-5678"
-                className="w-full p-1 border-2 border-borderColor focus:outline-none focus:border-grayDark"
+                className="w-full p-1 px-3 border border-borderColor focus:outline-none focus:border-grayDark"
                 disabled={isLogin}
               />
             </label>
           </div>
-          {isLogin ? (
-            <RecruitFormAdmin
-              applyQuestions={applyQuestions}
-              setApplyQuestions={setApplyQuestions}
-              setIsChanged={setIsChanged}
-            />
-          ) : (
-            <RecruitFormUser applyQuestions={applyQuestions} />
-          )}
+          {
+            /**
+             * @Todo if elseComponent is added to useRoleCheck, change this code
+             */
+            isLogin ? (
+              <RecruitFormAdmin
+                applyQuestions={applyQuestions}
+                setApplyQuestions={setApplyQuestions}
+                setIsChanged={setIsChanged}
+              />
+            ) : (
+              <RecruitFormUser applyQuestions={applyQuestions} />
+            )
+          }
         </div>
         <div className="flex items-center justify-end w-full h-1/6">
           <button
@@ -97,10 +102,10 @@ const RecruitForm = () => {
             onClick={
               isLogin
                 ? () => {
-                    // @Todo: save applyQuestions for admin
+                    /** @Todo save applyQuestions for admin */
                   }
                 : () => {
-                    // @Todo: summit applyQuestions for guest
+                    /** @Todo submit applyQuestions for guest */
                   }
             }
             type="button"

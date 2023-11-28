@@ -15,7 +15,7 @@ const RecruitFormUser = ({ applyQuestions }) => {
                 name={id}
                 id={id}
                 placeholder={content}
-                className="w-full p-1 border-2 resize-none h-2/3 border-borderColor focus:outline-none focus:border-grayDark text-grayDark"
+                className="w-full p-3 border resize-none h-2/3 border-borderColor focus:outline-none focus:border-grayDark text-grayDark"
               />
             </label>
           </div>

@@ -31,7 +31,7 @@ const RecruitFormAdmin = ({ applyQuestions, setApplyQuestions, setIsChanged }) =
             <label htmlFor={id}>
               <div className="flex justify-between">
                 <input
-                  className="relative w-9/12 mb-3 border-b-2 border-borderColor focus:outline-none focus:border-b-grayDark text-grayDark"
+                  className="relative w-9/12 p-1 px-3 mb-3 border-b-2 border-borderColor focus:outline-none focus:border-b-grayDark text-grayDark"
                   value={question}
                   onChange={(e) => {
                     setIsChanged(true);
@@ -45,7 +45,7 @@ const RecruitFormAdmin = ({ applyQuestions, setApplyQuestions, setIsChanged }) =
                 />
                 <div className="flex justify-end w-1/6 h-full">
                   <button
-                    className="w-full font-bold border-2 rounded border-error text-error"
+                    className="w-full font-bold border rounded border-error text-error"
                     type="button"
                     onClick={() => removeQuestion(idx)}
                   >
@@ -58,7 +58,7 @@ const RecruitFormAdmin = ({ applyQuestions, setApplyQuestions, setIsChanged }) =
                 name={id}
                 id={id}
                 value={content}
-                className="w-full p-1 border-2 resize-none h-2/3 border-borderColor focus:outline-none focus:border-grayDark text-grayDark"
+                className="w-full p-3 border resize-none h-2/3 border-borderColor focus:outline-none focus:border-grayDark text-grayDark"
                 onChange={(e) => {
                   setIsChanged(true);
                   setApplyQuestions((prev) => [
@@ -78,7 +78,7 @@ const RecruitFormAdmin = ({ applyQuestions, setApplyQuestions, setIsChanged }) =
         className="flex items-center justify-start w-1/3 text-placeHolder hover:underline"
         onClick={addQuestion}
       >
-        <CiSquarePlus size={32} className="mr-2 text-grayDark" />
+        <CiSquarePlus size={32} className="mr-2 text-placeHolder" />
         <p className="h-full hover:underline">지원서 목록 추가</p>
       </button>
     </>
