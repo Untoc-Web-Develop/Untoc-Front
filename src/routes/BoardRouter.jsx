@@ -9,8 +9,8 @@ const BoardRouter = () => {
   return (
     <Routes>
       <Route path="/" element={<Board />} />
-      <Route path="boardview" element={<BoardView />} />
-      <Route path="boardwrite" element={<BoardWrite />} />
+      <Route path="view" element={<BoardView />} />
+      <Route path="write" element={<BoardWrite />} />
     </Routes>
   );
 };
