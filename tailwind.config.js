@@ -13,8 +13,6 @@ module.exports = {
         bluePoint: '#424F70',
         grayDark: '#5C5F64',
         grayPoint: '#EBEBEB',
-        grayPoint300: '#D1D5DB',
-        grayPoint400: '#9CA3AF',
         GrayLight: '#F8F8F9',
         GrayLight50: '#FAFAFA',
         AlertBg: '#FFE8E7',
