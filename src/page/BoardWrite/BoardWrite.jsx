@@ -15,10 +15,10 @@ const BoardWrite = () => {
   };
 
   return (
-    <div className="h-screen">
+    <div className="h-screen bg-GrayLight">
       <div className="w-full h-full">
         <div className="p-4 w-2/3 mx-auto">
-          <div className="m-7 w-1/2 mx-auto">
+          <div className="my-10 w-1/2 mx-auto">
             {/* 
             추후에 입력 전구 이미지로 변경
             게시판 마다 적용되게 바꿀예정
@@ -27,7 +27,7 @@ const BoardWrite = () => {
               <img src={RecruitImg} alt="recruitImg" className="h-5 w-5" />
               <h1 className="font-medium ml-3">공지 게시글 작성 가이드라인 (규칙)</h1>
             </div>
-            <div className="text-xs text-grayPoint400">
+            <div className="text-xs text-placeHolder">
               <p>
                 &bull;공지 게시글은 <span className="text-yellowPoint">관리자 이상의 등급</span>만 작성 가능합니다.
               </p>
@@ -39,7 +39,7 @@ const BoardWrite = () => {
           </div>
         </div>
         <hr className="border-2 border-yellowPoint" />
-        <div className="w-2/3 mx-auto mt-3 h-2/3">
+        <div className="w-2/3 mx-auto mt-10 h-2/3">
           <div className="flex items-center justify-start mb-4">
             <div className="w-20">
               <input
@@ -57,17 +57,17 @@ const BoardWrite = () => {
                 <input
                   type="text"
                   id="title"
-                  className="w-full p-2 border-0 border-b-2 border-solid border-grayPoint300 text-grayDark"
+                  className="w-full p-2 border-b-2 bg-GrayLight border-solid border-placeHolder text-grayDark"
                   placeholder="Enter Title Here"
                 />
               </div>
             </div>
           </div>
           {/* markdown이 정해지면 바꿀예정 */}
-          <div className="flex h-full shadow-md">
+          <div className="mt-5 h-5/6 shadow-md">
             <textarea
               id="markdownContent"
-              className="w-full p-2 border border-GrayLight rounded mb-4"
+              className="w-full h-full p-2 border border-GrayLight rounded mb-4"
               rows="10"
               placeholder="글을 작성해주세요."
               value={markdown}
@@ -77,7 +77,7 @@ const BoardWrite = () => {
           <div className="flex justify-end items-center mt-4 space-x-3 mr-10">
             <button
               type="button"
-              className="bg-white w-1/12 border border-grayPoint300 text-black py-1 text-sm rounded hover:bg-yellowPoint hover:text-white hover:border-yellowPoint"
+              className="w-1/12 border border-placeHolder text-black py-1 text-sm rounded hover:bg-yellowPoint hover:text-white hover:border-yellowPoint"
               onClick={() => {}}
             >
               취소
