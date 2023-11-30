@@ -96,21 +96,21 @@ const Register = () => {
           <div className="mb-5">
             <label htmlFor="email" className="relative">
               <span>Email</span>
-              <br />
-              <input
-                className="w-80 h-12 rounded-full border border-borderColor text-placeHolder text-sm p-3"
-                type="email"
-                id="email"
-                placeholder="UntoC@pusan.ac.kr"
-                required
-              />
-              <button
-                className="w-20 h-10 rounded-full border border-borderColor text-placeHolder text-xs absolute -right-[129.5px] bottom-[25.8px]"
-                type="submit"
-              >
-                전송
-              </button>
-              <br />
+              <div className="w-80 h-12 rounded-full border-borderColor border px-1 place-items-center flex focus-within:outline">
+                <input
+                  className="w-60 rounded-l-full text-sm p-2 outline-none"
+                  type="email"
+                  id="email"
+                  placeholder="UntoC@pusan.ac.kr"
+                  required
+                />
+                <button
+                  className="w-20 h-10 rounded-full border border-borderColor text-placeHolder text-xs bg-white"
+                  type="submit"
+                >
+                  확인
+                </button>
+              </div>
               <span className="text-placeHolder text-xs">부산대학교 이메일을 사용해주세요</span>
               <br />
             </label>
