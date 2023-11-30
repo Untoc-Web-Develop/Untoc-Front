@@ -9,6 +9,7 @@ const Register = () => {
   const [phonenumber, setPhonenumber] = useState('');
   const [password, setPassword] = useState('');
   const [confirmpassword, setConfirmpassword] = useState('');
+  const [isEmailValidate, setIsEmailValidate] = useState(false);
 
   const onStudentnumberHandler = (e) => {
     setStudentnumber(e.target.value);
@@ -107,6 +108,7 @@ const Register = () => {
                 <button
                   className="w-20 h-10 rounded-full border border-borderColor text-placeHolder text-xs bg-white"
                   type="submit"
+                  onClick={() => setIsEmailValidate(true)}
                 >
                   확인
                 </button>
@@ -118,20 +120,26 @@ const Register = () => {
           <div className="mb-5">
             <label htmlFor="email" className="relative">
               <span>Email vertification code</span>
-              <br />
-              <input
-                className="w-80 h-12 rounded-full border-borderColor text-sm p-3"
-                type="text"
-                id="emailVertificationCode"
-                disabled="true"
-              />
-              <button
-                className="w-20 h-10 rounded-full border border-borderColor text-placeHolder text-xs absolute -right-[162px] bottom-[26.5px] bg-white"
-                type="submit"
+              <div
+                className={`w-80 pl-3 h-12 rounded-full border-borderColor px-1 place-items-center flex focus-within:outline ${
+                  isEmailValidate ? 'bg-white border border-borderColor' : 'bg-GrayLight'
+                }`}
               >
-                확인
-              </button>
-              <br />
+                <input
+                  className={`w-60 rounded-1-full text-sm p-2 outline-none ${
+                    isEmailValidate ? 'bg-white' : 'bg-GrayLight'
+                  }`}
+                  type="text"
+                  id="emailVertificationCode"
+                  disabled={!isEmailValidate}
+                />
+                <button
+                  className="w-20 h-10 rounded-full border border-borderColor text-placeHolder text-xs bg-white"
+                  type="submit"
+                >
+                  확인
+                </button>
+              </div>
               <span className="text-gray-400 text-xs">이메일 확인 인증 코드입니다</span>
               <br />
             </label>
