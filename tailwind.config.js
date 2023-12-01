@@ -13,9 +13,9 @@ module.exports = {
         bluePoint: '#424F70',
         grayDark: '#5C5F64',
         grayPoint: '#EBEBEB',
-        GrayLight: '#F8F8F9',
-        GrayLight50: '#FAFAFA',
-        AlertBg: '#FFE8E7',
+        grayLight: '#F8F8F9',
+        grayLight50: '#FAFAFA',
+        alertBg: '#FFE8E7',
       },
       backgroundImage: {
         backgroundImage: "url('asset/main/mainBackGround.jpg')",
