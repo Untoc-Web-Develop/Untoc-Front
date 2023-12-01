@@ -121,12 +121,12 @@ const Register = () => {
             <label htmlFor="email" className="relative">
               <span>Email vertification code</span>
               <div
-                className={`w-80 pl-3 h-12 rounded-full border-borderColor px-1 place-items-center flex focus-within:outline ${
+                className={`w-80 h-12 rounded-full border-borderColor px-1 place-items-center flex focus-within:outline ${
                   isEmailValidate ? 'bg-white border border-borderColor' : 'bg-GrayLight'
                 }`}
               >
                 <input
-                  className={`w-60 rounded-1-full text-sm p-2 outline-none ${
+                  className={`w-60 rounded-full text-sm p-2 outline-none ${
                     isEmailValidate ? 'bg-white' : 'bg-GrayLight'
                   }`}
                   type="text"
