@@ -122,12 +122,12 @@ const Register = () => {
               <span>Email vertification code</span>
               <div
                 className={`w-80 h-12 rounded-full border-borderColor px-1 place-items-center flex focus-within:outline ${
-                  isEmailValidate ? 'bg-white border border-borderColor' : 'bg-GrayLight'
+                  isEmailValidate ? 'bg-white border border-borderColor' : 'bg-grayLight'
                 }`}
               >
                 <input
                   className={`w-60 rounded-full text-sm p-2 outline-none ${
-                    isEmailValidate ? 'bg-white' : 'bg-GrayLight'
+                    isEmailValidate ? 'bg-white' : 'bg-grayLight'
                   }`}
                   type="text"
                   id="emailVertificationCode"
