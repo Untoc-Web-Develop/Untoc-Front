@@ -13,9 +13,9 @@ module.exports = {
         bluePoint: '#424F70',
         grayDark: '#5C5F64',
         grayPoint: '#EBEBEB',
-        GrayLight: '#F8F8F9',
-        GrayLight50: '#FAFAFA',
-        AlertBg: '#FFE8E7',
+        grayLight: '#F8F8F9',
+        grayLight50: '#FAFAFA',
+        alertBg: '#FFE8E7',
       },
       height: {
         content: 'calc(100vh - 2.5rem)',
