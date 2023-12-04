@@ -28,12 +28,12 @@ const BoardWrite = () => {
               <h1 className="font-medium ml-3">공지 게시글 작성 가이드라인 (규칙)</h1>
             </div>
             <div className="text-xs text-placeHolder">
-              <ul>
+              <ul className="list-disc">
                 <li>
-                  &bull;공지 게시글은 <span className="text-yellowPoint">관리자 이상의 등급</span>만 작성 가능합니다.
+                  공지 게시글은 <span className="text-yellowPoint">관리자 이상의 등급</span>만 작성 가능합니다.
                 </li>
                 <li>
-                  &bull;공지 게시글을 <span className="text-yellowPoint">필독으로 지정하여 상단에 고정</span>
+                  공지 게시글을 <span className="text-yellowPoint">필독으로 지정하여 상단에 고정</span>
                   해둘 수 있으나, 지난 게시글은 관리를 통해 고정해제가 필요합니다.
                 </li>
               </ul>
