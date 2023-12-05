@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 
 import PropTypes from 'prop-types';
 
-const Modal = ({ children, isOpen, setIsOpen }) => {
+const Modal = ({ children, isOpen, setIsOpen, outsideClose }) => {
   const modalRef = useRef();
 
   useEffect(() => {
@@ -12,7 +12,7 @@ const Modal = ({ children, isOpen, setIsOpen }) => {
       }
     };
 
-    document.addEventListener('mousedown', handleOutsideClick);
+    if (outsideClose) document.addEventListener('mousedown', handleOutsideClick);
 
     return () => {
       document.removeEventListener('mousedown', handleOutsideClick);
@@ -33,6 +33,11 @@ Modal.propTypes = {
   children: PropTypes.node.isRequired,
   isOpen: PropTypes.bool.isRequired,
   setIsOpen: PropTypes.func.isRequired,
+  outsideClose: PropTypes.bool,
+};
+
+Modal.defaultProps = {
+  outsideClose: false,
 };
 
 export default Modal;
