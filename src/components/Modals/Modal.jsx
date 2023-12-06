@@ -22,7 +22,7 @@ const Modal = ({ children, isOpen, setIsOpen, outsideClose }) => {
   if (!isOpen) return null;
   return (
     <div className="z-[999] h-screen w-screen fixed top-0 left-0 flex flex-col justify-center items-center bg-opacity-50 bg-black">
-      <div ref={modalRef} className="h-72 w-[30rem] bg-white shadow-xl">
+      <div ref={modalRef} className="h-60 w-[28rem] bg-white shadow-xl">
         {children}
       </div>
     </div>
