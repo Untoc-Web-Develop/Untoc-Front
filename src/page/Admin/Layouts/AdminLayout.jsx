@@ -6,7 +6,7 @@ import AdminTab from '../components/AdminTab/AdminTab';
 const AdminLayout = () => {
   return (
     <div className="flex h-content w-full justify-center">
-      <div className="h-full w-[800px] border border-black lg:w-4/5">
+      <div className="h-full w-[800px] lg:w-4/5">
         <div className="flex h-1/6 items-center">
           <AdminTab />
         </div>
