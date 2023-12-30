@@ -15,7 +15,7 @@ const AdminLayout = () => {
           <div className="flex h-1/6 items-center">
             <AdminTab />
           </div>
-          <div className="h-5-6">
+          <div className="h-5/6">
             <Outlet />
           </div>
         </div>
