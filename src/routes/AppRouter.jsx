@@ -9,6 +9,7 @@ import Profile from 'page/Profile/Profile';
 import Recruit from 'page/Recruit/Recruit';
 import Register from 'page/Register/Register';
 
+import AdminRouter from './AdminRouter';
 import BoardRouter from './BoardRouter';
 
 const AppRouter = () => {
@@ -16,6 +17,7 @@ const AppRouter = () => {
     <Routes>
       <Route path="/" element={<MainLayout />}>
         <Route index element={<Main />} />
+        <Route path="admin/*" element={<AdminRouter />} />
         <Route path="recruit" element={<Recruit />} />
         <Route path="board/*" element={<BoardRouter />} />
         <Route path="profile" element={<Profile />} />

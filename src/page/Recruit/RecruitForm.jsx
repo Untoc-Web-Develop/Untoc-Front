@@ -32,13 +32,13 @@ const RecruitForm = () => {
   }, []);
 
   return (
-    <form className="relative w-full p-12 text-sm font-normal bg-white shadow-lg h-fit rounded-3xl">
-      <div className="absolute left-0 flex items-center justify-center h-16 text-lg bg-white w-52 -top-11 rounded-t-xl text-yellowPoint">
+    <form className="relative h-fit w-full rounded-3xl bg-white p-12 text-sm font-normal shadow-lg">
+      <div className="absolute -top-11 left-0 flex h-16 w-52 items-center justify-center rounded-t-xl bg-white text-lg text-yellowPoint">
         Fill out this form
       </div>
-      <div className="relative flex flex-col items-center justify-between w-full h-full">
-        <div className="w-full h-5/6">
-          <div className="grid w-full h-24 grid-cols-2 mb-3">
+      <div className="relative flex h-full w-full flex-col items-center justify-between">
+        <div className="h-5/6 w-full">
+          <div className="mb-3 grid h-24 w-full grid-cols-2">
             <label htmlFor="studentId" className="w-11/12">
               <p className="mb-3 text-grayDark">학번</p>
               <input
@@ -46,7 +46,7 @@ const RecruitForm = () => {
                 name="studentId"
                 id="studentId"
                 placeholder="20230001"
-                className="w-full p-1 px-3 border border-borderColor focus:outline-none focus:border-grayDark"
+                className="w-full border border-borderColor p-1 px-3 focus:border-grayDark focus:outline-none"
                 disabled={isLogin}
               />
             </label>
@@ -57,12 +57,12 @@ const RecruitForm = () => {
                 name="name"
                 id="name"
                 placeholder="홍길동"
-                className="w-full p-1 px-3 border border-borderColor focus:outline-none focus:border-grayDark"
+                className="w-full border border-borderColor p-1 px-3 focus:border-grayDark focus:outline-none"
                 disabled={isLogin}
               />
             </label>
           </div>
-          <div className="w-full h-24 mb-3">
+          <div className="mb-3 h-24 w-full">
             <label htmlFor="phone">
               <p className="mb-3 text-grayDark">전화번호</p>
               <input
@@ -70,7 +70,7 @@ const RecruitForm = () => {
                 name="phone-number"
                 id="phone"
                 placeholder="010-1234-5678"
-                className="w-full p-1 px-3 border border-borderColor focus:outline-none focus:border-grayDark"
+                className="w-full border border-borderColor p-1 px-3 focus:border-grayDark focus:outline-none"
                 disabled={isLogin}
               />
             </label>
@@ -90,10 +90,10 @@ const RecruitForm = () => {
             )
           }
         </div>
-        <div className="flex items-center justify-end w-full h-1/6">
+        <div className="flex h-1/6 w-full items-center justify-end">
           <button
             type="button"
-            className="w-1/4 border rounded h-7 border-borderColor hover:cursor-pointer text-grayDark"
+            className="h-7 w-1/4 rounded border border-borderColor text-grayDark hover:cursor-pointer"
             onClick={getApplyQuestions}
           >
             취소
@@ -109,7 +109,7 @@ const RecruitForm = () => {
                   }
             }
             type="button"
-            className="w-1/4 ml-3 text-white border rounded h-7 border-yellowPoint bg-yellowPoint hover:cursor-pointer disabled:bg-grayPoint disabled:border-grayPoint disabled:text-grayDark"
+            className="ml-3 h-7 w-1/4 rounded border border-yellowPoint bg-yellowPoint text-white hover:cursor-pointer disabled:border-grayPoint disabled:bg-grayPoint disabled:text-grayDark"
             disabled={!isChanged && isLogin}
           >
             {isLogin ? '저장' : '제출'}
