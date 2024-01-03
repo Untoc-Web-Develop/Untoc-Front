@@ -1,69 +1,67 @@
 import React from 'react';
-
+// min-h-screen
 const Profile = () => {
   return (
-    <div className="w-[1000px] h-auto mx-auto mt-14">
-      <div className="w-150 h-80 flex">
-        <div className="w-[300px] mt-[50px] mb-[33px]">
-          <img
-            className="w-40 h-40 rounded-full ml-6"
-            src="https://icnm.co.kr/common/img/default_profile.png"
-            alt="기본 이미지"
-          />
-          <button
-            className="bg-focusColor text-placeHolder text-sm rounded-lg px-[5px] py-0.5 my-6 ml-[59px]"
-            type="submit"
-          >
-            프로필 편집
-          </button>
-        </div>
-        <div className="w-[700px] mt-[50px] flex flex-col">
-          <div className="flex gap-7">
-            <div className="text-[23px] font-bold text-grayDark">김세론</div>
-            <div className="mt-2.5">
-              <span className="text-placeHolder text-sm mr-2">활동상태</span>
-              <button type="submit">on/off</button>
+    <div className="bg-grayLight min-h-screen pt-8">
+      <div className="h-[5rem] flex flex-col justify-center bg-white">
+        <div className="font-semibold text-sm mx-[18rem] mb-[0.2rem]">Hello, 김세론!</div>
+        <div className="text-xs text-placeHolder mx-[18rem]">자신을 나타낼 수 있는 한줄소개를 작성해주세요.</div>
+      </div>
+      <div className="grid grid-rows-[17rem_8rem] grid-cols-[37rem_26rem] gap-x-10 mx-[15rem] mt-[2.5rem]">
+        <div>
+          <div className="text-grayDark text-lg font-semibold mb-2">Profile</div>
+          <div className="bg-white h-[13rem] flex">
+            <div className="mx-4 flex flex-col justify-center items-center">
+              <img
+                className="w-[6.5rem] h-[6.5rem] rounded-full"
+                src="https://mblogthumb-phinf.pstatic.net/MjAyMDExMDFfMjIg/MDAxNjA0MjI4ODc1MDkx.itxFQbHQ_zAuNQJU7PCOlF0mmstYn2v4ZF4WygunqGIg.3jloNowx-eWU-ztCLACtYubVbATNdCFQLjgvYsynV1og.JPEG.gambasg/%EC%9C%A0%ED%8A%9C%EB%B8%8C_%EA%B8%B0%EB%B3%B8%ED%94%84%EB%A1%9C%ED%95%84_%EC%A3%BC%ED%99%A9.jpg?type=w400"
+                alt="기본 프로필 이미지"
+              />
+              <div className="text-yellowPoint my-2">
+                <li>active</li>
+              </div>
+              <button className="bg-grayLight text-grayDark px-4" type="submit">
+                Edit Profile
+              </button>
             </div>
-          </div>
-          <div className="h-[140px] flex items-center">
-            <img
-              className="w-20 h-20"
-              src="https://web.joongna.com/cafe-article-data/live/2023/06/15/996176878/16868310497860016jI_Y0lqq.png"
-              alt="뱃지 이미지"
-            />
-          </div>
-          <div className="grid grid-rows-2 grid-cols-2 gap-y-px">
-            <div>
-              <span className="inline-block w-[60px] font-bold text-xs">이메일</span>
-              <span className="text-placeHolder text-xs">UntoC@gmail.com</span>
-            </div>
-            <div>
-              <span className="inline-block w-[60px] font-bold text-xs">링크1</span>
-              <span className="text-placeHolder text-xs">링크를 입력해주세요</span>
-            </div>
-            <div>
-              <span className="inline-block w-[60px] font-bold text-xs">전화번호</span>
-              <span className="text-placeHolder text-xs">비공개</span>
-            </div>
-            <div>
-              <span className="inline-block w-[60px] font-bold text-xs">링크2</span>
-              <span className="text-placeHolder text-xs">링크를 입력해주세요</span>
+            <div className="flex-grow">
+              <div className="my-3">
+                <div className="text-placeHolder text-xs">Name</div>
+                <span className="text-grayDark font-semibold text-lg">김세론</span>
+                <span className="text-placeHolder text-sm ml-1">19기</span>
+              </div>
+              <div className="grid grid-cols-2">
+                <div className="text-placeHolder text-xs">Email</div>
+                <div className="text-placeHolder text-xs">Github/Blog</div>
+                <div>2004imjimin1@gmail.com</div>
+                <div className="text-placeHolder">https://jimini1026.tistory.com/</div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div className="w-100 h-[130px]">
-        <hr />
-        <div className="text-borderColor text-[11px] my-6 mx-10">간단하게 자신을 소개해주세요.</div>
-        <hr />
-      </div>
-      <div className="w-100">
-        <div className="font-bold text-lg text-grayDark mb-5">활동기록</div>
-        <span className="text-borderColor text-sm ">
-          활동기록이 존재하지 않습니다.
-          <br />
-          다양한 활동을 통해 팀을 이루고 뱃지를 획득하세요!
-        </span>
+        <div>
+          <div className="text-grayDark text-lg font-semibold mb-2">Activity log</div>
+          <div className="text-placeHolder text-xs">
+            활동기록이 존재하지 않습니다.
+            <br />
+            다양한 활동을 통해 팀을 이루고 뱃지를 획득하세요!
+          </div>
+        </div>
+        <div>
+          <div className="text-grayDark text-lg font-semibold mb-2">Badge</div>
+          <div className="bg-white h-[6rem] px-5 py-auto flex gap-3">
+            <div className="w-[3rem] h-[3rem] rounded-full text-borderColor bg-focusColor my-auto flex items-center justify-center">
+              21
+            </div>
+            <div className="w-[3rem] h-[3rem] rounded-full text-borderColor bg-focusColor my-auto flex items-center justify-center">
+              1등
+            </div>
+            <div className="w-[3rem] h-[3rem] rounded-full text-borderColor bg-focusColor my-auto flex items-center justify-center">
+              관리자
+            </div>
+          </div>
+        </div>
+        <div>image</div>
       </div>
     </div>
   );
