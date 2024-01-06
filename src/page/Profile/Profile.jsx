@@ -1,6 +1,12 @@
 import React from 'react';
-// min-h-screen
+import { useNavigate } from 'react-router-dom';
+
 const Profile = () => {
+  const movePage = useNavigate();
+  function goEdit() {
+    movePage('/profile/edit');
+  }
+
   return (
     <div className="bg-grayLight min-h-screen pt-8">
       <div className="h-[5rem] flex flex-col justify-center bg-white">
@@ -20,7 +26,7 @@ const Profile = () => {
               <div className="text-yellowPoint my-2">
                 <li>active</li>
               </div>
-              <button className="bg-grayLight text-grayDark px-4" type="submit">
+              <button className="bg-grayLight text-grayDark px-4" type="submit" onClick={goEdit}>
                 Edit Profile
               </button>
             </div>

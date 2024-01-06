@@ -6,6 +6,7 @@ import Board from 'page/Board/Board';
 import Login from 'page/Login/Login';
 import Main from 'page/Main/Main';
 import NotFound from 'page/NotFound/NotFound';
+import ProfileEdit from 'page/Profile/Edit/ProfileEdit';
 import Profile from 'page/Profile/Profile';
 import Recruit from 'page/Recruit/Recruit';
 import Register from 'page/Register/Register';
@@ -18,6 +19,7 @@ const AppRouter = () => {
         <Route path="recruit" element={<Recruit />} />
         <Route path="board" element={<Board />} />
         <Route path="profile" element={<Profile />} />
+        <Route path="profile/edit" element={<ProfileEdit />} />
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
         <Route path="*" element={<NotFound />} />
