@@ -11,8 +11,10 @@ const Gpt = () => {
       {/* 사이드바 */}
       <div className="flex-shrink-0 w-[16rem] bg-grayLight overflow-y-auto overflow-x-hidden">
         <div className="flex h-full min-h-0 flex-col p-3">
-          <div className="bg-grayDark50 p-2 mb-2 rounded-xl font-bold--">+ New Chat</div>
-          <div className="border-t-2 border-gray-400 mb-2" />
+          <div className="border border-black bg-grayDark50 p-1 mx-3 rounded-xl font-bold text-lg flex justify-center">
+            ➕ New Chat
+          </div>
+          <div className="border-t-2 border-black mt-4" />
           {/* 대화 기록 예시 */}
           <div className="p-2">
             <h3 className="text-xl font mb-2">오늘</h3>
@@ -74,14 +76,14 @@ const Gpt = () => {
             </div>
           </div>
           {/* 입력창 */}
-          <div className="h-16 flex items-center">
+          <div className="h-16 flex items-center px-5">
             <div className="bg-grayDark50 flex items-center px-2 rounded-lg flex-grow">
               <textarea className="flex-1 bg-grayDark50 p-2" placeholder="Send Message" />
               <button type="submit" className="ml-2">
                 <img src={SendImg} alt="Send" className="w-5 h-5" />
               </button>
             </div>
-            <div className="bg-grayDark50 ml-2 px-5 py-2 rounded font-bold">4 / 5</div>
+            <div className="bg-grayDark50 ml-5 px-5 py-2 rounded font-bold">4 / 5</div>
           </div>
         </div>
       </div>
