@@ -20,13 +20,13 @@ const Gpt = () => {
             <h3 className="text-xl font mb-2">오늘</h3>
             <ol>
               <li>
-                <div className="flex bg-grayDark50 mb-2 p-2 rounded-xl justify-between items-center">
+                <div className="flex h-9 bg-grayDark50 mb-2 p-2 rounded-xl justify-between items-center">
                   오늘 점메추 ....
                   <img src={DelImg} alt="Delete" className="w-5 h-5" />
                 </div>
               </li>
               <li>
-                <div className="flex bg-grayDark50 mb-2 p-2 rounded-xl justify-between items-center">
+                <div className="flex h-9 bg-grayDark50 mb-2 p-2 rounded-xl justify-between items-center">
                   대충 질문 요약 ....
                   <img src={DelImg} alt="Delete" className="w-5 h-5" />
                 </div>
@@ -38,7 +38,7 @@ const Gpt = () => {
             <h3 className="text-xl mb-2">3일전</h3>
             <ol>
               <li>
-                <div className="flex bg-grayDark50 mb-2 p-2 rounded-xl justify-between items-center">
+                <div className="flex h-9 bg-grayDark50 mb-2 p-2 rounded-xl justify-between items-center">
                   대충 질문 요약 ....
                   <img src={DelImg} alt="Delete" className="w-5 h-5" />
                 </div>
