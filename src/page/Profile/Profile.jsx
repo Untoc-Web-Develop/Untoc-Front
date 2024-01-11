@@ -1,12 +1,7 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Profile = () => {
-  const movePage = useNavigate();
-  function goEdit() {
-    movePage('/profile/edit');
-  }
-
   return (
     <div className="bg-grayLight min-h-screen pt-8">
       <div className="h-[5rem] flex flex-col justify-center bg-white">
@@ -26,9 +21,9 @@ const Profile = () => {
               <div className="text-yellowPoint my-2">
                 <li>active</li>
               </div>
-              <button className="bg-grayLight text-grayDark px-4" type="submit" onClick={goEdit}>
-                Edit Profile
-              </button>
+              <div className="bg-grayLight text-grayDark px-4 h-7">
+                <Link to="/profile/edit">Edit Profile</Link>
+              </div>
             </div>
             <div className="flex-grow">
               <div className="my-3">
@@ -39,8 +34,8 @@ const Profile = () => {
               <div className="grid grid-cols-2">
                 <div className="text-placeHolder text-xs">Email</div>
                 <div className="text-placeHolder text-xs">Github/Blog</div>
-                <div>2004imjimin1@gmail.com</div>
-                <div className="text-placeHolder">https://jimini1026.tistory.com/</div>
+                <div>UntoC@gmail.com</div>
+                <div className="text-placeHolder">Empty</div>
               </div>
             </div>
           </div>
