@@ -37,6 +37,21 @@ const ProfileEdit = () => {
     }
   };
 
+  const handleHiddenPhoneNumber = (e) => {
+    // 전화번호 프로필에서 숨기기 처리
+    if (e.target.checked) {
+      setValues1({
+        ...values1,
+        tel: 'hidden',
+      });
+    } else {
+      setValues1({
+        ...values1,
+        tel: '',
+      });
+    }
+  };
+
   const handleProfileImg = (e) => {
     // 프로필 이미지 업로드
     const uploadImg = e.target.files[0];
@@ -125,14 +140,26 @@ const ProfileEdit = () => {
                   />
                 </div>
                 <div className="mx-auto">
-                  <div className="text-grayDark font-semibold mb-1">전화번호</div>
+                  <div className="text-grayDark font-semibold mb-1">
+                    전화번호
+                    <label className="text-xs text-placeHolder" htmlFor="hidePhoneNumber">
+                      <input
+                        className="w-3 h-3 ml-5 mr-1 cursor-pointer"
+                        id="hidePhoneNumber"
+                        type="checkbox"
+                        onChange={handleHiddenPhoneNumber}
+                      />
+                      프로필에서 숨기기
+                    </label>
+                  </div>
                   <input
                     id="tel"
                     type="tel"
                     className="w-[20rem] h-8 pl-3 border border-placeHolder rounded-lg"
-                    value={tel}
+                    value={tel !== 'hidden' ? tel : ''}
                     onChange={onChange}
-                    placeholder="010-1234-5678"
+                    placeholder={tel !== 'hidden' ? '010-1234-5678' : ''}
+                    disabled={tel === 'hidden'}
                   />
                 </div>
                 <div className="mx-auto">
