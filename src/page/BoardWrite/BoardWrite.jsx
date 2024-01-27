@@ -15,17 +15,17 @@ const BoardWrite = () => {
   };
 
   return (
-    <div className="h-screen bg-GrayLight">
-      <div className="w-full h-full">
-        <div className="p-4 w-2/3 mx-auto">
-          <div className="my-10 w-1/2 mx-auto">
+    <div className="bg-GrayLight h-screen">
+      <div className="h-full w-full">
+        <div className="mx-auto w-2/3 p-4">
+          <div className="mx-auto my-10 w-1/2">
             {/* 
             추후에 입력 전구 이미지로 변경
             게시판 마다 적용되게 바꿀예정
             */}
-            <div className="flex justify-center items-center mb-3">
+            <div className="mb-3 flex items-center justify-center">
               <img src={RecruitImg} alt="recruitImg" className="h-5 w-5" />
-              <h1 className="font-medium ml-3">공지 게시글 작성 가이드라인 (규칙)</h1>
+              <h1 className="ml-3 font-medium">공지 게시글 작성 가이드라인 (규칙)</h1>
             </div>
             <div className="text-xs text-placeHolder">
               <ul className="list-disc">
@@ -41,8 +41,8 @@ const BoardWrite = () => {
           </div>
         </div>
         <hr className="border-2 border-yellowPoint" />
-        <div className="w-2/3 mx-auto mt-10 h-2/3">
-          <div className="flex items-center justify-start mb-4">
+        <div className="mx-auto mt-10 h-2/3 w-2/3">
+          <div className="mb-4 flex items-center justify-start">
             <div className="w-20">
               <input
                 type="checkbox"
@@ -59,7 +59,7 @@ const BoardWrite = () => {
                 <input
                   type="text"
                   id="title"
-                  className="w-full p-2 border-b-2 bg-GrayLight border-solid border-placeHolder text-grayDark"
+                  className="bg-GrayLight w-full border-b-2 border-solid border-placeHolder p-2 text-grayDark"
                   placeholder="Enter Title Here"
                 />
               </div>
@@ -69,24 +69,24 @@ const BoardWrite = () => {
           <div className="mt-5 h-5/6 shadow-md">
             <textarea
               id="markdownContent"
-              className="w-full h-full p-2 border border-GrayLight rounded mb-4"
+              className="border-GrayLight mb-4 h-full w-full rounded border p-2"
               rows="10"
               placeholder="글을 작성해주세요."
               value={markdown}
               onChange={handleInputChange}
             />
           </div>
-          <div className="flex justify-end items-center mt-4 space-x-3 mr-10">
+          <div className="mr-10 mt-4 flex items-center justify-end space-x-3">
             <button
               type="button"
-              className="w-1/12 border border-placeHolder text-black py-1 text-sm rounded hover:bg-yellowPoint hover:text-white hover:border-yellowPoint"
+              className="w-1/12 rounded border border-placeHolder py-1 text-sm text-black hover:border-yellowPoint hover:bg-yellowPoint hover:text-white"
               onClick={() => {}}
             >
               취소
             </button>
             <button
               type="submit"
-              className="bg-yellowPoint w-1/12 text-white py-1 text-sm rounded hover:bg-white hover:text-black border border-yellowPoint"
+              className="w-1/12 rounded border border-yellowPoint bg-yellowPoint py-1 text-sm text-white hover:bg-white hover:text-black"
               onClick={() => {}}
             >
               작성완료
