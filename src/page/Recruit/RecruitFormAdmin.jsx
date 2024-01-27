@@ -27,11 +27,11 @@ const RecruitFormAdmin = ({ applyQuestions, setApplyQuestions, setIsChanged }) =
     <>
       {applyQuestions.map(({ id, question, content }, idx) => {
         return (
-          <div className="w-full h-32 mb-8" key={id}>
+          <div className="mb-8 h-32 w-full" key={id}>
             <label htmlFor={id}>
               <div className="flex justify-between">
                 <input
-                  className="relative w-9/12 p-1 px-3 mb-3 border-b-2 border-borderColor focus:outline-none focus:border-b-grayDark text-grayDark"
+                  className="relative mb-3 w-9/12 border-b-2 border-borderColor p-1 px-3 text-grayDark focus:border-b-grayDark focus:outline-none"
                   value={question}
                   onChange={(e) => {
                     setIsChanged(true);
@@ -43,9 +43,9 @@ const RecruitFormAdmin = ({ applyQuestions, setApplyQuestions, setIsChanged }) =
                   }}
                   placeholder="목록 제목을 입력해주세요"
                 />
-                <div className="flex justify-end w-1/6 h-full">
+                <div className="flex h-full w-1/6 justify-end">
                   <button
-                    className="w-full font-bold border rounded border-error text-error"
+                    className="w-full rounded border border-error font-bold text-error"
                     type="button"
                     onClick={() => removeQuestion(idx)}
                   >
@@ -58,7 +58,7 @@ const RecruitFormAdmin = ({ applyQuestions, setApplyQuestions, setIsChanged }) =
                 name={id}
                 id={id}
                 value={content}
-                className="w-full p-3 border resize-none h-2/3 border-borderColor focus:outline-none focus:border-grayDark text-grayDark"
+                className="h-2/3 w-full resize-none border border-borderColor p-3 text-grayDark focus:border-grayDark focus:outline-none"
                 onChange={(e) => {
                   setIsChanged(true);
                   setApplyQuestions((prev) => [
@@ -75,7 +75,7 @@ const RecruitFormAdmin = ({ applyQuestions, setApplyQuestions, setIsChanged }) =
       })}
       <button
         type="button"
-        className="flex items-center justify-start w-1/3 text-placeHolder hover:underline"
+        className="flex w-1/3 items-center justify-start text-placeHolder hover:underline"
         onClick={addQuestion}
       >
         <CiSquarePlus size={32} className="mr-2 text-placeHolder" />
