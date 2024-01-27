@@ -40,7 +40,7 @@ const StandardTab = ({ tabs, onSelected, size, activeTab, setActiveTab }) => {
           >
             <p
               className={`${textSize} font-bold ${
-                index === activeTab ? ' text-yellowPoint border-yellowPoint border-b-2' : ' text-placeHolder'
+                index === activeTab ? ' border-b-2 border-yellowPoint text-yellowPoint' : ' text-placeHolder'
               }`}
             >
               {tab.title}
