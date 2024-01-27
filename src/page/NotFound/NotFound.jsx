@@ -15,7 +15,7 @@ const NotFound = () => {
             <br />
             요청하신 페이지의 주소가 변경되었을 수 있습니다.
           </div>
-          <div className="w-[8rem] flex justify-center items-center border border-yellowPoint rounded-lg text-yellowPoint font-semibold">
+          <div className="w-[8rem] py-1 flex justify-center items-center border bg-yellowPoint rounded-lg text-white font-semibold">
             <Link to="/">홈으로 가기</Link>
           </div>
         </div>
