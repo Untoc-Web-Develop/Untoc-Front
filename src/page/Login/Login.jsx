@@ -6,14 +6,14 @@ const Login = () => {
   const [password, setPassword] = useState('');
 
   return (
-    <div className="grid place-items-center mx-auto my-auto h-content">
+    <div className="mx-auto my-auto grid h-content place-items-center">
       <form>
-        <h1 className="text-center mb-10 text-5xl text-yellowPoint font-bold m-3">UntoC</h1>
+        <h1 className="m-3 mb-10 text-center text-5xl font-bold text-yellowPoint">UntoC</h1>
         <div className="mb-5">
           <label className="block text-sm" htmlFor="email">
             <p>Email</p>
             <input
-              className="block w-80 h-15 mt-2 p-3 border border-borderColor rounded-3xl text-sm text-placeHolder"
+              className="h-15 mt-2 block w-80 rounded-3xl border border-borderColor p-3 text-sm text-placeHolder"
               type="email"
               id="email"
               placeholder="UntoC@pusan.ac.kr"
@@ -25,27 +25,27 @@ const Login = () => {
           <label className="block text-sm" htmlFor="password">
             <p>Password</p>
             <input
-              className="block w-80 h-15 mt-2 p-3 border border-borderColor rounded-3xl text-sm"
+              className="h-15 mt-2 block w-80 rounded-3xl border border-borderColor p-3 text-sm"
               type="password"
               onChange={(e) => setPassword(e.target.value)}
             />
           </label>
           <div className="text-right">
-            <p className="cursor-pointer mt-2 text-xs text-grayDark">비밀번호 찾기</p>
+            <p className="mt-2 cursor-pointer text-xs text-grayDark">비밀번호 찾기</p>
             {/* 추후에 Link로 변경하여 비밀번호 찾기 페이지로 연결하기 */}
           </div>
         </div>
         <div className="mt-4">
           <button
             type="submit"
-            className={`w-80 h-15 mt-2 p-3 text-white rounded-3xl ${
+            className={`h-15 mt-2 w-80 rounded-3xl p-3 text-white ${
               email && password ? 'bg-yellowPoint' : 'bg-grayPoint'
             }`}
           >
             로그인
           </button>
         </div>
-        <div className="text-center text-sm mt-4">
+        <div className="mt-4 text-center text-sm">
           계정이 없으신가요?{' '}
           <Link to="/register" className="text-yellowPoint">
             회원가입
