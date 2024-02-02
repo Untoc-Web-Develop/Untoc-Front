@@ -12,11 +12,11 @@ const AlertModal = ({ children, isOpen, setIsOpen, onClose, outsideClose, closeB
 
   return (
     <Modal isOpen={isOpen} setIsOpen={setIsOpen} onClose={onClose} outsideClose={outsideClose}>
-      <div className="h-full w-full flex flex-col justify-center items-center">
-        <div className="h-3/4 w-full text-grayDark font-bold text-md flex justify-center items-center">{children}</div>
-        <div className="h-1/4 w-full flex justify-center items-center">
+      <div className="flex h-full w-full flex-col items-center justify-center">
+        <div className="text-md flex h-3/4 w-full items-center justify-center font-bold text-grayDark">{children}</div>
+        <div className="flex h-1/4 w-full items-center justify-center">
           <button
-            className="h-1/2 w-1/5 rounded-lg border border-yellowPoint text-yellowPoint font-bold text-md"
+            className="text-md h-1/2 w-1/5 rounded-lg border border-yellowPoint font-bold text-yellowPoint"
             type="button"
             onClick={handleClose}
           >

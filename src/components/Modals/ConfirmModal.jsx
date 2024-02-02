@@ -26,18 +26,18 @@ const ConfirmModal = ({
 
   return (
     <Modal isOpen={isOpen} setIsOpen={setIsOpen} outsideClose={outsideClose} onClose={onClose}>
-      <div className="h-full w-full flex flex-col justify-center items-end">
-        <div className="h-3/4 w-full text-grayDark font-bold text-md flex justify-center items-center">{children}</div>
-        <div className="h-1/4 w-3/5 flex justify-center items-start">
+      <div className="flex h-full w-full flex-col items-end justify-center">
+        <div className="text-md flex h-3/4 w-full items-center justify-center font-bold text-grayDark">{children}</div>
+        <div className="flex h-1/4 w-3/5 items-start justify-center">
           <button
-            className="h-1/2 w-1/3 rounded-lg border border-borderColor text-grayDark font-bold text-md mr-3"
+            className="text-md mr-3 h-1/2 w-1/3 rounded-lg border border-borderColor font-bold text-grayDark"
             type="button"
             onClick={handleClose}
           >
             {closeBtnText}
           </button>
           <button
-            className="h-1/2 w-1/3 rounded-lg border border-yellowPoint text-yellowPoint font-bold text-md"
+            className="text-md h-1/2 w-1/3 rounded-lg border border-yellowPoint font-bold text-yellowPoint"
             type="button"
             onClick={handleConfirm}
           >

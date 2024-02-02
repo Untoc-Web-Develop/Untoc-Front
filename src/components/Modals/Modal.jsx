@@ -13,7 +13,7 @@ const Modal = ({ children, isOpen, setIsOpen, onClose, outsideClose }) => {
     <div
       aria-hidden="true"
       onClick={outsideClose ? handleClose : () => {}}
-      className="z-[999] h-screen w-screen fixed top-0 left-0 flex flex-col justify-center items-center bg-opacity-50 bg-black"
+      className="fixed left-0 top-0 z-[999] flex h-screen w-screen flex-col items-center justify-center bg-black bg-opacity-50"
     >
       <div aria-hidden="true" onClick={(e) => e.stopPropagation()} className="h-60 w-[28rem] bg-white shadow-xl">
         {children}
