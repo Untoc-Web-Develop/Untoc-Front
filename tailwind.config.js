@@ -31,9 +31,36 @@ module.exports = {
             transform: 'translateY(0)',
           },
         },
+        InfinitySlider: {
+          '0%': {
+            transform: 'translateX(0%)',
+          },
+          '50%': {
+            transform: 'translateX(-100%)',
+          },
+          '50.1%': {
+            transform: 'translateX(100%)',
+          },
+          '100%': {
+            transform: 'translateX(0%)',
+          },
+        },
+        InfinitySlider_copy: {
+          '0%': {
+            transform: 'translateX(100%)',
+          },
+          '50%': {
+            transform: 'translateX(0%)',
+          },
+          '100%': {
+            transform: 'translateX(-100%)',
+          },
+        },
       },
       animation: {
         fadeIn: 'fadeIn 1s ease-out',
+        InfinitySlider: 'InfinitySlider 10s infinite linear normal none running',
+        InfinitySlider_copy: 'InfinitySlider_copy 10s linear infinite',
       },
       height: {
         content: 'calc(100vh - 2.5rem)',
