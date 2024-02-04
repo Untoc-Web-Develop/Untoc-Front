@@ -10,13 +10,13 @@ import PropTypes from 'prop-types'; // prop-types 추가
 
 const TeamInfoCard = ({ title, content, IsCaptionRequired }) => {
   return (
-    <Card className="w-72">
+    <Card className="w-72 !shadow-md">
       <CardActionArea>
         <CardMedia component="img" image={teamInfo} alt="teamInfo Card" className="h-40" />
         {IsCaptionRequired && (
           <CardContent className="!px-4 !py-2 ">
-            <Typography className="text-lg !font-medium">{title}</Typography>
-            <Typography className="text-xs !font-medium">{content}</Typography>
+            <Typography className="!text-md !font-bold">{title}</Typography>
+            <Typography className="!text-xs !text-gray-400">{content}</Typography>
           </CardContent>
         )}
       </CardActionArea>
