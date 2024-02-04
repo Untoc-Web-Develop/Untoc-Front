@@ -23,12 +23,12 @@ const MainActivity = () => {
       </div>
       <div className="h-42 mb-10 overflow-hidden">
         <ul className="relative flex flex-nowrap" onMouseEnter={onStop} onMouseLeave={onStart}>
-          <div className="absolute left-0 flex animate-InfinitySlider flex-nowrap items-center">
+          <div className="absolute left-0 flex animate-InfinitySlider flex-nowrap items-center gap-8 pr-8">
             {titles.map((title) => (
-              <TeamInfoCard key={title} title={title} />
+              <TeamInfoCard key={title} title={title} content={title} />
             ))}
           </div>
-          <div className="flex animate-InfinitySlider_copy flex-nowrap items-center">
+          <div className="flex animate-InfinitySlider_copy flex-nowrap items-center gap-8 pr-8">
             {titles2.map((title) => (
               <TeamInfoCard key={title} title={title} />
             ))}

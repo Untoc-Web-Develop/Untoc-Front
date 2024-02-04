@@ -5,23 +5,28 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import teamInfo from 'asset/logo/logo.svg';
+import teamInfo from 'asset/main/teamImg.png';
 import PropTypes from 'prop-types'; // prop-types 추가
 
-const TeamInfoCard = ({ title }) => {
+const TeamInfoCard = ({ title, content, IsCaptionRequired }) => {
   return (
     <Card className="w-72">
       <CardActionArea>
-        <CardMedia component="img" image={teamInfo} alt="teamInfo Card" className="h-32" />
-        <CardContent className="bg-red-200 !px-4 !py-2 ">
-          <Typography className="!text-lg !font-medium">{title}</Typography>
-        </CardContent>
+        <CardMedia component="img" image={teamInfo} alt="teamInfo Card" className="h-40" />
+        {IsCaptionRequired && (
+          <CardContent className="!px-4 !py-2 ">
+            <Typography className="text-lg !font-medium">{title}</Typography>
+            <Typography className="text-xs !font-medium">{content}</Typography>
+          </CardContent>
+        )}
       </CardActionArea>
     </Card>
   );
 };
 TeamInfoCard.propTypes = {
   title: PropTypes.string.isRequired,
+  content: PropTypes.string.isRequired,
+  IsCaptionRequired: PropTypes.bool.isRequired,
 };
 
 export default TeamInfoCard;

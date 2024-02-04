@@ -59,8 +59,8 @@ module.exports = {
       },
       animation: {
         fadeIn: 'fadeIn 1s ease-out',
-        InfinitySlider: 'InfinitySlider 10s infinite linear normal none running',
-        InfinitySlider_copy: 'InfinitySlider_copy 10s linear infinite',
+        InfinitySlider: 'InfinitySlider 50s infinite linear normal none running',
+        InfinitySlider_copy: 'InfinitySlider_copy 50s linear infinite',
       },
       height: {
         content: 'calc(100vh - 2.5rem)',
