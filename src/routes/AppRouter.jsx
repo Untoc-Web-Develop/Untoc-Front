@@ -12,6 +12,7 @@ import Register from 'page/Register/Register';
 
 import AdminRouter from './AdminRouter';
 import BoardRouter from './BoardRouter';
+import TeamListRouter from './TeamListRouter';
 
 const AppRouter = () => {
   return (
@@ -21,6 +22,7 @@ const AppRouter = () => {
         <Route path="admin/*" element={<AdminRouter />} />
         <Route path="recruit" element={<Recruit />} />
         <Route path="board/*" element={<BoardRouter />} />
+        <Route path="teamlist/*" element={<TeamListRouter />} />
         <Route path="profile" element={<Profile />} />
         <Route path="profile/edit" element={<ProfileEdit />} />
         <Route path="login" element={<Login />} />
