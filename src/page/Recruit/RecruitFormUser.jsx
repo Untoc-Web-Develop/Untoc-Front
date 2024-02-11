@@ -7,7 +7,7 @@ const RecruitFormUser = ({ applyQuestions }) => {
     <>
       {applyQuestions.map(({ id, question, content }) => {
         return (
-          <div className="w-full h-32 mb-8" key={id}>
+          <div className="mb-8 h-32 w-full" key={id}>
             <label htmlFor={id}>
               <p className="relative mb-3 text-grayDark">{question}</p>
               <textarea
@@ -15,7 +15,7 @@ const RecruitFormUser = ({ applyQuestions }) => {
                 name={id}
                 id={id}
                 placeholder={content}
-                className="w-full p-3 border resize-none h-2/3 border-borderColor focus:outline-none focus:border-grayDark text-grayDark"
+                className="h-2/3 w-full resize-none border border-borderColor p-3 text-grayDark focus:border-grayDark focus:outline-none"
               />
             </label>
           </div>
