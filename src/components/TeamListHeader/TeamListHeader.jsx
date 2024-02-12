@@ -12,13 +12,6 @@ const TeamListHeader = ({ content, isTeamed }) => {
 
   const highlight = content === 'teamlist';
 
-  // let page;
-  // if (isTeamed) {
-  //   page = <Link to="/teamlist/info">내팀 정보</Link>;
-  // } else {
-  //   page = <Link to="/teamlist/build">팀 빌딩</Link>;
-  // }
-
   return (
     <header>
       <div className="ml-96 flex text-sm">
