@@ -12,12 +12,12 @@ const TeamListHeader = ({ content, isTeamed }) => {
 
   const highlight = content === 'teamlist';
 
-  let page;
-  if (isTeamed) {
-    page = <Link to="/teamlist/info">내팀 정보</Link>;
-  } else {
-    page = <Link to="/teamlist/build">팀 빌딩</Link>;
-  }
+  // let page;
+  // if (isTeamed) {
+  //   page = <Link to="/teamlist/info">내팀 정보</Link>;
+  // } else {
+  //   page = <Link to="/teamlist/build">팀 빌딩</Link>;
+  // }
 
   return (
     <header>
@@ -34,7 +34,7 @@ const TeamListHeader = ({ content, isTeamed }) => {
             highlight ? '' : 'border-b-2 border-yellowPoint font-semibold text-yellowPoint'
           }`}
         >
-          {page}
+          {isTeamed ? <Link to="/teamlist/info">내팀 정보</Link> : <Link to="/teamlist/build">팀 빌딩</Link>}
         </div>
       </div>
       <div className="flex h-[6rem] flex-col items-center justify-center gap-3 bg-white">
