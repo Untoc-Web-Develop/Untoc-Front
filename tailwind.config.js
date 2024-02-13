@@ -12,6 +12,7 @@ module.exports = {
         focusColor: '#F2F5FF',
         bluePoint: '#424F70',
         grayDark: '#5C5F64',
+        grayDark50: '#D9D9D9',
         grayPoint: '#EBEBEB',
         grayLight: '#F8F8F9',
         grayLight50: '#FAFAFA',
