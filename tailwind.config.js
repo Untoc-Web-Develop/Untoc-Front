@@ -19,7 +19,8 @@ module.exports = {
         alertBg: '#FFE8E7',
       },
       backgroundImage: {
-        backgroundImage: "url('asset/main/mainBackGround.jpg')",
+        // backgroundImage: "url('asset/main/mainBackGround.jpg')",
+        backgroundImage: "url('asset/main/background3.jpg')",
       },
       keyframes: {
         fadeIn: {
