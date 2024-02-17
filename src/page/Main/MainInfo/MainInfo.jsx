@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { Button } from '@mui/material';
 import FriendImg from 'asset/main/mainFriends.png';
@@ -14,9 +15,11 @@ const MainInfo = () => {
         <ImgTooltip title="https://storyset.com/business" src={TeamImg} alt="teamImg" classNamed="w-1/2" />
         <div className="flex w-1/2 flex-col items-center gap-5">
           <div className="text-4xl font-semibold text-white">Welcome to UntoC!</div>
-          <Button variant="contained" className="!bg-white !bg-opacity-25 !backdrop-blur-sm">
-            Join this club &gt;&gt;&gt;
-          </Button>
+          <Link to="/recruit">
+            <Button variant="contained" className="!bg-white !bg-opacity-25 !backdrop-blur-sm">
+              Join this club &gt;&gt;&gt;
+            </Button>
+          </Link>
         </div>
         <div />
       </div>
@@ -24,7 +27,7 @@ const MainInfo = () => {
         <div className="mr-8 flex w-2/3 flex-col ">
           <RandomDevTerm />
         </div>
-        <img src={FriendImg} alt="teamImg" className="w-1/3 " />
+        <ImgTooltip title="https://storyset.com/people" src={FriendImg} alt="friendImg" classNamed="w-1/3" />
         <div />
       </div>
     </div>
