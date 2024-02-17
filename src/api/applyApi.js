@@ -106,10 +106,7 @@ const usePatchApplySettingQuery = () => {
 const useDeleteApplySettingQuery = () => {
   const queryClient = useQueryClient();
 
-  const fetcher = ({ id }) =>
-    axios.delete('/apply/apply-setting', {
-      id,
-    });
+  const fetcher = ({ id }) => axios.delete(`/apply/apply-setting?id=${id}`);
 
   return useMutation({
     mutationFn: fetcher,
@@ -180,10 +177,7 @@ const usePatchApplyQuestionQuery = () => {
 const useDeleteApplyQuestionQuery = () => {
   const queryClient = useQueryClient();
 
-  const fetcher = ({ id }) =>
-    axios.delete('/apply/apply-question', {
-      id,
-    });
+  const fetcher = ({ id }) => axios.delete(`/apply/apply-question?id=${id}`);
 
   return useMutation({
     mutationFn: fetcher,
@@ -197,7 +191,7 @@ const useDeleteApplyQuestionQuery = () => {
   });
 };
 
-const ApplyApis = {
+export {
   useGetApplyQuery,
   usePostApplyQuery,
   useGetApplySettingQuery,
@@ -209,5 +203,3 @@ const ApplyApis = {
   usePatchApplyQuestionQuery,
   useDeleteApplyQuestionQuery,
 };
-
-export default ApplyApis;
