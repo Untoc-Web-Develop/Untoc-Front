@@ -27,6 +27,10 @@ const Register = () => {
   });
 
   const [isEmailValidate, setIsEmailValidate] = useState(false);
+  const [focus, setFocus] = useState({
+    emailFocus: false,
+    emailVertificationCodeFocus: false,
+  });
 
   const emailSubmit = (data) => {
     const { email } = data;
@@ -117,9 +121,9 @@ const Register = () => {
           <label htmlFor="email" className="relative">
             <span className="font-medium">Email</span>
             <div
-              className={`mt-2 flex h-12 w-80 place-items-center rounded-full border px-1 focus-within:bg-focusColor focus-within:outline ${
+              className={`mt-2 flex h-12 w-80 place-items-center rounded-full border px-1  focus-within:outline ${
                 errors.email ? 'border-error' : 'border-borderColor'
-              }`}
+              } ${focus.emailFocus && 'bg-focusColor'}`}
             >
               <input
                 className="w-60 rounded-l-full px-3 py-2 text-sm outline-none focus:bg-focusColor"
@@ -132,6 +136,18 @@ const Register = () => {
                     message: '이메일 형식이 올바르지 않습니다.',
                   },
                 })}
+                onFocus={() =>
+                  setFocus({
+                    ...focus,
+                    emailFocus: true,
+                  })
+                }
+                onBlur={() =>
+                  setFocus({
+                    ...focus,
+                    emailFocus: false,
+                  })
+                }
               />
               <form onSubmit={handleSubmit(emailSubmit)}>
                 <button
@@ -152,17 +168,29 @@ const Register = () => {
           <label htmlFor="email" className="relative">
             <span className="font-medium">Email vertification code</span>
             <div
-              className={`mt-2 flex h-12 w-80 place-items-center rounded-full border-borderColor px-1 focus-within:bg-focusColor focus-within:outline ${
-                isEmailValidate ? 'border border-borderColor bg-white' : 'bg-grayLight'
-              }`}
+              className={`mt-2 flex h-12 w-80 place-items-center rounded-full border-borderColor px-1 focus-within:outline ${
+                isEmailValidate ? 'border border-borderColor ' : 'bg-grayLight'
+              } ${focus.emailVertificationCodeFocus && 'bg-focusColor'}`}
             >
               <input
                 className={`w-60 rounded-full px-3 py-2 text-sm outline-none focus:bg-focusColor ${
-                  isEmailValidate ? 'bg-white' : 'bg-grayLight'
+                  isEmailValidate ? '' : 'bg-grayLight'
                 }`}
                 type="text"
                 id="emailVertificationCode"
                 disabled={!isEmailValidate}
+                onFocus={() =>
+                  setFocus({
+                    ...focus,
+                    emailVertificationCodeFocus: true,
+                  })
+                }
+                onBlur={() =>
+                  setFocus({
+                    ...focus,
+                    emailVertificationCodeFocus: false,
+                  })
+                }
               />
               <button
                 className="h-10 w-20 rounded-full border border-borderColor bg-white text-xs text-placeHolder"
