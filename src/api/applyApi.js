@@ -25,12 +25,7 @@ const usePostApplyQuery = () => {
       studentId,
       phoneNumber,
       email,
-      applyValues: applyValues.map((applyValue) => {
-        return {
-          applyQuestion: applyValue.applyQuestion,
-          value: applyValue.value,
-        };
-      }),
+      applyValues,
     });
 
   return useMutation({
