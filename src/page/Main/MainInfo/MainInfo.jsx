@@ -10,9 +10,9 @@ import ImgTooltip from '../../../components/ImgToolTip/ImgToolTip';
 
 const MainInfo = () => {
   return (
-    <div className="h-screen w-full bg-backgroundImage bg-cover bg-center">
+    <div className="h-screen w-full overflow-scroll bg-backgroundImage bg-cover bg-center scrollbar-hide">
       <div className="mx-auto flex w-2/3 items-center justify-between pt-8">
-        <ImgTooltip title="https://storyset.com/business" src={TeamImg} alt="teamImg" classNamed="w-1/2" />
+        <ImgTooltip title="https://storyset.com/business" src={TeamImg} alt="teamImg" imgClassName="w-1/2" />
         <div className="flex w-1/2 flex-col items-center gap-5">
           <div className="text-4xl font-semibold text-white">Welcome to UntoC!</div>
           <Link to="/recruit">
@@ -27,7 +27,7 @@ const MainInfo = () => {
         <div className="mr-8 flex w-2/3 flex-col ">
           <RandomDevTerm />
         </div>
-        <ImgTooltip title="https://storyset.com/people" src={FriendImg} alt="friendImg" classNamed="w-1/3" />
+        <ImgTooltip title="https://storyset.com/people" src={FriendImg} alt="friendImg" imgClassName="w-1/3" />
         <div />
       </div>
     </div>
