@@ -1,5 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
+import {
+  useDeleteApplyQuestionQuery,
+  useGetApplyQuestionQuery,
+  usePatchApplyQuestionQuery,
+  usePostApplyQuery,
+  usePostApplyQuestionQuery,
+} from 'api/applyApi';
 import useRoleCheck from 'hooks/useRoleCheck';
 
 import RecruitFormAdmin from './RecruitFormAdmin';
@@ -7,29 +15,24 @@ import RecruitFormUser from './RecruitFormUser';
 
 const RecruitForm = () => {
   const { isLogin } = useRoleCheck('admin');
-  const [applyQuestions, setApplyQuestions] = useState([]);
+  const [editApplyQuestions, setEditApplyQuestions] = useState([]);
+  const { data: applyQuestions, refetch: refetchApplyQuestions } = useGetApplyQuestionQuery();
+  const { mutate: postApplyQuestion } = usePostApplyQuestionQuery();
+  const { mutate: patchApplyQuestion } = usePatchApplyQuestionQuery();
+  const { mutate: deleteApplyQuestion } = useDeleteApplyQuestionQuery();
+  const { mutate: postApply } = usePostApplyQuery();
   const [isChanged, setIsChanged] = useState(false);
-
-  const getApplyQuestions = () => {
-    // Todo: get applyQuestions from server
-    setApplyQuestions(() => [
-      {
-        id: '1',
-        question: '동아리 지원 동기 (300자 이내)',
-        content: 'UntoC 동아리를 지원하게 된 이유에 대해 설명해주세요.최소 30자 이상의 내용이 필요합니다.',
-      },
-      {
-        id: '2',
-        question: '동아리에서 하고 싶은 활동 (300자 이내)',
-        content:
-          'UntoC 동아리에 들어오게 된다면 하고싶은 활동에 대해 적어주세요.위 내용을 바탕으로 동아리에 기여할 수 있는 아이디어를 제공하고,스터디 및 팀을 구성할 때 참고자료가 될 수 있습니다.',
-      },
-    ]);
-  };
+  const [studentId, setStudentId] = useState('');
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
-    getApplyQuestions();
-  }, []);
+    if (applyQuestions) {
+      setEditApplyQuestions(() => applyQuestions.data.applyQuestions);
+    }
+  }, [applyQuestions]);
 
   return (
     <form className="relative h-fit w-full rounded-3xl bg-white p-12 text-sm font-normal shadow-lg">
@@ -45,9 +48,11 @@ const RecruitForm = () => {
                 type="text"
                 name="studentId"
                 id="studentId"
-                placeholder="20230001"
+                placeholder="202412345"
                 className="w-full border border-borderColor p-1 px-3 focus:border-grayDark focus:outline-none"
                 disabled={isLogin}
+                value={studentId}
+                onChange={(e) => setStudentId(() => e.target.value)}
               />
             </label>
             <label htmlFor="name" className="w-11/12 justify-self-end">
@@ -56,9 +61,26 @@ const RecruitForm = () => {
                 type="text"
                 name="name"
                 id="name"
-                placeholder="홍길동"
+                placeholder="김언톡"
                 className="w-full border border-borderColor p-1 px-3 focus:border-grayDark focus:outline-none"
                 disabled={isLogin}
+                value={name}
+                onChange={(e) => setName(() => e.target.value)}
+              />
+            </label>
+          </div>
+          <div className="mb-3 h-24 w-full">
+            <label htmlFor="email">
+              <p className="mb-3 text-grayDark">전화번호</p>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="untoc@pusan.ac.kr"
+                className="w-full border border-borderColor p-1 px-3 focus:border-grayDark focus:outline-none"
+                disabled={isLogin}
+                value={email}
+                onChange={(e) => setEmail(() => e.target.value)}
               />
             </label>
           </div>
@@ -69,9 +91,11 @@ const RecruitForm = () => {
                 type="text"
                 name="phone-number"
                 id="phone"
-                placeholder="010-1234-5678"
+                placeholder="010-0000-0000"
                 className="w-full border border-borderColor p-1 px-3 focus:border-grayDark focus:outline-none"
                 disabled={isLogin}
+                value={phone}
+                onChange={(e) => setPhone(() => e.target.value)}
               />
             </label>
           </div>
@@ -81,12 +105,12 @@ const RecruitForm = () => {
              */
             isLogin ? (
               <RecruitFormAdmin
-                applyQuestions={applyQuestions}
-                setApplyQuestions={setApplyQuestions}
+                applyQuestions={editApplyQuestions}
+                setApplyQuestions={setEditApplyQuestions}
                 setIsChanged={setIsChanged}
               />
             ) : (
-              <RecruitFormUser applyQuestions={applyQuestions} />
+              <RecruitFormUser applyQuestions={editApplyQuestions} setApplyQuestions={setEditApplyQuestions} />
             )
           }
         </div>
@@ -94,7 +118,7 @@ const RecruitForm = () => {
           <button
             type="button"
             className="h-7 w-1/4 rounded border border-borderColor text-grayDark hover:cursor-pointer"
-            onClick={getApplyQuestions}
+            onClick={refetchApplyQuestions}
           >
             취소
           </button>
@@ -102,10 +126,48 @@ const RecruitForm = () => {
             onClick={
               isLogin
                 ? () => {
-                    /** @Todo save applyQuestions for admin */
+                    const createdQuestions = editApplyQuestions.filter(
+                      (question) => !applyQuestions.data.find((applyQuestion) => applyQuestion.id === question.id),
+                    );
+                    const updatedQuestions = editApplyQuestions.filter((question) =>
+                      applyQuestions.data.find((applyQuestion) => applyQuestion.id === question.id),
+                    );
+                    const deletedQuestions = applyQuestions.data.filter(
+                      (question) =>
+                        !editApplyQuestions.find((editApplyQuestion) => editApplyQuestion.id === question.id),
+                    );
+                    createdQuestions.forEach((question) => {
+                      postApplyQuestion({ question: question.question, description: question.description });
+                    });
+                    updatedQuestions.forEach((question) => {
+                      patchApplyQuestion({
+                        id: question.id,
+                        question: question.question,
+                        description: question.description,
+                      });
+                    });
+                    deletedQuestions.forEach((question) => {
+                      deleteApplyQuestion({ id: question.id });
+                    });
+                    setIsChanged(() => false);
                   }
                 : () => {
-                    /** @Todo submit applyQuestions for guest */
+                    const applyValues = editApplyQuestions.map((applyQuestion) => {
+                      return {
+                        applyQuestion: applyQuestion.id,
+                        value: applyQuestion.value,
+                      };
+                    });
+
+                    postApply({
+                      name,
+                      studentId,
+                      phoneNumber: phone,
+                      email,
+                      applyValues,
+                    });
+
+                    navigate('/');
                   }
             }
             type="button"

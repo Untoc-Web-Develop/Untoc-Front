@@ -11,21 +11,19 @@ const RecruitFormAdmin = ({ applyQuestions, setApplyQuestions, setIsChanged }) =
       {
         id: `${Math.random() * 100000}`,
         question: '',
-        content: '',
+        description: '',
       },
     ]);
   };
 
-  const removeQuestion = (index) => {
+  const removeQuestion = (id) => {
     setIsChanged(true);
-    setApplyQuestions((prev) => {
-      prev.filter((applyQuestion, idx) => idx !== index);
-    });
+    setApplyQuestions((prev) => prev.filter((applyQuestion) => applyQuestion.id !== id));
   };
 
   return (
     <>
-      {applyQuestions.map(({ id, question, content }, idx) => {
+      {applyQuestions?.map(({ id, question, description }, idx) => {
         return (
           <div className="mb-8 h-32 w-full" key={id}>
             <label htmlFor={id}>
@@ -37,7 +35,7 @@ const RecruitFormAdmin = ({ applyQuestions, setApplyQuestions, setIsChanged }) =
                     setIsChanged(true);
                     setApplyQuestions((prev) => [
                       ...prev.slice(0, idx),
-                      { id, question: e.target.value, content },
+                      { id, question: e.target.value, description },
                       ...prev.slice(idx + 1),
                     ]);
                   }}
@@ -47,7 +45,7 @@ const RecruitFormAdmin = ({ applyQuestions, setApplyQuestions, setIsChanged }) =
                   <button
                     className="w-full rounded border border-error font-bold text-error"
                     type="button"
-                    onClick={() => removeQuestion(idx)}
+                    onClick={() => removeQuestion(id)}
                   >
                     삭제
                   </button>
@@ -57,13 +55,13 @@ const RecruitFormAdmin = ({ applyQuestions, setApplyQuestions, setIsChanged }) =
                 type="text"
                 name={id}
                 id={id}
-                value={content}
+                value={description}
                 className="h-2/3 w-full resize-none border border-borderColor p-3 text-grayDark focus:border-grayDark focus:outline-none"
                 onChange={(e) => {
                   setIsChanged(true);
                   setApplyQuestions((prev) => [
                     ...prev.slice(0, idx),
-                    { id, content: e.target.value, question },
+                    { id, description: e.target.value, question },
                     ...prev.slice(idx + 1),
                   ]);
                 }}
@@ -90,7 +88,7 @@ RecruitFormAdmin.propTypes = {
     PropTypes.shape({
       id: PropTypes.string,
       question: PropTypes.string,
-      content: PropTypes.string,
+      description: PropTypes.string,
     }),
   ).isRequired,
   setApplyQuestions: PropTypes.func.isRequired,
