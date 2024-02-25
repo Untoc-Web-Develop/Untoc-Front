@@ -32,6 +32,17 @@ module.exports = {
             transform: 'translateY(0)',
           },
         },
+        InfinitySlider_copy: {
+          '0%': {
+            transform: 'translateX(100%)',
+          },
+          '50%': {
+            transform: 'translateX(0%)',
+          },
+          '100%': {
+            transform: 'translateX(-100%)',
+          },
+        },
         InfinitySlider: {
           '0%': {
             transform: 'translateX(0%)',
@@ -44,17 +55,6 @@ module.exports = {
           },
           '100%': {
             transform: 'translateX(0%)',
-          },
-        },
-        InfinitySlider_copy: {
-          '0%': {
-            transform: 'translateX(100%)',
-          },
-          '50%': {
-            transform: 'translateX(0%)',
-          },
-          '100%': {
-            transform: 'translateX(-100%)',
           },
         },
       },
