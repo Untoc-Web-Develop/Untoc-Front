@@ -249,7 +249,7 @@ const ProfileEdit = () => {
                   </div>
                   <textarea
                     id="selfIntroduction"
-                    className="resize-none rounded-lg border border-placeHolder px-3 py-3 text-xs"
+                    className="w-full resize-none rounded-lg border border-placeHolder px-3 py-3 text-xs"
                     cols="63"
                     rows="6"
                     value={selfIntroduction}
