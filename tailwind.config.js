@@ -1,4 +1,6 @@
+/* eslint-disable global-require */
 /** @type {import('tailwindcss').Config} */
+
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
@@ -19,7 +21,8 @@ module.exports = {
         alertBg: '#FFE8E7',
       },
       backgroundImage: {
-        backgroundImage: "url('asset/main/mainBackGround.jpg')",
+        // backgroundImage: "url('asset/main/mainBackGround.jpg')",
+        backgroundImage: "url('asset/main/background3.jpg')",
       },
       keyframes: {
         fadeIn: {
@@ -41,5 +44,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [require('tailwind-scrollbar-hide')],
 };
