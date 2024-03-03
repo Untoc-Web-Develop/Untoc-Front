@@ -1,33 +1,37 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import { Button } from '@mui/material';
 import TeamInfoCard from 'components/TeamInfoCard/TeamInfoCard';
-import titles from 'mocks/main';
+import titles from 'mocks/mainTeamTitles';
 import { RxDoubleArrowDown } from 'react-icons/rx';
 
 const MainActivity = () => {
-  const [animate, setAnimate] = useState(true);
-  const onStop = () => setAnimate(false);
-  const onStart = () => setAnimate(true);
-
-  useEffect(() => {
-    console.log('? :', animate);
-  }, [animate]);
+  const [isMouseEnter, setIsMouseEnter] = useState(false);
+  const onStop = () => setIsMouseEnter(true);
+  const onStart = () => setIsMouseEnter(false);
 
   return (
     <div className="py-20 text-grayDark">
-      <div className=" mx-auto mb-16 w-fit space-y-3 text-center">
+      <div className=" mx-auto mb-24 w-fit space-y-3 text-center">
         <div className="text-3xl ">지난 우리 활동은,</div>
         <div>2023학년 1학기부터 진행된 UntoC의 활동을 소개합니다!</div>
       </div>
-      <div className="flex h-64 items-center overflow-hidden ">
+      <div className=" flex h-64 items-center overflow-hidden ">
         <ul className="relative flex flex-nowrap" onMouseEnter={onStop} onMouseLeave={onStart}>
-          <div className={`left-0 flex animate-InfinitySlider flex-nowrap items-center gap-8 pr-8 `}>
+          <div
+            className={`absolute flex animate-InfinitySlider items-center gap-8 pr-8 ${
+              isMouseEnter ? '[animation-play-state:paused]' : ''
+            }`}
+          >
             {titles.map((items) => (
               <TeamInfoCard key={items.title} title={items.title} content={items.content} />
             ))}
           </div>
-          <div className={`flex animate-InfinitySlider_copy flex-nowrap items-center gap-8 pr-8 `}>
+          <div
+            className={`flex animate-InfinitySlider_copy items-center gap-8 pr-8 ${
+              isMouseEnter ? '[animation-play-state:paused]' : ''
+            }`}
+          >
             {titles.map((items) => (
               <TeamInfoCard key={items.title} title={items.title} content={items.content} />
             ))}
