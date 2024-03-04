@@ -1,21 +1,10 @@
-import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
 
 import { useGetApplySettingQuery } from 'api/applyApi';
 import RecruitImg from 'asset/recruit/recruitImg.png';
-import useRoleCheck from 'hooks/useRoleCheck';
 
-const RecruitDescription = () => {
-  const { isLogin } = useRoleCheck('admin');
-  const { data: applySetting, isLoading } = useGetApplySettingQuery();
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (!applySetting && !isLogin && !isLoading) {
-      alert('모집 설정이 없습니다. 관리자에게 문의해주세요.');
-      navigate('/', { replace: true });
-    }
-  }, [applySetting, isLogin, navigate, isLoading]);
+const RecruitDescriptionUser = () => {
+  const { data: applySetting } = useGetApplySettingQuery();
 
   const dateToString = (dateString) => {
     const date = new Date(dateString);
@@ -29,7 +18,7 @@ const RecruitDescription = () => {
         <h2 className="mb-10 text-base text-yellowPoint">
           모집기간 : {dateToString(applySetting?.data.openAt)} ~ {dateToString(applySetting?.data.closeAt)}
         </h2>
-        <p>{applySetting?.data.content || '모집 설명이 없습니다.'}</p>
+        <p>{applySetting?.data.content}</p>
       </div>
       <div className="h-2/5">
         <img src={RecruitImg} alt="recruitImg" />
@@ -38,4 +27,4 @@ const RecruitDescription = () => {
   );
 };
 
-export default RecruitDescription;
+export default RecruitDescriptionUser;

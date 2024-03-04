@@ -52,10 +52,10 @@ const useGetApplySettingQuery = () => {
 const usePostApplySettingQuery = () => {
   const queryClient = useQueryClient();
 
-  const fetcher = ({ generation, opneAt, closeAt, content }) =>
+  const fetcher = ({ generation, openAt, closeAt, content }) =>
     axios.post('/apply/apply-setting', {
       generation,
-      opneAt,
+      openAt,
       closeAt,
       content,
     });
@@ -75,12 +75,12 @@ const usePostApplySettingQuery = () => {
 const usePatchApplySettingQuery = () => {
   const queryClient = useQueryClient();
 
-  const fetcher = ({ id, generation, opneAt, closeAt, content }) =>
+  const fetcher = ({ id, generation, openAt, closeAt, content }) =>
     axios.patch('/apply/apply-setting', {
       id,
       newApplySetting: {
         generation,
-        opneAt,
+        openAt,
         closeAt,
         content,
       },
