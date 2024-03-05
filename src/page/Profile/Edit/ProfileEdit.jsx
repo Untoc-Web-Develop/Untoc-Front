@@ -95,13 +95,13 @@ const ProfileEdit = () => {
   const handleSubmit2 = (e) => {
     e.preventDefault();
     if (values2.activityManagement === '') {
-      alert('활동 상태를 선택해주세요');
+      // alert('활동 상태를 선택해주세요');
     }
   };
 
   useEffect(() => {
-    console.log(values1);
-    console.log(values2);
+    // console.log(values1);
+    // console.log(values2);
   }, [values1, values2]);
 
   return (
