@@ -1,14 +1,14 @@
 import React from 'react';
 
-import MainInfo from './MainInfo/MainInfo';
-
-// import MainInfo2 from './MainInfo/MainInfo2';
+import MainActivity from './MainActivity/MainActivity';
+// import MainInfo from './MainInfo/MainInfo';
 
 const Main = () => {
   return (
-    <div>
-      <MainInfo />
-      {/* <MainInfo2 /> */}
+
+    <div className="scrollbar-hide">
+      {/* <MainInfo /> */}
+      <MainActivity />
     </div>
   );
 };
