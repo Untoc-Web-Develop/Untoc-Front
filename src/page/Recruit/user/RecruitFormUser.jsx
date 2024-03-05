@@ -37,7 +37,7 @@ const RecruitFormUser = () => {
     });
 
     if (!validateApply()) {
-      alert('지원서 양식이 올바르지 않음');
+      alert('지원서 양식이 올바르지 않습니다.');
       return;
     }
 
@@ -48,6 +48,8 @@ const RecruitFormUser = () => {
       email,
       applyValues,
     });
+
+    alert('지원서 제출이 완료되었습니다');
 
     navigate('/');
   };
@@ -72,7 +74,7 @@ const RecruitFormUser = () => {
                 type="text"
                 name="studentId"
                 id="studentId"
-                placeholder="202412345"
+                placeholder={`${new Date().getFullYear().toString().padEnd(9, 0)} (9자리)`}
                 className="w-full border border-borderColor p-1 px-3 focus:border-grayDark focus:outline-none"
                 value={studentId}
                 onChange={(e) => setStudentId(() => e.target.value)}
@@ -84,7 +86,7 @@ const RecruitFormUser = () => {
                 type="text"
                 name="name"
                 id="name"
-                placeholder="김언톡"
+                placeholder="언톡"
                 className="w-full border border-borderColor p-1 px-3 focus:border-grayDark focus:outline-none"
                 value={name}
                 onChange={(e) => setName(() => e.target.value)}
