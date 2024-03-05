@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 
 import {
-  useDeleteApplyQuestionQuery,
+  useDeleteApplyQuestionMutation,
   useGetApplyQuestionQuery,
   useGetApplySettingQuery,
-  usePatchApplyQuestionQuery,
-  usePatchApplySettingQuery,
-  usePostApplyQuestionQuery,
-  usePostApplySettingQuery,
+  usePatchApplyQuestionMutation,
+  usePatchApplySettingMutation,
+  usePostApplyQuestionMutation,
+  usePostApplySettingMutation,
 } from 'api/applyApi';
 
 import RecruitDescriptionAdmin from './RecruitDescriptionAdmin';
@@ -20,11 +20,11 @@ const RecruitAdmin = () => {
   const [editApplySetting, setEditApplySetting] = useState({});
   const [editApplyQuestions, setEditApplyQuestions] = useState([]);
 
-  const { mutate: postApplySetting } = usePostApplySettingQuery();
-  const { mutate: patchApplySetting } = usePatchApplySettingQuery();
-  const { mutate: postApplyQuestion } = usePostApplyQuestionQuery();
-  const { mutate: patchApplyQuestion } = usePatchApplyQuestionQuery();
-  const { mutate: deleteApplyQuestion } = useDeleteApplyQuestionQuery();
+  const { mutate: postApplySetting } = usePostApplySettingMutation();
+  const { mutate: patchApplySetting } = usePatchApplySettingMutation();
+  const { mutate: postApplyQuestion } = usePostApplyQuestionMutation();
+  const { mutate: patchApplyQuestion } = usePatchApplyQuestionMutation();
+  const { mutate: deleteApplyQuestion } = useDeleteApplyQuestionMutation();
 
   const saveApplySettingAndQuestions = () => {
     if (editApplySetting.id) {
