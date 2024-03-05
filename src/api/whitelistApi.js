@@ -27,11 +27,11 @@ const usePostWhitelistQuery = () => {
   return useMutation({
     mutationFn: fetcher,
     onSuccess: () => {
-      alert('등록되었습니다.');
+      // alert('등록되었습니다.');
       queryClient.invalidateQueries(whitelistKeys.getWhitelistKey);
     },
     onError: () => {
-      alert('등록에 실패했습니다.');
+      // alert('등록에 실패했습니다.');
     },
   });
 };

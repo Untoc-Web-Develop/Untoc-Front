@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -31,7 +31,7 @@ const Login = () => {
             />
           </label>
           <div className="text-right">
-            <p className="mt-2 cursor-pointer text-xs text-grayDark">비밀번호 찾기</p>
+            {/* <p className="mt-2 cursor-pointer text-xs text-grayDark">비밀번호 찾기</p> */}
             {/* 추후에 Link로 변경하여 비밀번호 찾기 페이지로 연결하기 */}
           </div>
         </div>
@@ -45,12 +45,12 @@ const Login = () => {
             로그인
           </button>
         </div>
-        <div className="mt-4 text-center text-sm">
+        {/* <div className="mt-4 text-center text-sm">
           계정이 없으신가요?{' '}
           <Link to="/register" className="text-yellowPoint">
             회원가입
           </Link>
-        </div>
+        </div> */}
       </form>
     </div>
   );
