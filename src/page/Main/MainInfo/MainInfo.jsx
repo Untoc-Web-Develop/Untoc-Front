@@ -10,7 +10,7 @@ import ImgTooltip from '../../../components/ImgToolTip/ImgToolTip';
 
 const MainInfo = () => {
   return (
-    <div className="h-screen w-full overflow-scroll bg-backgroundImage bg-cover bg-center scrollbar-hide">
+    <div className="h-content w-full overflow-scroll bg-backgroundImage bg-cover bg-center scrollbar-hide">
       <div className="mx-auto flex w-2/3 items-center justify-between pt-8">
         <ImgTooltip title="https://storyset.com/business" src={TeamImg} alt="teamImg" imgClassName="w-1/2" />
         <div className="flex w-1/2 flex-col items-center gap-5">
