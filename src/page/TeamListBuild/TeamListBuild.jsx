@@ -1,8 +1,23 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 
+import TeamBuildDefaultImg from 'asset/teambuilddefault/teamBuildDefaultImg.png';
 import TeamListHeader from 'components/TeamListHeader/TeamListHeader';
 
+import SelectMember from './SelectMember';
+
 const TeamListBuild = () => {
+  const [imgFile, setImgFile] = useState(TeamBuildDefaultImg);
+  const imgRef = useRef();
+
+  const handleProfileImg = () => {
+    const file = imgRef.current.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      setImgFile(reader.result);
+    };
+  };
+
   return (
     <div className="justify-center bg-grayLight pb-[3rem]">
       <div className="py-10">
@@ -14,16 +29,12 @@ const TeamListBuild = () => {
         <div className="mx-[4rem]">
           <div className="mx-8 flex h-[13rem] gap-20">
             <div className="flex flex-col items-center justify-center gap-5">
-              <img
-                className="h-20 w-20 rounded-full"
-                src="https://mblogthumb-phinf.pstatic.net/MjAyMDExMDFfMjIg/MDAxNjA0MjI4ODc1MDkx.itxFQbHQ_zAuNQJU7PCOlF0mmstYn2v4ZF4WygunqGIg.3jloNowx-eWU-ztCLACtYubVbATNdCFQLjgvYsynV1og.JPEG.gambasg/%EC%9C%A0%ED%8A%9C%EB%B8%8C_%EA%B8%B0%EB%B3%B8%ED%94%84%EB%A1%9C%ED%95%84_%EC%A3%BC%ED%99%A9.jpg?type=w400"
-                alt="이미지"
-              />
+              <img className="h-20 w-20 rounded-full" src={imgFile} alt="이미지" />
               <label htmlFor="teamImg">
                 <div className="flex h-7 w-[7rem] cursor-pointer items-center justify-center bg-grayLight text-xs text-grayDark">
                   사진 불러오기
                 </div>
-                <input className="h-0 w-0" type="file" id="teamImg" />
+                <input className="h-0 w-0" type="file" id="teamImg" ref={imgRef} onChange={handleProfileImg} />
               </label>
             </div>
             <div className="flex flex-col items-center justify-center gap-10">
@@ -35,17 +46,22 @@ const TeamListBuild = () => {
                 <div className="mt-1 font-semibold">Link</div>
                 <div className="flex flex-col gap-3">
                   <input className="w-[15rem] border-b p-1" placeholder="http://lead-notion.io/asd" />
-                  <input className="w-[15rem] border-b p-1" placeholder="NONE" />
+                  <input className="w-[15rem] border-b p-1" placeholder="http://github.com/lead" />
                 </div>
               </div>
             </div>
             <div className="mt-8 flex grow gap-5 text-sm">
               <div className="font-semibold">팀원</div>
-              <div className="flex flex-col gap-3">
-                <input className="w-[15rem] border-b  p-1" placeholder="세론1" />
-                <input className="w-[15rem] border-b p-1" placeholder="세론2" />
-                <input className="w-[15rem] border-b p-1" placeholder="세론3" />
-                <input className="w-[15rem] border-b p-1" placeholder="+ 팀원 추가하기" />
+              <div className="flex flex-col gap-3 overflow-y-auto">
+                {/* <button className="flex w-[15rem] p-1 text-placeHolder" type="button">
+                  + 팀원 추가하기
+                </button>
+                <div className="flex flex-col gap-3 overflow-y-auto">
+                  <input className="w-[15rem] border-b  p-1" placeholder="세론1" />
+                  <input className="w-[15rem] border-b p-1" placeholder="세론2" />
+                  <input className="w-[15rem] border-b p-1" placeholder="세론3" />
+                </div> */}
+                <SelectMember />
               </div>
             </div>
           </div>
