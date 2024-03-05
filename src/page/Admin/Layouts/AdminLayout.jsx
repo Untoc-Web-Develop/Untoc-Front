@@ -1,16 +1,16 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 
-import useRoleCheck from 'hooks/useRoleCheck';
+import useAuthCheck from 'hooks/useAuthCheck';
 
 import AdminTab from '../components/AdminTab/AdminTab';
 
 const AdminLayout = () => {
-  const { OnlyLogin } = useRoleCheck('admin');
+  const { OnlyPass } = useAuthCheck(['admin']);
 
   return (
     <div className="flex h-content w-full justify-center">
-      <OnlyLogin>
+      <OnlyPass>
         <div className="h-full w-[800px] lg:w-4/5">
           <div className="flex h-1/6 items-center">
             <AdminTab />
@@ -19,7 +19,7 @@ const AdminLayout = () => {
             <Outlet />
           </div>
         </div>
-      </OnlyLogin>
+      </OnlyPass>
     </div>
   );
 };

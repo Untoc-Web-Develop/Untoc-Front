@@ -16,7 +16,7 @@ const useGetApplyQuery = () => {
   });
 };
 
-const usePostApplyQuery = () => {
+const usePostApplyMutation = () => {
   const queryClient = useQueryClient();
 
   const fetcher = ({ name, studentId, phoneNumber, email, applyValues }) =>
@@ -49,7 +49,7 @@ const useGetApplySettingQuery = () => {
   });
 };
 
-const usePostApplySettingQuery = () => {
+const usePostApplySettingMutation = () => {
   const queryClient = useQueryClient();
 
   const fetcher = ({ generation, openAt, closeAt, content }) =>
@@ -72,7 +72,7 @@ const usePostApplySettingQuery = () => {
   });
 };
 
-const usePatchApplySettingQuery = () => {
+const usePatchApplySettingMutation = () => {
   const queryClient = useQueryClient();
 
   const fetcher = ({ id, generation, openAt, closeAt, content }) =>
@@ -98,7 +98,7 @@ const usePatchApplySettingQuery = () => {
   });
 };
 
-const useDeleteApplySettingQuery = () => {
+const useDeleteApplySettingMutation = () => {
   const queryClient = useQueryClient();
 
   const fetcher = ({ id }) => axios.delete(`/apply/apply-setting?id=${id}`);
@@ -124,7 +124,7 @@ const useGetApplyQuestionQuery = () => {
   });
 };
 
-const usePostApplyQuestionQuery = () => {
+const usePostApplyQuestionMutation = () => {
   const queryClient = useQueryClient();
 
   const fetcher = ({ question, description }) =>
@@ -145,7 +145,7 @@ const usePostApplyQuestionQuery = () => {
   });
 };
 
-const usePatchApplyQuestionQuery = () => {
+const usePatchApplyQuestionMutation = () => {
   const queryClient = useQueryClient();
 
   const fetcher = ({ id, question, description }) =>
@@ -169,7 +169,7 @@ const usePatchApplyQuestionQuery = () => {
   });
 };
 
-const useDeleteApplyQuestionQuery = () => {
+const useDeleteApplyQuestionMutation = () => {
   const queryClient = useQueryClient();
 
   const fetcher = ({ id }) => axios.delete(`/apply/apply-question?id=${id}`);
@@ -188,13 +188,13 @@ const useDeleteApplyQuestionQuery = () => {
 
 export {
   useGetApplyQuery,
-  usePostApplyQuery,
+  usePostApplyMutation,
   useGetApplySettingQuery,
-  usePostApplySettingQuery,
-  usePatchApplySettingQuery,
-  useDeleteApplySettingQuery,
+  usePostApplySettingMutation,
+  usePatchApplySettingMutation,
+  useDeleteApplySettingMutation,
   useGetApplyQuestionQuery,
-  usePostApplyQuestionQuery,
-  usePatchApplyQuestionQuery,
-  useDeleteApplyQuestionQuery,
+  usePostApplyQuestionMutation,
+  usePatchApplyQuestionMutation,
+  useDeleteApplyQuestionMutation,
 };

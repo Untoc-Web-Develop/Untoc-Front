@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { useGetApplyQuestionQuery, usePostApplyQuery } from 'api/applyApi';
+import { useGetApplyQuestionQuery, usePostApplyMutation } from 'api/applyApi';
 
 const RecruitFormUser = () => {
   const [editApplyQuestions, setEditApplyQuestions] = useState([]);
   const { data: applyQuestions } = useGetApplyQuestionQuery();
-  const { mutate: postApply } = usePostApplyQuery();
+  const { mutate: postApply } = usePostApplyMutation();
 
   const [studentId, setStudentId] = useState('');
   const [name, setName] = useState('');

@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
+
+import { useLoginMutation } from 'api/authApi';
 // import { Link } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const { mutate: login } = useLoginMutation();
 
   return (
     <div className="mx-auto my-auto grid h-content place-items-center">
@@ -37,6 +41,10 @@ const Login = () => {
         </div>
         <div className="mt-4">
           <button
+            onClick={(e) => {
+              e.preventDefault();
+              login({ email, password });
+            }}
             type="submit"
             className={`h-15 mt-2 w-80 rounded-3xl p-3 text-white ${
               email && password ? 'bg-yellowPoint' : 'bg-grayPoint'
