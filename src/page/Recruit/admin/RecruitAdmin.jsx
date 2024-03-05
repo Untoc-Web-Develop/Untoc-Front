@@ -55,6 +55,8 @@ const RecruitAdmin = () => {
     deletedQuestions.forEach((question) => {
       deleteApplyQuestion({ id: question.id });
     });
+
+    alert('지원서 설정이 저장되었습니다');
   };
 
   useEffect(() => {
