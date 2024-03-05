@@ -3,9 +3,10 @@ import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
 
-const ImgTooltip = styled(({ className, ...props }) => (
-  <Tooltip {...props} classes={{ popper: className }}>
-    <img src={props.src} alt={props.alt} className={props.classNamed} />
+
+const ImgTooltip = styled(({ title, className, src, alt, imgClassName }) => (
+  <Tooltip title={title} classes={{ popper: className }}>
+    <img src={src} alt={alt} className={imgClassName} />
   </Tooltip>
 ))(({ theme }) => ({
   [`& .${tooltipClasses.tooltip}`]: {

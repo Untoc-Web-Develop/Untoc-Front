@@ -5,6 +5,7 @@ import MainActivity from './MainActivity/MainActivity';
 
 const Main = () => {
   return (
+
     <div className="scrollbar-hide">
       {/* <MainInfo /> */}
       <MainActivity />

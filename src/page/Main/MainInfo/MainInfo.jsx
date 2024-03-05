@@ -1,39 +1,34 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { Button } from '@mui/material';
-import { MdKeyboardDoubleArrowRight } from 'react-icons/md';
+import FriendImg from 'asset/main/mainFriends.png';
+import TeamImg from 'asset/main/mainTeam.png';
+
+import RandomDevTerm from './components/RandomDevTerm';
+import ImgTooltip from '../../../components/ImgToolTip/ImgToolTip';
 
 const MainInfo = () => {
-  useEffect(() => {
-    const textElement = document.getElementById('welcome-text');
-    const textContent = 'Welcome to UntoC!!';
-    textElement.textContent = '';
-    textContent.split('').forEach((char, index) => {
-      setTimeout(() => {
-        textElement.innerHTML += char;
-      }, 100 * index);
-    });
-  }, []);
-
   return (
-    <div className="relative h-screen w-full bg-backgroundImage bg-cover bg-fixed bg-center bg-no-repeat text-white">
-      <div className="md:text-md flex h-full w-full flex-col items-center justify-center space-y-5 bg-black bg-opacity-20 backdrop-blur-md  duration-1000 ease-out xl:text-xl">
-        <div className="mb-20 font-bold duration-1000 ease-out md:text-3xl xl:text-6xl" id="welcome-text" />
-        <div className="flex flex-col items-start">
-          <div className="text-md animate-fadeIn">
-            UntoC은 untouchable, Ceaseless, Carbon 세 단어의 약어로, <br />
-            남들이 범접할 수 어렵고 끊임없이 노력하여 탄소처럼 꼭 필요한 존재가 되자는 슬로건을 가지고 있습니다.
-          </div>
-          <div className="!mt-10 w-full">
-            <Button
-              variant="contained"
-              className="h-10 w-full !rounded-full !bg-white !bg-opacity-20 !font-semibold !shadow-none"
-            >
-              Join this club
-              <MdKeyboardDoubleArrowRight />
+    <div className="h-screen w-full overflow-scroll bg-backgroundImage bg-cover bg-center scrollbar-hide">
+      <div className="mx-auto flex w-2/3 items-center justify-between pt-8">
+        <ImgTooltip title="https://storyset.com/business" src={TeamImg} alt="teamImg" imgClassName="w-1/2" />
+        <div className="flex w-1/2 flex-col items-center gap-5">
+          <div className="text-4xl font-semibold text-white">Welcome to UntoC!</div>
+          <Link to="/recruit">
+            <Button variant="contained" className="!bg-white !bg-opacity-25 !backdrop-blur-sm">
+              Join this club &gt;&gt;&gt;
             </Button>
-          </div>
+          </Link>
         </div>
+        <div />
+      </div>
+      <div className="px-auto mx-auto flex w-4/5 items-center justify-end pt-8">
+        <div className="mr-8 flex w-2/3 flex-col ">
+          <RandomDevTerm />
+        </div>
+        <ImgTooltip title="https://storyset.com/people" src={FriendImg} alt="friendImg" imgClassName="w-1/3" />
+        <div />
       </div>
     </div>
   );
