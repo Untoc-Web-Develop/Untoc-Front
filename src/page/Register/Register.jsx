@@ -1,191 +1,309 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+import { useForm } from 'react-hook-form';
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
+
 const Register = () => {
-  // 초기값 세팅 - 이름, 학번, 전화번호, 비번, 비번확인
-  const [username, setUsername] = useState('');
-  const [studentnumber, setStudentnumber] = useState('');
-  const [phonenumber, setPhonenumber] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmpassword, setConfirmpassword] = useState('');
+  const {
+    register,
+    handleSubmit,
+    watch,
+    getValues,
+    formState: { errors },
+  } = useForm();
+
+  const watchUsername = watch('username');
+  const watchStudentNumber = watch('studentNumber');
+  const watchPhoneNumber = watch('phoneNumber');
+  const watchEmail = watch('email');
+  const watchPassword = watch('password');
+  const watchConfirmPassword = watch('confirmPassword');
+
+  const [visible, setVisible] = useState({
+    passwordVisible: false,
+    confirmPasswordVisible: false,
+  });
+
   const [isEmailValidate, setIsEmailValidate] = useState(false);
+  const [focus, setFocus] = useState({
+    emailFocus: false,
+    emailVertificationCodeFocus: false,
+  });
 
-  const onStudentnumberHandler = (e) => {
-    setStudentnumber(e.target.value);
-  };
-
-  const onPhonenumberHandler = (e) => {
-    setPhonenumber(e.target.value);
-  };
-
-  const onPasswordHandler = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const onConfirmpasswordHandler = (e) => {
-    setConfirmpassword(e.target.value);
-  };
-
-  function checkPassword(e) {
-    if (password !== confirmpassword) {
-      e.preventDefault();
+  const emailSubmit = (data) => {
+    const { email } = data;
+    if (email) {
+      setIsEmailValidate(true);
     }
-  }
-
-  const onSubmit = (e) => {
-    checkPassword(e);
   };
+
+  const registerSubmit = (data) => {
+    console.log(JSON.stringify(data));
+  };
+
+  function emailMessage(errorsParam, isEmailValidateParam) {
+    if (errorsParam.email) return errorsParam.email.message;
+    if (isEmailValidateParam) return '이메일이 전송되었습니다. 확인해주세요';
+    return '부산대학교 이메일을 사용해주세요';
+  }
 
   return (
     <div className="mx-auto my-auto flex h-content flex-col place-items-center">
-      <form onSubmit={onSubmit}>
-        <h1 className="m-8 text-center text-5xl font-semibold text-yellowPoint">UntoC</h1>
-        <div>
-          <div className="mb-5">
-            <label htmlFor="username">
-              <span>Username</span>
-              <br />
-              <input
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                className="h-12 w-80 rounded-full border border-borderColor p-3 text-sm text-placeHolder"
-                type="text"
-                id="username"
-                placeholder="Username"
-                required
-              />
-              <br />
-              <span className="text-xs text-placeHolder">본명으로 기입해주세요</span>
-              <br />
-            </label>
-          </div>
-          <div className="mb-5">
-            <label htmlFor="studentnumber">
-              <span>StudentNumber</span>
-              <br />
-              <input
-                value={studentnumber}
-                onChange={onStudentnumberHandler}
-                className="h-12 w-80 rounded-full border border-borderColor p-3 text-sm text-placeHolder"
-                type="text"
-                id="studentnumber"
-                placeholder="StudentNumber"
-                required
-              />
-              <br />
-            </label>
-          </div>
-          <div className="mb-5">
-            <label htmlFor="phonenumber">
-              <span>PhoneNumber</span>
-              <br />
-              <input
-                value={phonenumber}
-                onChange={onPhonenumberHandler}
-                className="h-12 w-80 rounded-full border border-borderColor p-3 text-sm text-placeHolder"
-                type="text"
-                id="phonenumber"
-                placeholder="010-0000-0000"
-                required
-              />
-              <br />
-              <span className="text-xs text-placeHolder">숫자 및 &apos;-&apos;만 사용 가능합니다</span>
-              <br />
-            </label>
-          </div>
-          <div className="mb-5">
-            <label htmlFor="email" className="relative">
-              <span>Email</span>
-              <div className="flex h-12 w-80 place-items-center rounded-full border border-borderColor px-1 focus-within:outline">
-                <input
-                  className="w-60 rounded-l-full p-2 text-sm outline-none"
-                  type="email"
-                  id="email"
-                  placeholder="UntoC@pusan.ac.kr"
-                  required
-                />
-                <button
-                  className="h-10 w-20 rounded-full border border-borderColor bg-white text-xs text-placeHolder"
-                  type="submit"
-                  onClick={() => setIsEmailValidate(true)}
-                >
-                  확인
-                </button>
-              </div>
-              <span className="text-xs text-placeHolder">부산대학교 이메일을 사용해주세요</span>
-              <br />
-            </label>
-          </div>
-          <div className="mb-5">
-            <label htmlFor="email" className="relative">
-              <span>Email vertification code</span>
-              <div
-                className={`flex h-12 w-80 place-items-center rounded-full border-borderColor px-1 focus-within:outline ${
-                  isEmailValidate ? 'border border-borderColor bg-white' : 'bg-grayLight'
-                }`}
-              >
-                <input
-                  className={`w-60 rounded-full p-2 text-sm outline-none ${
-                    isEmailValidate ? 'bg-white' : 'bg-grayLight'
-                  }`}
-                  type="text"
-                  id="emailVertificationCode"
-                  disabled={!isEmailValidate}
-                />
-                <button
-                  className="h-10 w-20 rounded-full border border-borderColor bg-white text-xs text-placeHolder"
-                  type="submit"
-                >
-                  확인
-                </button>
-              </div>
-              <span className="text-xs text-gray-400">이메일 확인 인증 코드입니다</span>
-              <br />
-            </label>
-          </div>
-          <div className="mb-5">
-            <label htmlFor="password" className="relative">
-              <span>Password</span>
-              <br />
-              <input
-                value={password}
-                onChange={onPasswordHandler}
-                className="h-12 w-80 rounded-full border border-borderColor p-3 text-sm text-placeHolder"
-                type="text"
-                id="password"
-                placeholder="password"
-                required
-              />
-              <br />
-              <span className="text-xs text-placeHolder">8~16자리의 영문자 및 숫자를 포함하여 만들어주세요</span>
-              <br />
-            </label>
-          </div>
-          <div className="mb-5">
-            <label htmlFor="confirmpassword">
-              <span>ConfirmPassword</span>
-              <br />
-              <input
-                value={confirmpassword}
-                onChange={onConfirmpasswordHandler}
-                className="h-12 w-80 rounded-full border border-borderColor p-3 text-sm text-placeHolder"
-                type="text"
-                id="confirmpassword"
-                required
-              />
-              <br />
-            </label>
-          </div>
+      <h1 className="m-8 py-5 text-center text-6xl font-bold text-yellowPoint">UntoC</h1>
+      <div>
+        <div className="mb-5">
+          <label htmlFor="username">
+            <span className="font-medium">Username</span>
+            <br />
+            <input
+              className={`mt-2 h-12 w-80 rounded-full border px-4 py-3 text-sm placeholder:text-placeHolder focus:bg-focusColor ${
+                errors.username ? 'border-error' : 'border-borderColor'
+              }`}
+              type="text"
+              id="username"
+              placeholder="Username"
+              {...register('username', {
+                pattern: {
+                  value: /^[가-힣]+$/,
+                  message: '이름 형식이 올바르지 않습니다.',
+                },
+              })}
+            />
+            <br />
+            <span className={`text-xs ${errors.username ? 'text-error' : 'text-placeHolder'}`}>
+              {errors.username ? errors.username.message : '본명으로 기입해주세요'}
+            </span>
+            <br />
+          </label>
         </div>
-        <div className="mt-20">
+        <div className="mb-5">
+          <label htmlFor="studentnumber">
+            <span className="font-medium">StudentNumber</span>
+            <br />
+            <input
+              className="mt-2 h-12 w-80 rounded-full border border-borderColor px-4 py-3 text-sm placeholder:text-placeHolder focus:bg-focusColor"
+              type="number"
+              id="studentnumber"
+              placeholder="StudentNumber"
+              {...register('studentNumber')}
+            />
+            <br />
+          </label>
+        </div>
+        <div className="mb-5">
+          <label htmlFor="phonenumber">
+            <span className="font-medium">PhoneNumber</span>
+            <br />
+            <input
+              className={`mt-2 h-12 w-80 rounded-full border px-4 py-3 text-sm placeholder:text-placeHolder focus:bg-focusColor ${
+                errors.phoneNumber ? 'border-error' : 'border-borderColor'
+              }`}
+              type="text"
+              id="phonenumber"
+              placeholder="010-0000-0000"
+              {...register('phoneNumber', {
+                pattern: {
+                  value: /^[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}$/,
+                  message: "형식을 확인해주세요. 숫자 및 '-'만 사용 가능합니다.",
+                },
+              })}
+            />
+            <br />
+            <span className={`text-xs ${errors.phoneNumber ? 'text-error' : 'text-placeHolder'}`}>
+              {errors.phoneNumber ? errors.phoneNumber.message : "숫자 및 '-'만 사용 가능합니다."}
+            </span>
+            <br />
+          </label>
+        </div>
+        <div className="mb-5">
+          <label htmlFor="email" className="relative">
+            <span className="font-medium">Email</span>
+            <div
+              className={`mt-2 flex h-12 w-80 place-items-center rounded-full border px-1  focus-within:outline ${
+                errors.email ? 'border-error' : 'border-borderColor'
+              } ${focus.emailFocus && 'bg-focusColor'}`}
+            >
+              <input
+                className="w-60 rounded-l-full px-3 py-2 text-sm outline-none focus:bg-focusColor"
+                type="email"
+                id="email"
+                placeholder="UntoC@pusan.ac.kr"
+                {...register('email', {
+                  pattern: {
+                    value: /^[a-zA-Z0-9+-_.]+@pusan\.ac\.kr$/,
+                    message: '이메일 형식이 올바르지 않습니다.',
+                  },
+                })}
+                onFocus={() =>
+                  setFocus({
+                    ...focus,
+                    emailFocus: true,
+                  })
+                }
+                onBlur={() =>
+                  setFocus({
+                    ...focus,
+                    emailFocus: false,
+                  })
+                }
+              />
+              <form onSubmit={handleSubmit(emailSubmit)}>
+                <button
+                  className="h-10 w-20 rounded-full border border-borderColor bg-white text-xs text-placeHolder"
+                  type="submit"
+                >
+                  확인
+                </button>
+              </form>
+            </div>
+            <span className={`text-xs ${errors.email || isEmailValidate ? 'text-error' : 'text-placeHolder'}`}>
+              {emailMessage(errors, isEmailValidate)}
+            </span>
+            <br />
+          </label>
+        </div>
+        <div className="mb-5">
+          <label htmlFor="email" className="relative">
+            <span className="font-medium">Email vertification code</span>
+            <div
+              className={`mt-2 flex h-12 w-80 place-items-center rounded-full border-borderColor px-1 focus-within:outline ${
+                isEmailValidate ? 'border border-borderColor ' : 'bg-grayLight'
+              } ${focus.emailVertificationCodeFocus && 'bg-focusColor'}`}
+            >
+              <input
+                className={`w-60 rounded-full px-3 py-2 text-sm outline-none focus:bg-focusColor ${
+                  isEmailValidate ? '' : 'bg-grayLight'
+                }`}
+                type="text"
+                id="emailVertificationCode"
+                disabled={!isEmailValidate}
+                onFocus={() =>
+                  setFocus({
+                    ...focus,
+                    emailVertificationCodeFocus: true,
+                  })
+                }
+                onBlur={() =>
+                  setFocus({
+                    ...focus,
+                    emailVertificationCodeFocus: false,
+                  })
+                }
+              />
+              <button
+                className="h-10 w-20 rounded-full border border-borderColor bg-white text-xs text-placeHolder"
+                type="submit"
+              >
+                확인
+              </button>
+            </div>
+            <span className="text-xs text-gray-400">이메일 확인 인증 코드입니다</span>
+            <br />
+          </label>
+        </div>
+        <div className="mb-1">
+          <label htmlFor="password" className="relative">
+            <span className="font-medium">Password</span>
+            <br />
+            <input
+              className={`mt-2 h-12 w-80 rounded-full border px-4 py-3 text-sm placeholder:text-placeHolder focus:bg-focusColor ${
+                errors.password ? 'border-error' : 'border-placeHolder'
+              }`}
+              type={visible.passwordVisible ? 'text' : 'password'}
+              id="password"
+              placeholder="password"
+              {...register('password', {
+                pattern: {
+                  value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$/,
+                },
+              })}
+            />
+            <div className="relative bottom-[2.1rem] left-[17rem] text-placeHolder">
+              <button
+                type="button"
+                onClick={() =>
+                  setVisible({
+                    ...visible,
+                    passwordVisible: !visible.passwordVisible,
+                  })
+                }
+              >
+                {visible.passwordVisible ? <AiOutlineEye size="22" /> : <AiOutlineEyeInvisible size="22" />}
+              </button>
+            </div>
+            <span className={`relative bottom-5 text-xs ${errors.password ? 'text-error' : 'text-placeHolder'}`}>
+              8~16자리의 영문자 및 숫자를 포함하여 만들어주세요
+            </span>
+          </label>
+        </div>
+        <div className="mb-5">
+          <label htmlFor="confirmPassword">
+            <span className="font-medium">ConfirmPassword</span>
+            <br />
+            <input
+              className={`mt-2 h-12 w-80 rounded-full border px-4 py-3 text-sm placeholder:text-placeHolder focus:bg-focusColor ${
+                errors.confirmPassword ? 'border-error' : 'border-borderColor'
+              }`}
+              type={visible.confirmPasswordVisible ? 'text' : 'password'}
+              id="confirmPassword"
+              {...register('confirmPassword', {
+                validate: {
+                  check: (val) => {
+                    if (getValues('password') !== val) {
+                      return '비밀번호가 일치하지 않습니다. 확인해주세요';
+                    }
+                    return null;
+                  },
+                },
+              })}
+            />
+            <div className="relative bottom-[2.1rem] left-[17rem] text-placeHolder">
+              <button
+                type="button"
+                onClick={() =>
+                  setVisible({
+                    ...visible,
+                    confirmPasswordVisible: !visible.confirmPasswordVisible,
+                  })
+                }
+              >
+                {visible.confirmPasswordVisible ? <AiOutlineEye size="22" /> : <AiOutlineEyeInvisible size="22" />}
+              </button>
+            </div>
+            {errors.confirmPassword && (
+              <span className="relative bottom-5 text-xs text-error">{errors.confirmPassword.message}</span>
+            )}
+          </label>
+        </div>
+      </div>
+      <div className="mt-[4rem]">
+        <form onSubmit={handleSubmit(registerSubmit)}>
           <button
-            className={`h-12 w-80 rounded-full border-borderColor text-xs font-bold text-placeHolder text-white
+            className={`h-12 w-80 rounded-full border-borderColor text-xs font-bold text-white
               ${
-                !username || !studentnumber || !phonenumber || !password || !confirmpassword
+                !(
+                  watchUsername &&
+                  watchStudentNumber &&
+                  watchPhoneNumber &&
+                  watchEmail &&
+                  watchPassword &&
+                  watchConfirmPassword
+                )
                   ? 'bg-borderColor'
                   : 'bg-yellowPoint'
               }`}
-            disabled={!username || !studentnumber || !phonenumber || !password || !confirmpassword}
+            disabled={
+              !(
+                watchUsername &&
+                watchStudentNumber &&
+                watchPhoneNumber &&
+                watchEmail &&
+                watchPassword &&
+                watchConfirmPassword
+              )
+            }
             type="submit"
           >
             회원가입
@@ -197,8 +315,8 @@ const Register = () => {
               로그인
             </Link>
           </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   );
 };
