@@ -31,11 +31,11 @@ const usePostApplyQuery = () => {
   return useMutation({
     mutationFn: fetcher,
     onSuccess: () => {
-      alert('지원서 제출이 완료되었습니다');
+      // alert('지원서 제출이 완료되었습니다');
       queryClient.invalidateQueries(applyKeys.getApplyKey);
     },
     onError: () => {
-      alert('지원서 제출에 실패했습니다.');
+      // alert('지원서 제출에 실패했습니다.');
     },
   });
 };
@@ -63,11 +63,11 @@ const usePostApplySettingQuery = () => {
   return useMutation({
     mutationFn: fetcher,
     onSuccess: () => {
-      alert('지원서 설정이 완료되었습니다');
+      // alert('지원서 설정이 완료되었습니다');
       queryClient.invalidateQueries(applyKeys.getApplySettingKey);
     },
     onError: () => {
-      alert('지원서 설정에 실패했습니다.');
+      // alert('지원서 설정에 실패했습니다.');
     },
   });
 };
@@ -89,11 +89,11 @@ const usePatchApplySettingQuery = () => {
   return useMutation({
     mutationFn: fetcher,
     onSuccess: () => {
-      alert('지원서 설정이 완료되었습니다');
+      // alert('지원서 설정이 완료되었습니다');
       queryClient.invalidateQueries(applyKeys.getApplySettingKey);
     },
     onError: () => {
-      alert('지원서 설정에 실패했습니다.');
+      // alert('지원서 설정에 실패했습니다.');
     },
   });
 };
@@ -106,11 +106,11 @@ const useDeleteApplySettingQuery = () => {
   return useMutation({
     mutationFn: fetcher,
     onSuccess: () => {
-      alert('지원서 설정이 삭제되었습니다');
+      // alert('지원서 설정이 삭제되었습니다');
       queryClient.invalidateQueries(applyKeys.getApplySettingKey);
     },
     onError: () => {
-      alert('지원서 설정 삭제에 실패했습니다.');
+      // alert('지원서 설정 삭제에 실패했습니다.');
     },
   });
 };
@@ -136,11 +136,11 @@ const usePostApplyQuestionQuery = () => {
   return useMutation({
     mutationFn: fetcher,
     onSuccess: () => {
-      alert('지원서 질문이 추가되었습니다');
+      // alert('지원서 질문이 추가되었습니다');
       queryClient.invalidateQueries(applyKeys.getApplyQuestionKey);
     },
     onError: () => {
-      alert('지원서 질문 추가에 실패했습니다.');
+      // alert('지원서 질문 추가에 실패했습니다.');
     },
   });
 };
@@ -160,11 +160,11 @@ const usePatchApplyQuestionQuery = () => {
   return useMutation({
     mutationFn: fetcher,
     onSuccess: () => {
-      alert('지원서 질문이 수정되었습니다');
+      // alert('지원서 질문이 수정되었습니다');
       queryClient.invalidateQueries(applyKeys.getApplyQuestionKey);
     },
     onError: () => {
-      alert('지원서 질문 수정에 실패했습니다.');
+      // alert('지원서 질문 수정에 실패했습니다.');
     },
   });
 };
@@ -177,11 +177,11 @@ const useDeleteApplyQuestionQuery = () => {
   return useMutation({
     mutationFn: fetcher,
     onSuccess: () => {
-      alert('지원서 질문이 삭제되었습니다');
+      // alert('지원서 질문이 삭제되었습니다');
       queryClient.invalidateQueries(applyKeys.getApplyQuestionKey);
     },
     onError: () => {
-      alert('지원서 질문 삭제에 실패했습니다.');
+      // alert('지원서 질문 삭제에 실패했습니다.');
     },
   });
 };
