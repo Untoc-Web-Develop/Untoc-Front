@@ -18,7 +18,7 @@ const RecruitDescriptionUser = () => {
         <h2 className="mb-10 text-base text-yellowPoint">
           모집기간 : {dateToString(applySetting?.data.openAt)} ~ {dateToString(applySetting?.data.closeAt)}
         </h2>
-        <p>{applySetting?.data.content}</p>
+        <p className="whitespace-pre-wrap">{applySetting?.data.content}</p>
       </div>
       <div className="h-2/5">
         <img src={RecruitImg} alt="recruitImg" />

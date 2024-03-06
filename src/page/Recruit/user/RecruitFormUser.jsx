@@ -41,17 +41,19 @@ const RecruitFormUser = () => {
       return;
     }
 
-    postApply({
-      name,
-      studentId,
-      phoneNumber: phone,
-      email,
-      applyValues,
-    });
+    if (window.confirm('지원서를 제출하시겠습니까? 제출된 지원서는 수정이 불가능합니다.') === true) {
+      postApply({
+        name,
+        studentId,
+        phoneNumber: phone,
+        email,
+        applyValues,
+      });
 
-    alert('지원서 제출이 완료되었습니다');
+      alert('지원서 제출이 완료되었습니다');
 
-    navigate('/');
+      navigate('/');
+    }
   };
 
   useEffect(() => {
