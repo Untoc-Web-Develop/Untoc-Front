@@ -11,7 +11,7 @@ import NotFound from 'page/NotFound/NotFound';
 import Recruit from 'page/Recruit/Recruit';
 // import Register from 'page/Register/Register';
 
-// import AdminRouter from './AdminRouter';
+import AdminRouter from './AdminRouter';
 // import BoardRouter from './BoardRouter';
 // import TeamListRouter from './TeamListRouter';
 
@@ -20,7 +20,7 @@ const AppRouter = () => {
     <Routes>
       <Route path="/" element={<MainLayout />}>
         <Route index element={<Main />} />
-        {/* <Route path="admin/*" element={<AdminRouter />} /> */}
+        <Route path="admin/*" element={<AdminRouter />} />
         <Route path="recruit" element={<Recruit />} />
         {/* <Route path="board/*" element={<BoardRouter />} />
         <Route path="teamlist/*" element={<TeamListRouter />} />

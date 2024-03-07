@@ -6,14 +6,14 @@ const tabs = [
     name: '신입회원',
     path: '/admin/newUser',
   },
-  {
-    name: '회원',
-    path: '/admin/user',
-  },
-  {
-    name: '관리자',
-    path: '/admin/role',
-  },
+  // {
+  //   name: '회원',
+  //   path: '/admin/user',
+  // },
+  // {
+  //   name: '관리자',
+  //   path: '/admin/role',
+  // },
 ];
 
 const AdminTab = () => {
