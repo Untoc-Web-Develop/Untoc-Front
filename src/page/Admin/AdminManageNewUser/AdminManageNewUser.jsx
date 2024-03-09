@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 
+import { FileDownload } from '@mui/icons-material';
 import { Button } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
 import { useGetApplyQuery, useGetApplyQuestionQuery } from 'api/applyApi';
 import AlertModal from 'components/Modals/AlertModal';
+import { CSVLink } from 'react-csv';
 import { CgFileDocument } from 'react-icons/cg';
 import { FiCheck, FiX, FiLoader } from 'react-icons/fi';
 
@@ -16,6 +18,7 @@ const AdminManageNewUser = () => {
   const { data: applyQuestions } = useGetApplyQuestionQuery();
   const [applyModalIsOpen, setApplyModalIsOpen] = useState(false);
   const [selectedApply, setSelectedApply] = useState();
+  const [excelData, setExcelData] = useState([]);
 
   const acceptApply = (id) => {
     setApplies(() => {
@@ -119,8 +122,21 @@ const AdminManageNewUser = () => {
   useEffect(() => {
     if (apply) {
       setApplies(() => apply.data.applies.map((item) => ({ ...item, status: '대기' })));
+      setExcelData(() => {
+        const excelHeader = [...applyQuestions.data.applyQuestions.map((item) => item.question)];
+        return [
+          ['학번', '이름', '부산대 이메일', '전화번호', ...excelHeader],
+          ...apply.data.applies.map((item) => {
+            const applyValues = applyQuestions.data.applyQuestions.map((question) => {
+              const findApplyValue = item.applyValues.find((applyValue) => applyValue.applyQuestion === question.id);
+              return findApplyValue ? findApplyValue.value : '';
+            });
+            return [item.studentId, item.name, item.email, item.phoneNumber, ...applyValues];
+          }),
+        ];
+      });
     }
-  }, [apply]);
+  }, [apply, applyQuestions]);
 
   return (
     <div className="h-full w-full">
@@ -145,6 +161,11 @@ const AdminManageNewUser = () => {
         </div>
       </AlertModal>
       <div className="h-4/5 w-full">
+        <CSVLink data={excelData} filename="신입회원 지원서.csv">
+          <Button className="!mb-2" variant="contained" color="success" startIcon={<FileDownload />}>
+            엑셀 다운로드
+          </Button>
+        </CSVLink>
         <DataGrid disableRowSelectionOnClick rows={applies} columns={columns} pageSizeOptions={[100]} />
       </div>
       <div className="flex h-1/5 w-full items-center">
