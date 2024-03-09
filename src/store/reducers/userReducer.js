@@ -12,7 +12,7 @@ export const userReducer = createSlice({
     setUser: (state, action) => {
       state.userId = action.payload.userId;
       state.userName = action.payload.userName;
-      state.badgeKeys = action.payload.badgeKeys;
+      state.badgeKeys = [...action.payload.badgeKeys, 'user'];
       state.isLogin = true;
     },
     clearUser: (state) => {

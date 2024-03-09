@@ -1,18 +1,17 @@
-const menu = [];
 const guestOnlyMenu = [
   {
     id: 'intro',
     title: '소개',
     path: '/',
     haveChild: false,
-    showOnly: ['guest'],
+    needRole: ['guest'],
   },
   {
     id: 'recruit',
     title: '모집',
     path: '/recruit',
     haveChild: true,
-    showOnly: ['guest'],
+    needRole: ['guest'],
   },
 ];
 const userOnlyMenu = [
@@ -21,35 +20,35 @@ const userOnlyMenu = [
     title: '홈',
     path: '/',
     haveChild: false,
-    showOnly: ['user'],
+    needRole: ['user'],
   },
   {
     id: 'board',
     title: '게시판',
     path: '/board',
     haveChild: true,
-    showOnly: ['user'],
+    needRole: ['user'],
   },
   {
     id: 'schedule',
     title: '일정',
     path: '/schedule',
     haveChild: false,
-    showOnly: ['user'],
+    needRole: ['user'],
   },
   {
     id: 'camp',
     title: '캠프',
     path: '/camp',
     haveChild: true,
-    showOnly: ['user'],
+    needRole: ['user'],
   },
   {
     id: 'gpt',
     title: 'GPT',
     path: '/gpt',
     haveChild: false,
-    showOnly: ['user'],
+    needRole: ['user'],
   },
 ];
 const adminOnlyMenu = [
@@ -58,14 +57,21 @@ const adminOnlyMenu = [
     title: '관리',
     path: '/admin',
     haveChild: true,
-    showOnly: ['admin'],
+    needRole: ['admin'],
   },
 ];
 
-const headerMenu = {
-  guest: [...menu, ...guestOnlyMenu],
-  user: [...menu, ...userOnlyMenu],
-  admin: [...menu, ...userOnlyMenu, ...adminOnlyMenu],
+const menu = [...adminOnlyMenu, ...guestOnlyMenu, ...userOnlyMenu];
+
+const roleChecker = (role, needRole) => {
+  const remainRole = needRole.filter((r) => !role.includes(r));
+  return remainRole.length === 0;
+};
+
+const headerMenu = (role) => {
+  return menu.filter((tab) => {
+    return roleChecker(role, tab.needRole);
+  });
 };
 
 export default headerMenu;

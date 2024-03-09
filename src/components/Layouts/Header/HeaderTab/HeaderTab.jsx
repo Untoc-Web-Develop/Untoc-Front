@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
 const HeaderTab = () => {
   const [active, setActive] = useState(0);
   const user = useSelector((state) => state.user);
-  const userType = user?.type || 'guest';
+  const menus = headerMenu(user.badgeKeys);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -19,15 +19,11 @@ const HeaderTab = () => {
 
   useEffect(() => {
     const path = location.pathname;
-    const index = headerMenu[userType].findIndex(
-      (tab) => (tab.haveChild && path.startsWith(tab.path)) || path === tab.path,
-    );
+    const index = menus.findIndex((tab) => (tab.haveChild && path.startsWith(tab.path)) || path === tab.path);
     setActive(index);
   }, [location]);
 
-  return (
-    <StandardTab activeTab={active} setActiveTab={setActive} tabs={headerMenu[userType]} onSelected={onSelected} />
-  );
+  return <StandardTab activeTab={active} setActiveTab={setActive} tabs={menus} onSelected={onSelected} />;
 };
 
 export default HeaderTab;
