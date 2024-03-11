@@ -16,7 +16,7 @@ const RecruitDescriptionAdmin = ({ applySetting, setApplySetting }) => {
     <div className="flex h-full w-full flex-col items-center justify-start px-12 text-sm font-normal">
       <div className="mb-10 h-2/5">
         <h1 className="mb-16 text-4xl">
-          UntoC
+          UNTOC
           <input
             className="w-16 border-2 border-slate-400 text-right outline-none"
             type="text"

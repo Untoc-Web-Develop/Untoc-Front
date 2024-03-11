@@ -13,6 +13,7 @@ const ConfirmModal = ({
   closeBtnText,
   confirmBtnText,
   onConfirm,
+  size,
 }) => {
   const handleClose = () => {
     onClose();
@@ -25,19 +26,19 @@ const ConfirmModal = ({
   };
 
   return (
-    <Modal isOpen={isOpen} setIsOpen={setIsOpen} outsideClose={outsideClose} onClose={onClose}>
+    <Modal isOpen={isOpen} setIsOpen={setIsOpen} outsideClose={outsideClose} onClose={onClose} size={size}>
       <div className="flex h-full w-full flex-col items-end justify-center">
-        <div className="text-md flex h-3/4 w-full items-center justify-center font-bold text-grayDark">{children}</div>
-        <div className="flex h-1/4 w-3/5 items-start justify-center">
+        <div className="text-md flex h-5/6 w-full items-center justify-center font-bold text-grayDark">{children}</div>
+        <div className="flex h-1/6 w-3/5 items-center justify-center">
           <button
-            className="text-md mr-3 h-1/2 w-1/3 rounded-lg border border-borderColor font-bold text-grayDark"
+            className="text-md mr-3 h-8 w-1/3 rounded-lg border border-borderColor font-bold text-grayDark"
             type="button"
             onClick={handleClose}
           >
             {closeBtnText}
           </button>
           <button
-            className="text-md h-1/2 w-1/3 rounded-lg border border-yellowPoint font-bold text-yellowPoint"
+            className="text-md h-8 w-1/3 rounded-lg border border-yellowPoint font-bold text-yellowPoint"
             type="button"
             onClick={handleConfirm}
           >
@@ -58,6 +59,7 @@ ConfirmModal.propTypes = {
   closeBtnText: PropTypes.string,
   confirmBtnText: PropTypes.string,
   onConfirm: PropTypes.func,
+  size: PropTypes.oneOf(['sm', 'md', 'lg']),
 };
 
 ConfirmModal.defaultProps = {
@@ -66,6 +68,7 @@ ConfirmModal.defaultProps = {
   closeBtnText: '취소',
   confirmBtnText: '확인',
   onConfirm: () => {},
+  size: 'sm',
 };
 
 export default ConfirmModal;

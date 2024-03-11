@@ -33,7 +33,7 @@ const RecruitFormAdmin = ({ applyQuestions, setApplyQuestions, onSave }) => {
                 type="text"
                 name="studentId"
                 id="studentId"
-                placeholder="202412345"
+                placeholder={`${new Date().getFullYear().toString().padEnd(9, 0)} (9자리)`}
                 className="w-full border border-borderColor p-1 px-3 focus:border-grayDark focus:outline-none"
                 disabled
               />
@@ -44,7 +44,7 @@ const RecruitFormAdmin = ({ applyQuestions, setApplyQuestions, onSave }) => {
                 type="text"
                 name="name"
                 id="name"
-                placeholder="김언톡"
+                placeholder="언톡"
                 className="w-full border border-borderColor p-1 px-3 focus:border-grayDark focus:outline-none"
                 disabled
               />
