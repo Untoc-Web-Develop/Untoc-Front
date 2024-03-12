@@ -8,8 +8,9 @@ import Main from 'page/Main/Main';
 import NotFound from 'page/NotFound/NotFound';
 // import ProfileEdit from 'page/Profile/Edit/ProfileEdit';
 // import Profile from 'page/Profile/Profile';
-import Recruit from 'page/Recruit/Recruit';
+// import Recruit from 'page/Recruit/Recruit';
 // import Register from 'page/Register/Register';
+import RecruitError from 'page/RecruitError/RecruitError';
 
 import AdminRouter from './AdminRouter';
 // import BoardRouter from './BoardRouter';
@@ -21,7 +22,7 @@ const AppRouter = () => {
       <Route path="/" element={<MainLayout />}>
         <Route index element={<Main />} />
         <Route path="admin/*" element={<AdminRouter />} />
-        <Route path="recruit" element={<Recruit />} />
+        <Route path="recruit" element={<RecruitError /> /* {<Recruit/>} */} />
         {/* <Route path="board/*" element={<BoardRouter />} />
         <Route path="teamlist/*" element={<TeamListRouter />} />
         <Route path="profile" element={<Profile />} />
