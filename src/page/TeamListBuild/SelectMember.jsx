@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import CloseIcon from '@mui/icons-material/Close';
 import DoneIcon from '@mui/icons-material/Done';
@@ -101,11 +101,16 @@ const Button = styled(ButtonBase)(({ theme }) => ({
   },
 }));
 
-const SelectMember = () => {
+const SelectMember = ({ setMemberValue }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [value, setValue] = React.useState([]);
   const [pendingValue, setPendingValue] = React.useState([]);
   const theme = useTheme();
+
+  useEffect(() => {
+    const memberList = value.map((member) => member.name);
+    setMemberValue('teamMember', memberList);
+  }, [value]);
 
   const handleClose = () => {
     setValue(pendingValue);
@@ -242,6 +247,10 @@ const SelectMember = () => {
       </StyledPopper>
     </div>
   );
+};
+
+SelectMember.propTypes = {
+  setMemberValue: PropTypes.func.isRequired,
 };
 
 export default SelectMember;
