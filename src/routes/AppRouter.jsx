@@ -14,7 +14,7 @@ import RecruitError from 'page/RecruitError/RecruitError';
 
 import AdminRouter from './AdminRouter';
 // import BoardRouter from './BoardRouter';
-// import TeamListRouter from './TeamListRouter';
+import TeamListRouter from './TeamListRouter';
 
 const AppRouter = () => {
   return (
@@ -23,9 +23,9 @@ const AppRouter = () => {
         <Route index element={<Main />} />
         <Route path="admin/*" element={<AdminRouter />} />
         <Route path="recruit" element={<RecruitError /> /* {<Recruit/>} */} />
-        {/* <Route path="board/*" element={<BoardRouter />} />
+        {/* <Route path="board/*" element={<BoardRouter />} /> */}
         <Route path="teamlist/*" element={<TeamListRouter />} />
-        <Route path="profile" element={<Profile />} />
+        {/* <Route path="profile" element={<Profile />} />
         <Route path="profile/edit" element={<ProfileEdit />} /> */}
         <Route path="login" element={<Login />} />
         {/* <Route path="register" element={<Register />} />
