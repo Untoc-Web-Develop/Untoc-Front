@@ -48,8 +48,8 @@ const PopperComponent = (props) => {
 };
 
 PopperComponent.propTypes = {
-  anchorEl: PropTypes.string.isRequired, // any, isRequired X
-  disablePortal: PropTypes.bool.isRequired, // isRequired X
+  anchorEl: PropTypes.string.isRequired,
+  disablePortal: PropTypes.bool.isRequired,
   open: PropTypes.bool.isRequired,
 };
 
@@ -101,19 +101,19 @@ const Button = styled(ButtonBase)(({ theme }) => ({
   },
 }));
 
-const SelectMember = ({ setMemberValue }) => {
+const SelectMember = ({ setMemberName }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [value, setValue] = React.useState([]);
-  const [pendingValue, setPendingValue] = React.useState([]);
+  const [memberInfo, setMemberInfo] = React.useState([]);
+  const [pendingMemberInfo, setPendingMemberInfo] = React.useState([]);
   const theme = useTheme();
 
   useEffect(() => {
-    const memberList = value.map((member) => member.name);
-    setMemberValue('teamMember', memberList);
-  }, [value]);
+    const memberList = memberInfo.map((member) => member.name);
+    setMemberName('teamMember', memberList);
+  }, [memberInfo]);
 
   const handleClose = () => {
-    setValue(pendingValue);
+    setMemberInfo(pendingMemberInfo);
     if (anchorEl) {
       anchorEl.focus();
     }
@@ -121,7 +121,7 @@ const SelectMember = ({ setMemberValue }) => {
   };
 
   const handleClick = (event) => {
-    setPendingValue(value);
+    setPendingMemberInfo(memberInfo);
     setAnchorEl(event.currentTarget);
   };
 
@@ -141,7 +141,7 @@ const SelectMember = ({ setMemberValue }) => {
           </button>
         </Button>
         <div className="flex flex-col gap-3">
-          {value.map((label) => (
+          {memberInfo.map((label) => (
             <div key={label.name} className="w-[8rem] border-b  p-1">
               {label.name}
             </div>
@@ -168,8 +168,8 @@ const SelectMember = ({ setMemberValue }) => {
                   handleClose();
                 }
               }}
-              value={pendingValue}
-              onChange={(event, newValue, reason) => {
+              memberInfo={pendingMemberInfo}
+              onChange={(event, newmemberInfo, reason) => {
                 if (
                   event.type === 'keydown' &&
                   (event.key === 'Backspace' || event.key === 'Delete') &&
@@ -177,7 +177,7 @@ const SelectMember = ({ setMemberValue }) => {
                 ) {
                   return;
                 }
-                setPendingValue(newValue);
+                setPendingMemberInfo(newmemberInfo);
               }}
               disableCloseOnSelect
               PopperComponent={PopperComponent}
@@ -226,10 +226,10 @@ const SelectMember = ({ setMemberValue }) => {
               )}
               options={[...Dummy].sort((a, b) => {
                 // Display the selected labels first.
-                let ai = value.indexOf(a);
-                ai = ai === -1 ? value.length + Dummy.indexOf(a) : ai;
-                let bi = value.indexOf(b);
-                bi = bi === -1 ? value.length + Dummy.indexOf(b) : bi;
+                let ai = memberInfo.indexOf(a);
+                ai = ai === -1 ? memberInfo.length + Dummy.indexOf(a) : ai;
+                let bi = memberInfo.indexOf(b);
+                bi = bi === -1 ? memberInfo.length + Dummy.indexOf(b) : bi;
                 return ai - bi;
               })}
               getOptionLabel={(option) => option.name}
@@ -250,7 +250,7 @@ const SelectMember = ({ setMemberValue }) => {
 };
 
 SelectMember.propTypes = {
-  setMemberValue: PropTypes.func.isRequired,
+  setMemberName: PropTypes.func.isRequired,
 };
 
 export default SelectMember;

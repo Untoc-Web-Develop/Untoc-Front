@@ -25,7 +25,10 @@ const TeamListBuild = () => {
   };
 
   const registerInfo = (data) => {
+    // 상태 콘솔 출력
     console.log(JSON.stringify(data));
+    // TODO
+    // 백엔드 연결
   };
 
   return (
@@ -84,7 +87,7 @@ const TeamListBuild = () => {
             <div className="mt-8 flex grow gap-5 text-sm">
               <div className="font-semibold">팀원</div>
               <div className="flex flex-col gap-3 overflow-y-auto">
-                <SelectMember setMemberValue={setValue} />
+                <SelectMember setMemberName={setValue} />
               </div>
             </div>
           </div>
