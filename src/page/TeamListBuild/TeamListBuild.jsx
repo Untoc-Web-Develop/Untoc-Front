@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import React, { useRef, useState } from 'react';
 
 import TeamBuildDefaultImg from 'asset/teambuilddefault/teamBuildDefaultImg.png';
@@ -13,6 +12,11 @@ const TeamListBuild = () => {
   const [isOpen, setIsOpen] = useState(false);
   const imgRef = useRef();
   const { register, handleSubmit, setValue } = useForm({ defaultValues: { teamImg: TeamBuildDefaultImg } });
+
+  const teamName = register('teamName');
+  const link1 = register('link1');
+  const link2 = register('link2');
+  const teamIntroduction = register('teamIntroduction');
 
   const handleProfileImg = () => {
     const file = imgRef.current.files[0];
@@ -66,7 +70,14 @@ const TeamListBuild = () => {
             <div className="flex flex-col items-center justify-center gap-10">
               <div className="flex items-center justify-center gap-5 text-sm ">
                 <div className="font-semibold">팀이름</div>
-                <input className="w-[15rem] border-b p-1" placeholder="LEAD" {...register('teamName')} />
+                <input
+                  className="w-[15rem] border-b p-1"
+                  placeholder="LEAD"
+                  onChange={teamName.onChange}
+                  onBlur={teamName.onBlur}
+                  name={teamName.name}
+                  ref={teamName.ref}
+                />
               </div>
               <div className="flex gap-[2rem] text-sm">
                 <div className="mt-1 font-semibold">Link</div>
@@ -74,12 +85,18 @@ const TeamListBuild = () => {
                   <input
                     className="w-[15rem] border-b p-1"
                     placeholder="http://lead-notion.io/asd"
-                    {...register('link1')}
+                    onChange={link1.onChange}
+                    onBlur={link1.onBlur}
+                    name={link1.name}
+                    ref={link1.ref}
                   />
                   <input
                     className="w-[15rem] border-b p-1"
                     placeholder="http://github.com/lead"
-                    {...register('link2')}
+                    onChange={link2.onChange}
+                    onBlur={link2.onBlur}
+                    name={link2.name}
+                    ref={link2.ref}
                   />
                 </div>
               </div>
@@ -99,7 +116,10 @@ const TeamListBuild = () => {
                 cols="140"
                 rows="10"
                 placeholder="팀을 나타낼 수 있는 소개글을 작성해주세요."
-                {...register('teamIntroduction')}
+                onChange={teamIntroduction.onChange}
+                onBlur={teamIntroduction.onBlur}
+                name={teamIntroduction.name}
+                ref={teamIntroduction.ref}
               />
             </div>
             <div className="float-right mx-12">
