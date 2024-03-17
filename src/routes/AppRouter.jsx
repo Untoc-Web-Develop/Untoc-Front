@@ -5,6 +5,7 @@ import MainLayout from 'components/Layouts/MainLayout';
 // import Gpt from 'page/Gpt/Gpt';
 import Login from 'page/Login/Login';
 import Main from 'page/Main/Main';
+import Network from 'page/Network/Network';
 import NotFound from 'page/NotFound/NotFound';
 // import ProfileEdit from 'page/Profile/Edit/ProfileEdit';
 // import Profile from 'page/Profile/Profile';
@@ -25,11 +26,11 @@ const AppRouter = () => {
         <Route path="recruit" element={<RecruitError /> /* {<Recruit/>} */} />
         {/* <Route path="board/*" element={<BoardRouter />} />
         <Route path="teamlist/*" element={<TeamListRouter />} />
-        <Route path="profile" element={<Profile />} />
         <Route path="profile/edit" element={<ProfileEdit />} /> */}
         <Route path="login" element={<Login />} />
         {/* <Route path="register" element={<Register />} />
         <Route path="gpt" element={<Gpt />} /> */}
+        <Route path="network" element={<Network />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
