@@ -1,11 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import teamListImg from 'asset/teamlist/teamListImg.png';
+import ConfirmModal from 'components/Modals/ConfirmModal';
 import TeamListHeader from 'components/TeamListHeader/TeamListHeader';
 
 const TeamListInfo = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-grayLight pb-10">
+      <ConfirmModal isOpen={isOpen} setIsOpen={setIsOpen} confirmBtnText="나가기">
+        <div className="flex flex-col items-center justify-center gap-1">
+          <div className="mt-8 text-lg font-normal text-black">정말 &ldquo;Lead&rdquo;팀에서 나가시겠습니까?</div>
+          <div className="text-sm font-normal text-placeHolder">
+            이 작업은 되돌릴 수 없습니다. 신중하게 결정해주세요
+          </div>
+        </div>
+      </ConfirmModal>
       <div className="py-10">
         <TeamListHeader content="teaminfo" isTeamed />
       </div>
@@ -51,6 +62,7 @@ const TeamListInfo = () => {
                 <button
                   type="submit"
                   className="relative left-[41rem] top-1 rounded-md border border-error bg-white px-5 py-[0.2rem] text-xs font-semibold text-error"
+                  onClick={() => setIsOpen(true)}
                 >
                   팀 나가기
                 </button>
