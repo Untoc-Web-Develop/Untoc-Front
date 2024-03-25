@@ -17,14 +17,13 @@ const useGetWhiteListQuery = () => {
 const usePostWhiteListMutation = () => {
   const queryClient = useQueryClient();
 
-  const fetcher = ({ generation, name, studentId, email }) => {
+  const fetcher = ({ generation, name, studentId, email }) =>
     axios.post('/whitelist', {
       generation,
       name,
       studentId,
       email,
     });
-  };
 
   return useMutation({
     mutationFn: fetcher,
@@ -40,9 +39,7 @@ const usePostWhiteListMutation = () => {
 const useDeleteWhiteListMutation = () => {
   const queryClient = useQueryClient();
 
-  const fetcher = ({ id }) => {
-    axios.delete(`/whitelist/${id}`);
-  };
+  const fetcher = ({ id }) => axios.delete(`/whitelist/${id}`);
 
   return useMutation({
     mutationFn: fetcher,
