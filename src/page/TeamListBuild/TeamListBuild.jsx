@@ -1,13 +1,22 @@
 import React, { useRef, useState } from 'react';
 
 import TeamBuildDefaultImg from 'asset/teambuilddefault/teamBuildDefaultImg.png';
+import ConfirmModal from 'components/Modals/ConfirmModal';
 import TeamListHeader from 'components/TeamListHeader/TeamListHeader';
+import { useForm } from 'react-hook-form';
 
 import SelectMember from './SelectMember';
 
 const TeamListBuild = () => {
   const [imgFile, setImgFile] = useState(TeamBuildDefaultImg);
+  const [isOpen, setIsOpen] = useState(false);
   const imgRef = useRef();
+  const { register, handleSubmit, setValue } = useForm({ defaultValues: { teamImg: TeamBuildDefaultImg } });
+
+  const teamName = register('teamName');
+  const link1 = register('link1');
+  const link2 = register('link2');
+  const teamIntroduction = register('teamIntroduction');
 
   const handleProfileImg = () => {
     const file = imgRef.current.files[0];
@@ -15,11 +24,32 @@ const TeamListBuild = () => {
     reader.readAsDataURL(file);
     reader.onload = () => {
       setImgFile(reader.result);
+      setValue('teamImg', reader.result);
     };
+  };
+
+  const registerInfo = (data) => {
+    // 상태 콘솔 출력
+    console.log(JSON.stringify(data));
+    // TODO
+    // 백엔드 연결
   };
 
   return (
     <div className="justify-center bg-grayLight pb-[3rem]">
+      <ConfirmModal
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        confirmBtnText="팀 생성"
+        onConfirm={handleSubmit(registerInfo)}
+      >
+        <div className="flex flex-col items-center justify-center gap-1">
+          <div className="mt-8 text-lg font-normal text-black">&ldquo;LEAD&rdquo;팀을 생성 하시겠습니까?</div>
+          <div className="text-sm font-normal text-placeHolder">
+            팀원 정보와 팀 소개가 제대로 작성되었는지 확인해주세요
+          </div>
+        </div>
+      </ConfirmModal>
       <div className="py-10">
         <TeamListHeader content="teambuilding" isTeamed={false} />
       </div>
@@ -40,28 +70,41 @@ const TeamListBuild = () => {
             <div className="flex flex-col items-center justify-center gap-10">
               <div className="flex items-center justify-center gap-5 text-sm ">
                 <div className="font-semibold">팀이름</div>
-                <input className="w-[15rem] border-b p-1" placeholder="LEAD" />
+                <input
+                  className="w-[15rem] border-b p-1"
+                  placeholder="LEAD"
+                  onChange={teamName.onChange}
+                  onBlur={teamName.onBlur}
+                  name={teamName.name}
+                  ref={teamName.ref}
+                />
               </div>
               <div className="flex gap-[2rem] text-sm">
                 <div className="mt-1 font-semibold">Link</div>
                 <div className="flex flex-col gap-3">
-                  <input className="w-[15rem] border-b p-1" placeholder="http://lead-notion.io/asd" />
-                  <input className="w-[15rem] border-b p-1" placeholder="http://github.com/lead" />
+                  <input
+                    className="w-[15rem] border-b p-1"
+                    placeholder="http://lead-notion.io/asd"
+                    onChange={link1.onChange}
+                    onBlur={link1.onBlur}
+                    name={link1.name}
+                    ref={link1.ref}
+                  />
+                  <input
+                    className="w-[15rem] border-b p-1"
+                    placeholder="http://github.com/lead"
+                    onChange={link2.onChange}
+                    onBlur={link2.onBlur}
+                    name={link2.name}
+                    ref={link2.ref}
+                  />
                 </div>
               </div>
             </div>
             <div className="mt-8 flex grow gap-5 text-sm">
               <div className="font-semibold">팀원</div>
               <div className="flex flex-col gap-3 overflow-y-auto">
-                {/* <button className="flex w-[15rem] p-1 text-placeHolder" type="button">
-                  + 팀원 추가하기
-                </button>
-                <div className="flex flex-col gap-3 overflow-y-auto">
-                  <input className="w-[15rem] border-b  p-1" placeholder="세론1" />
-                  <input className="w-[15rem] border-b p-1" placeholder="세론2" />
-                  <input className="w-[15rem] border-b p-1" placeholder="세론3" />
-                </div> */}
-                <SelectMember />
+                <SelectMember setMemberName={setValue} />
               </div>
             </div>
           </div>
@@ -73,10 +116,18 @@ const TeamListBuild = () => {
                 cols="140"
                 rows="10"
                 placeholder="팀을 나타낼 수 있는 소개글을 작성해주세요."
+                onChange={teamIntroduction.onChange}
+                onBlur={teamIntroduction.onBlur}
+                name={teamIntroduction.name}
+                ref={teamIntroduction.ref}
               />
             </div>
             <div className="float-right mx-12">
-              <button type="submit" className="bg-yellowPoint px-8 py-2 text-xs font-semibold text-white">
+              <button
+                onClick={() => setIsOpen(true)}
+                type="submit"
+                className="bg-yellowPoint px-8 py-2 text-xs font-semibold text-white"
+              >
                 팀 생성
               </button>
             </div>
