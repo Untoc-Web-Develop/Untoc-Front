@@ -4,7 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import Admin from 'page/Admin/Admin';
 import AdminManageNewUser from 'page/Admin/AdminManageNewUser/AdminManageNewUser';
 // import AdminManageRole from 'page/Admin/AdminManageRole/AdminManageRole';
-// import AdminManageUser from 'page/Admin/AdminManageUser/AdminManageUser';
+import AdminManageUser from 'page/Admin/AdminManageUser/AdminManageUser';
 import AdminLayout from 'page/Admin/Layouts/AdminLayout';
 import WhiteList from 'page/Admin/WhiteList/WhiteList';
 
@@ -14,7 +14,7 @@ const AdminRouter = () => {
       <Route path="/" element={<AdminLayout />}>
         <Route path="newUser" element={<AdminManageNewUser />} />
         <Route path="whitelist" element={<WhiteList />} />
-        {/* <Route path="user" element={<AdminManageUser />} /> */}
+        <Route path="user" element={<AdminManageUser />} />
         {/* <Route path="role" element={<AdminManageRole />} /> */}
         <Route path="*" element={<Admin />} />
       </Route>
