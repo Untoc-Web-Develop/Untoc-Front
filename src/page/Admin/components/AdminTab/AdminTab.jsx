@@ -6,6 +6,10 @@ const tabs = [
     name: '신입회원',
     path: '/admin/newUser',
   },
+  {
+    name: '화이트리스트',
+    path: '/admin/whitelist',
+  },
   // {
   //   name: '회원',
   //   path: '/admin/user',
@@ -26,7 +30,7 @@ const AdminTab = () => {
           key={name}
           to={path}
           className={`mr-5 flex h-3/4 w-1/4 items-center justify-center rounded ${
-            pathname === path ? 'bg-yellowPoint' : 'bg-grayPoint'
+            pathname === path ? 'bg-yellowPoint text-white' : 'bg-grayPoint'
           }`}
         >
           {name}
