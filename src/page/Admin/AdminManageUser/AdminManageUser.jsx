@@ -45,7 +45,7 @@ const AdminManageRole = () => {
   return (
     <div className="h-full w-full">
       <div className="h-4/5 w-full">
-        <DataGrid disableRowSelectionOnClick rows={users ? users.data : []} columns={columns} pageSizeOptions={[100]} />
+        <DataGrid disableRowSelectionOnClick rows={users?.data ?? []} columns={columns} pageSizeOptions={[100]} />
       </div>
     </div>
   );
