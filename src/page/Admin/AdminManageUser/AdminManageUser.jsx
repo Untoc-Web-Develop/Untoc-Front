@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 import { Switch } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
 import { useGetUsersQuery, usePatchUserActivationMutation } from 'api/adminApi';
 
 const AdminManageRole = () => {
-  const [users, setUsers] = useState([]);
-  const { data: usersData } = useGetUsersQuery();
+  const { data: users } = useGetUsersQuery();
   const { mutate: patchActivation } = usePatchUserActivationMutation();
 
   const columns = [
@@ -43,16 +42,10 @@ const AdminManageRole = () => {
     // },
   ];
 
-  useEffect(() => {
-    if (usersData) {
-      setUsers(() => usersData.data);
-    }
-  }, [usersData]);
-
   return (
     <div className="h-full w-full">
       <div className="h-4/5 w-full">
-        <DataGrid disableRowSelectionOnClick rows={users} columns={columns} pageSizeOptions={[100]} />
+        <DataGrid disableRowSelectionOnClick rows={users.data} columns={columns} pageSizeOptions={[100]} />
       </div>
     </div>
   );
