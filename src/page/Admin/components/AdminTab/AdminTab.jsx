@@ -10,10 +10,10 @@ const tabs = [
     name: '화이트리스트',
     path: '/admin/whitelist',
   },
-  // {
-  //   name: '회원',
-  //   path: '/admin/user',
-  // },
+  {
+    name: '회원',
+    path: '/admin/user',
+  },
   // {
   //   name: '관리자',
   //   path: '/admin/role',

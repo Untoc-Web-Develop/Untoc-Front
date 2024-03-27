@@ -15,7 +15,6 @@ import NotFound from 'page/NotFound/NotFound';
 import RecruitError from 'page/RecruitError/RecruitError';
 
 import AdminRouter from './AdminRouter';
-
 // import BoardRouter from './BoardRouter';
 import TeamListRouter from './TeamListRouter';
 
