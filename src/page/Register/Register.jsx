@@ -2,10 +2,14 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+import { usePostRegisterMutation, usePostSendEmailMutation, usePostVerifyEmailCodeMutation } from 'api/registerApi';
 import { useForm } from 'react-hook-form';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 
 const Register = () => {
+  const { mutate: postEmail } = usePostSendEmailMutation();
+  const { mutate: postEmailVertification } = usePostVerifyEmailCodeMutation();
+  const { mutate: postRegister } = usePostRegisterMutation();
   const {
     register,
     handleSubmit,
@@ -36,11 +40,28 @@ const Register = () => {
     const { email } = data;
     if (email) {
       setIsEmailValidate(true);
+      postEmail({
+        email,
+      });
     }
   };
 
+  const emailVertificationCodeSubmit = (data) => {
+    postEmailVertification({
+      email: data.email,
+      verificationCode: data.emailVertificationCode,
+    });
+  };
+
   const registerSubmit = (data) => {
-    console.log(JSON.stringify(data));
+    const { email, password, username, phoneNumber, studentNumber } = data;
+    postRegister({
+      email,
+      password,
+      username,
+      phoneNumber,
+      studentId: studentNumber,
+    });
   };
 
   function emailMessage(errorsParam, isEmailValidateParam) {
@@ -50,7 +71,7 @@ const Register = () => {
   }
 
   return (
-    <div className="mx-auto my-auto flex h-content flex-col place-items-center">
+    <div className="mx-auto my-auto flex h-auto flex-col place-items-center">
       <h1 className="m-8 py-5 text-center text-6xl font-bold text-yellowPoint">UntoC</h1>
       <div>
         <div className="mb-5">
@@ -178,6 +199,7 @@ const Register = () => {
                 }`}
                 type="text"
                 id="emailVertificationCode"
+                {...register('emailVertificationCode')}
                 disabled={!isEmailValidate}
                 onFocus={() =>
                   setFocus({
@@ -192,12 +214,14 @@ const Register = () => {
                   })
                 }
               />
-              <button
-                className="h-10 w-20 rounded-full border border-borderColor bg-white text-xs text-placeHolder"
-                type="submit"
-              >
-                확인
-              </button>
+              <form onSubmit={handleSubmit(emailVertificationCodeSubmit)}>
+                <button
+                  className="h-10 w-20 rounded-full border border-borderColor bg-white text-xs text-placeHolder"
+                  type="submit"
+                >
+                  확인
+                </button>
+              </form>
             </div>
             <span className="text-xs text-gray-400">이메일 확인 인증 코드입니다</span>
             <br />
@@ -234,7 +258,7 @@ const Register = () => {
               </button>
             </div>
             <span className={`relative bottom-5 text-xs ${errors.password ? 'text-error' : 'text-placeHolder'}`}>
-              8~16자리의 영문자 및 숫자를 포함하여 만들어주세요
+              8~16자리의 영문자 및 숫자만 포함하여 만들어주세요
             </span>
           </label>
         </div>
